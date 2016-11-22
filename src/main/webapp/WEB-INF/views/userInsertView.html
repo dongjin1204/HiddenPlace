@@ -1,10 +1,361 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<title>내알못</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+
+
+<style>
+#logo_img {
+	width: 200px;
+}
+
+#main_img_container {
+	margin-bottom: 3%;
+}
+
+.center {
+	position: absolute;
+top: 70%;
+left: 50%;
+transform: translate(-50%, -50%);
+
+/*font-size: 18px;*/
+}
+#main_img {
+	width: 100%;
+height: auto;
+}
+.center > h2 {
+	font-weight: bold;
+color: white;
+font-family: 
+	font-style: italic;
+}
+#search_bar {
+	filter:alpha(opacity=50);
+background-color: transparent;
+}
+#search_bar_space {
+
+}
+
+#writer {
+	width : 100px;
+}
+
+.img-circle {
+	width : 40px;
+height: 40px;
+}
+
+#login_button {
+	margin-top: 4%;
+
+}
+#login_button > button {
+	border : 0;
+outline: 0;
+}
+
+#main_img {
+	float: center;
+width: 100%;
+height: 400px;
+}
+
+#main_buttons {
+	width: 40%;
+margin-top: 5%;
+margin-left: 30%;
+
+}
+
+#main_buttons > a {
+	font-weight: bold;
+font-size: 150%;
+border : 0;
+outline: 0;
+}
+
+/*a:hover {
+         background-color: black;
+         font-family: white;
+      }*/
+#regionChoice {
+	border-top : 1px solid black;
+border-bottom: 1px solid black;
+margin-top: 5%;
+/*margin-bottom: 1px solid black;*/
+}
+#regionChoice > div{
+	width: 70%;
+margin: auto;
+}
+#regionChoice > div > a {
+	border : 0;
+outline: 0;
+width: 70%;
+font-size: 130%;
+font-style: grey;
+/*font-weight: bold; */
+}
+.btn-group-justified > a : hover {
+	background-color: white;
+}
+#main_body {
+	margin-top: 3%;      
+}
+
+#main_hiddenPlace {
+	margin-top: 2%;
+}
+#main_hiddenPlace > div > div > div {
+	padding: 0;
+margin-right: 30px;
+}
+
+.personal_article {
+	width: 200%;
+}
+.personal_article_space {
+	height: 40px;
+margin-bottom: 1%;
+}
+.name {
+	font-weight: bold;
+	color: #0033cc;
+	font-family: "견명조", "윤고딕", "맑은 고딕", sans-serif;
+}
+.insert_date {
+	font-style: italic;
+}
+
+.hiddenPlace_img{
+	width: 100%;
+	height: auto;
+}
+.text {
+	position: absolute;
+	top:40px;
+	left: 80px;
+	width: 700%;
+}
+
+
+#row_margin {
+	margin-bottom: 2%;
+}
+
+
+#row_margin_font {
+	margin-top: 10%;
+	margin-bottom: 5%;
+}
+
+#input_id_email {
+	margin-left: -5%;
+	margin-right: 5%;
+}
+
+#input_id_nickname {
+	margin-left: 6%;
+}
+
+#input_button_insert {
+	margin-top: 2%;
+margin-left: 8%;
+}
+
+#input_number {
+	margin-left: 5%;
+}
+
+#boder_bottom {
+	border-bottom:1%;
+}
+
+
+#button_join {
+	margin-top: 3%;
+	margin-left:13%;
+	width:100px; height:30px;
+	background:#3399ff;
+	border:none;
+}
+
+#button_cancle {
+	margin-top: 3%;
+	margin-left:7%;
+	width:100px; height:30px;
+	background:#3399ff;
+	border:none;
+}
+
+#sign_up_border{
+	margin-top: 0%;
+margin-bottom: 3%;
+border-top: 1px solid #e9e9e9;
+}
+
+#sign_up{
+	margin-top: 4%;
+	margin-left: 34%;
+}
+
+#button1id {
+	background:#3399ff;
+	color:white;
+	border:none;
+}
+
+
+
+
+</style>
 </head>
 <body>
 
+<!-- 상단 로그인 바 -->
+<div class="container-fluid">
+
+<div class="row">
+<div class="col-sm-10"></div>
+<div class="col-sm-2">
+<div id="login_button" class="btn-group">
+<button type="button" class="btn btn-default">로그인</button>
+<button type="button" class="btn btn-default">회원가입</button>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- 상단 메인 메뉴 바 -->
+<div class="container-fluid">
+
+<div class="row">
+<div class="col-sm-3"><a href="homeView.html"><img src="logo.png"></a></div>
+<div id="main_buttons" class="btn-group btn-group-justified">
+<a href="#" id="main_button_1" class="btn btn-default">홈페이지</a>
+<a href="#" id="main_button_1" class="btn btn-default">마이페이지</a>
+<a href="#" class="btn btn-default">나만의 루트</a>
+</div>
+</div>
+</div>
+
+<!-- 메인 사진 박스 -->
+<div class="container-fluid">
+<img id="main_img" src="route.png" alt="route">
+<div class="center"><h2>내가 알지 못한 멋진 곳이 궁금하신가요?</h2></div>
+<div id="search_bar_space" class="container-fluid">
+</div>
+</div>
+
+<!--회원가입  --> 
+<form class="form-horizontal">
+<fieldset>
+
+<!-- 회원가입상단 문구 -->
+<div id="sign_up">
+<h3>회원가입</h3>
+</div>
+<div class="col-md-2"></div>
+<div id="sign_up_border" class="col-md-8"></div>
+<div class="col-md-2"></div>
+
+
+<!-- 아이디 입력창-->
+<div class="form-group">
+<label class="col-md-5 control-label" for="textinput">아이디</label>  
+<div class="col-md-2">
+<input id="textinput" name="textinput" type="text" placeholder="E-mail" class="form-control input-md">
+</div>
+<div class="col-md-5">
+<button  id="button1id" class="btn btn-success">인증요청</button>
+</div>
+</div>
+
+
+<!-- 인증번호입력창-->
+<div class="form-group">
+<label class="col-md-5 control-label" for="textinput">인증번호</label>  
+<div class="col-md-3">
+<input id="textinput" name="textinput" type="text" placeholder="check-Number" class="form-control input-md">
+</div>
+</div>
+
+
+<!-- 닉네임입력창-->
+<div class="form-group">
+<label class="col-md-5 control-label" for="textinput">닉네임</label>  
+<div class="col-md-2">
+<input id="textinput" name="textinput" type="text" placeholder="Nickname" class="form-control input-md">
+</div>
+<div class="col-md-5">
+<button id="button1id" class="btn btn-success">중복확인</button>
+
+</div>
+</div>
+
+
+<!--비밀번호입력창-->
+<div class="form-group">
+<label class="col-md-5 control-label" for="passwordinput">비밀번호 </label>
+<div class="col-md-3">
+<input id="passwordinput" name="passwordinput" type="password" placeholder="Password" class="form-control input-md">
+</div>
+</div>
+
+
+<!-- 비밀번호 확인 입력창-->
+<div class="form-group">
+<label class="col-md-5 control-label" for="passwordinput">비밀번호 확인</label>
+<div class="col-md-3">
+<input id="passwordinput" name="passwordinput" type="password" placeholder="Password-Check" class="form-control input-md" >
+</div>
+</div>
+
+
+<!-- 전화번호 입력창 -->
+<div class="form-group">
+<label class="col-md-5 control-label" for="year">전화번호</label>
+<div class="col-sm-1">
+<select id="year" name="year" class="form-control">
+<option value="1">010</option>
+<option value="1">019</option>
+</select>
+</div>
+<div class="col-sm-1">
+<input type="password"  class="form-control input-md" >
+</div>
+<div class="col-sm-1">
+<input class="form-control input-md" >
+</div>
+</div>
+
+
+<!-- 하단버튼 -->
+<div class="form-group">
+<label class="col-md-4 control-label" for="button1id"></label>
+<div class="col-md-8">
+<button id="button_join" name="button1id" class="btn btn-success">가입완료</button>
+<button id="button_cancle" name="button2id" class="btn btn-success">취소</button>
+</div>
+</div>
+
+
+
+</fieldset>
+</form>
 </body>
 </html>
+
