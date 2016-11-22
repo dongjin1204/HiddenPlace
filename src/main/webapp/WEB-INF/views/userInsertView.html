@@ -2,9 +2,218 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+  <title>회원 가입</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <style>
+  
+  #check_left_gride {
+  	padding-left: 0px;
+  	float:left;
+  }
+  
+  #check_rigth_gride {
+  	padding-left: 0px;
+  	float:right;
+  }
+  
+  #row_margin {
+  
+  margin-bottom: 2%;
+  
+  }
+
+  
+  #row_margin_font {
+  
+ 
+  border-bottom-style: ridge;
+  margin-top: 10%;
+  margin-bottom: 5%;
+  
+  }
+  
+  #input_id_email {
+  
+  margin-left: -5%;
+  margin-right: 5%;
+  
+  }
+  
+  #ioput_button {
+  
+  margin-left:4%;
+  color:white;
+  background: #3399ff;
+  
+  }
+  
+   #input_id_nickname {
+  
+  margin-left: 6%;
+ 
+  
+  }
+  
+  #input_button_insert {
+  
+   margin-top: 2%;
+   margin-left: 8%;
+  
+  
+  }
+  
+  #input_button_background {
+  
+  color:white;
+  background:#3399ff;
+  
+  }
+  
+  #input_number {
+  
+  margin-left: 5%;
+  }
+  
+
+  
+
+  </style>
+  
 </head>
 <body>
 
+
+ <div class="container">
+
+ 
+  	<div class="row" id=row_margin>
+ 	
+ 		<div class="col-sm-4" ></div>
+ 		<div class="col-sm-7" >
+ 		<h3 id=row_margin_font>회원가입</h3>
+ 		</div>
+ 		
+ 	</div>
+ 	
+ 	
+  	<div class="row" id=row_margin>
+ 	
+ 		<div class="col-sm-4" ></div>
+ 		
+ 		<div class="col-sm-6" >
+ 			<div class="col-sm-3" id=check_left_gride >
+ 			아이디
+ 			
+ 			</div>
+ 				
+ 			<div class="col-sm-9" id=check_rigth_gride >
+ 			
+ 			
+ 			<input id=input_id_email placeholder="E-mail"></input>
+ 			
+ 			<select>
+ 			<option>선택하세요</option>
+ 			<option>naver.com</option>
+ 			<option>hanmail.net</option>
+ 			<option>nate.com</option>
+ 			</select>
+ 			
+ 			<button id=ioput_button type="button" style="width:100px; height:25px;" class="btn btn-default" disabled="disabled">인증요청</button>
+ 			
+ 			</div>
+ 		</div>
+ 		<div class="col-sm-2" ></div>
+ 		
+ 	</div>
+ 	
+ 	
+ 	<div class="row" id=row_margin>
+ 	
+ 		<div class="col-sm-4" ></div>
+ 		<div class="col-sm-6" >
+ 			<div class="col-sm-2" id=check_left_gride >
+ 			닉네임
+ 			</div>
+ 			<div class="col-sm-10" id=check_rigth_gride >
+ 			<input id=input_id_nickname placeholder="NickName"></input>
+ 			<button id=ioput_button type="button" style="width:100px; height:25px;" class="btn btn-default" disabled="disabled">중복확인</button>
+ 			</div>
+ 		</div>
+ 		<div class="col-sm-2" ></div>
+ 	</div>
+ 	
+ 	
+ 	<div class="row" id=row_margin>
+ 	
+ 		<div class="col-sm-4" ></div>
+ 		<div class="col-sm-4" >
+ 			<div class="col-sm-4" id=check_left_gride >
+ 			비밀번호
+ 			</div>
+ 			<div class="col-sm-8" id=check_rigth_gride >
+ 			<input id=input_id placeholder="Password"></input>
+ 			</div>
+ 		</div>
+ 		<div class="col-sm-4" ></div>
+ 	</div>
+ 	
+ 	
+ 	<div class="row" id=row_margin>
+ 	
+ 		<div class="col-sm-4" ></div>
+ 		<div class="col-sm-4" >
+ 			<div class="col-sm-4" id=check_left_gride >
+ 			비밀번호 확인
+ 			</div>
+ 			<div class="col-sm-8" id=check_rigth_gride >
+ 			<input id=input_id placeholder="Password-Check"></input>
+ 			</div>
+ 		</div>
+ 		<div class="col-sm-4" ></div>
+ 	</div>
+ 	
+ 	
+ 	<div class="row" id=row_margin>
+ 		<div class="col-sm-4" ></div>
+ 		<div class="col-sm-4" >
+ 			<div class="col-sm-4" id=check_left_gride >
+ 			전화번호
+ 			</div>
+ 			<div class="col-sm-8" id=check_rigth_gride >
+ 			<select id=input_id>
+ 			<option>010</option>
+ 			<option>02</option>
+ 			<option>031</option>
+ 			<option>032</option>
+ 			<option>042</option>
+ 			</select>
+ 			
+ 			<input id=input_number size="6" />  <input id=input_number size="6" />
+ 			
+ 		</div>
+ 		<div class="col-sm-4" ></div>
+ 	</div>
+ </div>
+ 
+ 
+ <div  class= "col-sm-4"></div>
+	 <div id=input_button_insert  class= "col-sm-4">
+ 			 <button id=input_button_background type="button" style="width:100px; height:30px;" class="btn btn-default" disabled="disabled">취소</button>
+ 			<div class= "col-sm-4">
+ 			 <button id=input_button_background type="button"  style="width:100px; height:30px;" class="btn btn-default" disabled="disabled">가입완료</button>
+  
+ 		</div>
+ 		
+ 		
+ 		
+ </div>
+
+
+ 
 </body>
 </html>
