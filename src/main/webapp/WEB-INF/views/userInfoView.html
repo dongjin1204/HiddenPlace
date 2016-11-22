@@ -37,7 +37,12 @@
 #cancle {
 	margin-left : 10%;
 }
+#deleteUser{
+width: 300px;
+    padding-left: 0px;
+	text-align : right;
 
+}
 </style>
 </head>
 <body>
@@ -173,7 +178,69 @@
 						</div> <!--회원정보수정 태그 -->
 						
 						<div id="menu1" class="tab-pane fade">
-							<h3>Menu 1</h3>
+							
+							
+							<div class="tab-content">
+
+										<div id="home" class="tab-pane fade in active">
+
+											<form>
+												<div class="row">
+													<div class="col-sm-12">
+														<div class="col-sm-3" id=check_left_gride>아이디</div>
+														<div class="col-sm-6" id=check_rigth_gride>
+															<input readOnly="readOnly" class="myinfo_input"
+																placeholder="dongjin_1204@naver.com" />
+														</div>
+													</div>
+												</div>
+												<br>
+
+												<div class="row">
+													<div class="col-sm-12">
+														<div class="col-sm-3" id=check_left_gride>현재비밀번호</div>
+														<div class="col-sm-6" id=check_rigth_gride>
+															<input type="password" class="myinfo_input"
+																placeholder="********" />
+														</div>
+													</div>
+												</div>
+
+												<br>
+												<div class="row">
+													<div class="col-sm-12">
+														<div class="col-sm-3" id=check_left_gride>탈퇴사유</div>
+														<div class="col-sm-6" id=check_rigth_gride>
+															<select  id=deleteUser>
+																<option>탈퇴사유</option>
+																<option>재미없어....</option>
+																<option>아무이유없음</option>
+															</select>
+														</div>
+													</div>
+												</div>
+
+												<br><br><br><br>
+												
+												<div class="row">
+										<div class="col-sm-12">
+											<div class="col-sm-3"></div>
+											<div class="col-sm-6">
+												<input type="submit" value="탈퇴"
+													style="width: 100px; height: 50px" />
+											</div>
+											<div class="col-sm-3"></div>
+										</div>
+									</div>
+										</div>
+							
+							
+							
+							
+							
+							
+							
+							
 						</div> <!-- 회원탈퇴 태그 -->
 						
 						
