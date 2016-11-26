@@ -15,6 +15,17 @@ function myHiddenPlaceController() {
 
 	};
 
+// 즐겨찾기 controller 메서드
+	this.requestBookmarkMHP = function() {
+		
+		var myHiddenPlaces  = dao.bookmarkDao(myHiddenPlace);
+		
+		return myHiddenPlaces;
+		
+	}
+	
+	
+	
 /*	
 //	 controller 메서드
 	this.requestWriteView = function() {
