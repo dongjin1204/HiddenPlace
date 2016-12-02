@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>내알못 글쓰기</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type="text/css"
+	href="bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="font-awesome/css/font-awesome.min.css" />
+<link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
+	rel="stylesheet">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<link
+	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css"
+	rel="stylesheet">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
+<script src="lang/summernote-ko-KR.js"></script>
+<script type="text/javascript"
+	src="http://apis.daum.net/maps/maps3.js?apikey=fb44c02e84584e26aef57ba9f3330c6b"></script>
+<!-- 상단 홈페이지 css, 내알못글쓰기 css 적용 -->
+<link rel="stylesheet" type="text/css"
+	href="../../../resources/bootstrap/css/homeViewStyle.css">
+<link rel="stylesheet" type="text/css"
+	href="../../../resources/bootstrap/css/hiddenPlaceInsertView.css">
+</head>
+
+<body>
+	<script type="text/javascript">
+
+      $(document).ready(function(){
+
+      var latitude;//위도
+      
+      var longitude;//경도
+      
+         // 버튼 클릭시 콜백함수 호출 
+         $("button").click(function(){
+            // input 에 입력하는 검색어의 값을 keyWord변수에 담고 한글처리
+            var keyWord = $("#keyWord").val();         
+            keyWord = encodeURIComponent(keyWord);
+
+         // 입력된 keyWord변수의 값으로 결과를 내기 위해 URL 끝에 +keyWord 삽입과 url변수 선언
+         var url = "https://apis.daum.net/local/v1/search/keyword.json?apikey=5a3b393c51ad7571d6a92599bd57a77e&query="+keyWord; 
+
+
+         $.getJSON(url + "&callback=?" , function(json){
+
+                  // json.channel.item; 은 json데이터 내에서 내가 원하는 값에 접근하기 위해
+
+                  var items = json.channel.item;
+
+                               // 반복문을 통해 원하는 json값을 뽑아내는 단계. 지금은 위도와 경도를 받기 위해...
+
+                               $.each(items, function(i, it){
+                                   // 위도와 경도의 변수를 저장
+                                   latitude = it.latitude;
+                                   longitude = it.longitude;
+                                   var markerPosition  = new daum.maps.LatLng(latitude, longitude); 
+
+                                   if(i == 0){
+                        var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+                        var options = { //지도를 생성할 때 필요한 기본 옵션
+                           center: new daum.maps.LatLng(latitude, longitude), //지도의 중심좌표.
+                           level: 3 //지도의 레벨(확대, 축소 정도)
+
+                        };
+                        var marker = new daum.maps.Marker({
+                         position: markerPosition
+                      });
+
+                        var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
+                        marker.setMap(map); //지도위에 마커 뿌리기
+                        
+                        $("#keyWord").val("");
+                        
+                     }
+                  });   
+                            });            
+      });
+
+            // 버튼 클릭시 콜백함수 호출 
+            $("#success_button").click(function(){
+               var content =  $(".summernote").val();
+               alert(content);
+               alert(latitude);
+               alert(longitude);
+            });
+
+
+         });
+
+     
+     </script>
+     
+     <!-- 마우스 hover 시 효과 -->
+     <script type="text/javascript">
+     	$(document).ready(function(){
+     		 $(function(){
+     	         $('.bookMark_img').hover(function(){
+     	           $('.bookMark_text').text('즐겨찾기');
+     	        });
+     		 });
+     	});
+     </script>
+     
+      <script type="text/javascript">
+     	$(document).ready(function(){
+     		 $('#success_button').click(function(){
+     			 
+     		 });
+     	});
+     </script>
+     
+     
+	<!-- 상단 메인 메뉴 바 -->
+	<div class="container">
+		<div class="col-sm-3">
+			<a href="homeView.html"><img id="logo_img" src="../../../resources/bootstrap/img/logo.png"></a>
+		</div>
+
+
+		<div class="col-sm-9">
+			<div id="login_button" class="btn-group">
+				<button type="button" class="btn btn">로그인</button>
+				<button type="button" class="btn btn">회원가입</button>
+			</div>
+		</div>
+		<div class="col-sm-7">
+			<div id="main_buttons" class="btn-group btn-group-justified">
+				<a href="#" class="btn btn">홈페이지</a> 
+				<a href="#" class="btn btn">마이페이지</a>
+				<a href="#" class="btn btn">나만의 루트</a> 
+				<a href="#" class="btn btn">즐겨찾기</a>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- 메인 사진 박스 -->
+	<div id="main_img_box" class="jumbotron">
+		<img id="main_img" src="../../../resources/bootstrap/img/beer.jpeg" alt="main_img">
+
+		<div class="main_img_text">
+			<h2>내가 알지 못한 멋진 곳이 궁금하신가요?</h2>
+		</div>
+		<!-- 검색 박스 -->
+		<div class="span12">
+			<form id="custom-search-form"
+				class="form-search form-horizontal pull-right">
+				<div class="input-append span12">
+					<input type="text" class="search-query" placeholder="#내가 알지 못한 곳">
+					<button type="submit" class="glyphicon glyphicon-search">
+						<i class="icon-search"></i>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- 여기 위까지 header.html 로 할 예정 (아직은미정) -->
+	
+	<!-- 내알못 추천 -->
+	<div id="main_body" class="container">
+		<div id="main_hiddenPlace" class="row"></div>
+	</div>
+
+	<div id="bottom_body" class="container"></div>
+
+	<script type='text/javascript'>
+       $(function() {
+      $('.summernote').summernote({
+         height : 600
+      });
+   });
+
+</script>
+
+	<!-- /. NAV SIDE  -->
+
+	<div class="container">
+
+		<div id="page-wrapper" class="col-sm-12">
+			                
+			<div class="row">
+				                                      
+				<div class="panel-body">
+					<div class="col-sm-1" id="mhp_select">
+						<label>지역선택</label>
+					</div>
+					<div class="col-sm-2">
+						<select id="mhp_place" class="form-control">
+							<option value="1">서울</option>
+							<option value="1">대전</option>
+							<option value="1">대구</option>
+							<option value="1">광주</option>
+							<option value="1">부산</option>
+						</select>
+					</div>
+
+					<div class="col-sm-1" id="mhp_select">
+						<label>장소선택</label>
+					</div>
+					<div class="col-sm-2">
+						<select id="mhp_place" class="form-control">
+							<option value="1">맛집</option>
+							<option value="1">카페</option>
+						</select>
+					</div>
+					<div class="col-sm-1" id="mhp_select">
+						<label>위치지정</label>
+					</div>
+					             
+					<div class="col-md-2">
+						<input id="keyWord" placeholder="키워드"
+							class="form-control input-md">
+					</div>
+					<div class="col-sm-1">
+
+						<button id="map_search_button" type="button" class="btn btn">검색</button>
+					</div>
+					<div id="map" class="col-sm-12"></div>
+					<div id="mapDiv" class="col-sm-12"></div>
+					                        
+					<div class="row">
+						<div class="col-md-12">
+							<textarea class="summernote" name="Contents" align="left"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="input_button_box" class="col-sm-3">
+			<button id="success_button" type="button" class="btn btn">완료</button>
+			<button id="cancel_button" type="button" class="btn btn">취소</button>
+	</div>
+
+</body>
+</html>

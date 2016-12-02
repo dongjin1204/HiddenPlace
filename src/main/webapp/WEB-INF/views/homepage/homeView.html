@@ -153,12 +153,26 @@
 		});
 
 	});
-	
-	
 </script>
 
+<!-- 지역 선택 이벤트 핸들링 -->
+<script  type="text/javascript">
+
+	$(document).ready(function() {
+		
+		$('#regionChoice_button').click(function() {
+			
+			var region = $(this).text());
+			var mhpController = new myHiddenPlaceController();
+		
+			var selectAll = mhpController.requestSelectAll(region);
+			
+		});
+		
+	});
+	</script>
+
 <body>
-	<!-- 상단 메인 메뉴 바 -->
 	<!-- 상단 메인 메뉴 바 -->
 	<div class="container">
 		<div class="col-sm-3">
