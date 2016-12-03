@@ -43,7 +43,6 @@ function UserDao() {
 				},
 				dataType : 'text', // 서버에서 보내오는 데이터 타입
 				success : function(data) { // 서버에서 보내오는 데이터 // data = success
-
 					isSuccess = data;
 					
 				}

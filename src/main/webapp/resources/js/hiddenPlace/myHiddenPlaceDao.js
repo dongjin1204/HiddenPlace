@@ -5,36 +5,20 @@ function MyHiddenPlaceDao() {
 //	내알못 best 3 요청 dao 메서드
 	this.bestMHP = function() {
 		
-		alert("Dao 도착");
-		
 		var myHiddenPlaces = [];
 		
 		try{
 
 			$.ajax({
-				url: '/' , //홈페이지 불러올 주소
+				url: '/myhiddenplace/bestMHP' , //홈페이지 불러올 주소
 				async : false, //false: 동기, true: 비동기
 				type: 'get', //요청방식 get or post      
 				data: {
 					//보내줄 데이터 없으면 비어둬도되고 data 아에 없애도 되고
 				},
-				dataType: 'xml', //서버에서 보내오는 데이터 타입
+				dataType: 'json', //서버에서 보내오는 데이터 타입
 				success: function (data) { //서버에서 보내오는 데이터
-					
-					$(data).find('myHiddenPlace').each( function(){
-						var myHiddenPlace = {
-							title:$(this).find('title').text(), //글제목
-							writer:$(this).find('writer').text(), //작성자
-							writeDate:$(this).find('writeDate').text(), //작성일자
-							bookmark:$(this).find('bookmark').text(), //찜콩
-							upCount:$(this).find('upCount').text(), //추천수
-							imageUrl:$(this).find('imageUrl').text(), //이미지경로
-							nowLoginId:$(this).find('nowLoginId').text() //현재로그인한 사용자아이디
-						}					
-						
-						myHiddenPlaces.push(myHiddenPlace);
-					});	
-					
+					myHiddenPlaces = data;
 				}
 			});
 
@@ -55,29 +39,45 @@ function MyHiddenPlaceDao() {
 		try{
 			
 			$.ajax({
-				url: '/' , //홈페이지 불러올 주소
+				url: '/myhiddenplace/myhiddenplaceSelectAll' , //홈페이지 불러올 주소
 				async : false, //false: 동기, true: 비동기
 				type: 'get', //요청방식 get or post      
 				data: {
 					//보내줄 데이터 없으면 비어둬도되고 data 아에 없애도 되고
 				},
-				dataType: 'xml', //서버에서 보내오는 데이터 타입
+				dataType: 'json', //서버에서 보내오는 데이터 타입
 				success: function (data) { //서버에서 보내오는 데이터
-					
-					$(data).find('myHiddenPlace').each( function(){
-						var myHiddenPlace = {
-							title:$(this).find('title').text(), //글제목
-							writer:$(this).find('writer').text(), //작성자
-							writeDate:$(this).find('writeDate').text(), //작성일자
-							bookmark:$(this).find('bookmark').text(), //찜콩
-							upCount:$(this).find('upCount').text(), //추천수
-							imageUrl:$(this).find('imageUrl').text(), //이미지경로
-							nowLoginId:$(this).find('nowLoginId').text() //현재로그인한 사용자아이디
-						}					
-						
-						myHiddenPlaces.push(myHiddenPlace);
-					});	
-					
+					myHiddenPlaces = data;
+				}
+			});
+			
+				
+		} catch(e) {
+			console.log('ArticleDao 객체 : saveDao 메서드에서 예외 발생');
+			console.log(e.message);
+		}
+
+		return myHiddenPlaces;
+		
+	};
+	
+//	내알못 페이징 리스트 dao 메서드
+	this.pageingSelectAll = function(onPage) {
+		
+		var myHiddenPlaces = [];
+		
+		try{
+			
+			$.ajax({
+				url: '/myhiddenplace/myhiddenplaceSelectAll' , //홈페이지 불러올 주소
+				async : false, //false: 동기, true: 비동기
+				type: 'get', //요청방식 get or post      
+				data: {
+					page : onPage
+				},
+				dataType: 'json', //서버에서 보내오는 데이터 타입
+				success: function (data) { //서버에서 보내오는 데이터
+					myHiddenPlaces = data;
 				}
 			});
 			

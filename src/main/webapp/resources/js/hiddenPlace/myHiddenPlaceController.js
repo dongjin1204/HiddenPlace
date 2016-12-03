@@ -8,8 +8,6 @@ function MyHiddenPlaceController() {
 //   내알못 best 3 요청 controller 메서드
    this.requestBestMHP = function() {
 
-	  alert("컨트롤 도착");
-	   
       var myHiddenPlaces  = dao.bestMHP();
       
       return myHiddenPlaces;
@@ -25,6 +23,15 @@ function MyHiddenPlaceController() {
 
    };
    
+// 내알못 페이징 클릭식 리스트 controller 메서드
+   this.requestMhpPageingSelectAll = function(page) {
+
+      var myHiddenPlaces  = dao.pageingSelectAll(page);
+      
+      return myHiddenPlaces;
+
+   };
+   
 // 즐겨찾기 controller 메서드
 	this.requestBookmarkMHP = function() {
 		
@@ -32,5 +39,5 @@ function MyHiddenPlaceController() {
 		
 		return myHiddenPlaces;
 		
-	}
+	};
 }

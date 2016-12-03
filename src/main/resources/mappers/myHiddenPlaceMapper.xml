@@ -3,17 +3,73 @@
    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.phoenix.hiddenplace.mapper.Mapper">
+<mapper namespace="com.phoenix.hiddenplace.mapper.MyHiddenPlaceMapper">
 
-	<insert id="insert">
+<!-- <sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">
+				and title like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'c'.toString()">
+				and content like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'w'.toString()">
+				and writer like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'tc'.toString()">
+				and ( title like CONCAT('%', #{keyword}, '%') OR content
+				like
+				CONCAT('%', #{keyword}, '%'))
+			</if>
+			<if test="searchType == 'cw'.toString()">
+				and ( content like CONCAT('%', #{keyword}, '%') OR writer
+				like
+				CONCAT('%', #{keyword}, '%'))
+			</if>
+			<if test="searchType == 'tcw'.toString()">
+				and ( title like CONCAT('%', #{keyword}, '%')
+				OR
+				content
+				like CONCAT('%', #{keyword}, '%')
+				OR
+				writer like CONCAT('%',
+				#{keyword}, '%'))
+			</if>
+		</if>
+	</sql> -->
 
-		insert into
-			tbl_board(userId, regionTownCode, themeCode, title, 
-			content, storeName, latitude, longitude, detailAddress)
-		values
-			(#{userId},#{regionTownCode},#{themeCode},#{title},
-			#{content},#{storeName},#{latitude},#{longitude},#{detailAddress})
-	</insert>
+ 	<select id="list" resultType="MyHiddenPlace">
+
+		  select TBL_BOARD.NUM, TBL_BOARD.WRITEDATE, TBL_USER.USERNICKNAME
+		  from TBL_BOARD, TBL_USER
+		  where TBL_BOARD.NUM > 0 and TBL_BOARD.USERID = TBL_USER.USERID
+		  limit #{page}, 12
+		 
+		  <!-- order by NUM DESC  -->
+		  
+		<!-- <include refid="search"></include> -->
+  
+	</select> 
+
+	<select id="listCount" resultType="int">
+	
+			<![CDATA[  
+		  select count(NUM) 
+		  from tbl_board 
+		  where NUM > 0 
+		]]>
+		
+	<!-- 	<include refid="search"></include> -->
+
+	</select>
+	
+	<select id="bestMHP" resultType="MyHiddenPlace">
+
+		  select TBL_BOARD.NUM, TBL_BOARD.WRITEDATE, TBL_USER.USERNICKNAME
+		  from TBL_BOARD, TBL_USER
+		  where TBL_BOARD.code > 0 and TBL_BOARD.USERID = TBL_USER.USERID
+		 
+	</select> 
 
 	<!-- <select id="readPage" resultType="org.toolbee.domain.BoardVO">
 		select

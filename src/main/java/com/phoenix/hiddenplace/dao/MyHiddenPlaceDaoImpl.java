@@ -1,5 +1,7 @@
 package com.phoenix.hiddenplace.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -13,7 +15,7 @@ public class MyHiddenPlaceDaoImpl implements MyHiddenPlaceDao {
 	@Inject
 	private SqlSession sqlSession;
 	
-	private static String namespace = "com.phoenix.hiddenplace.mapper.Mapper";
+	private static String namespace = "com.phoenix.hiddenplace.mapper.MyHiddenPlaceMapper";
 	
 	@Override
 	public void insert(MyHiddenPlace myHiddenPlace) throws Exception {
@@ -24,4 +26,28 @@ public class MyHiddenPlaceDaoImpl implements MyHiddenPlaceDao {
 	public MyHiddenPlace selectOne(Integer num) throws Exception {
 		return sqlSession.selectOne(namespace + ".selectOne", num);
 	}
+	
+	@Override
+	public List<MyHiddenPlace> list(String strPage) throws Exception {
+		int page = Integer.parseInt(strPage);
+		if(page <= 0) {
+			page = 1;
+		}
+		
+		page = (page - 1) * 10;
+		
+		return sqlSession.selectList(namespace + ".list" , page);
+	}
+
+	@Override
+	public int listCount(String page) {
+		
+		return sqlSession.selectOne(namespace + ".listCount", page);
+	}
+
+	@Override
+	public List<MyHiddenPlace> bestMHP() throws Exception {
+		return sqlSession.selectList(namespace + ".bestMHP");
+	}
+	
 }
