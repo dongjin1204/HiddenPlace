@@ -4,10 +4,6 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-<<<<<<< HEAD
-		<package name="com.phoenix.hiddenplace.domain" />
-=======
 		<package name="com.phoenix.hiddenplace.domain"/>
->>>>>>> refs/remotes/dongjin1204/master
 	</typeAliases>
 </configuration>

@@ -16,7 +16,6 @@ public class MyHiddenPlace {
 	private double latitude;
 	private double longitude;
 	private String detailAddress;
-<<<<<<< HEAD
 	private String userNickName; //닉네임 유저
 	
 	public String getUserNickName() {
@@ -29,14 +28,6 @@ public class MyHiddenPlace {
 		return num;
 	}
 	public void setNum(int num) {
-=======
-	
-	public Integer getNum() {
-		return num;
-	}
-	
-	public void setNum(Integer num) {
->>>>>>> refs/remotes/dongjin1204/master
 		this.num = num;
 	}
 	
@@ -79,19 +70,10 @@ public class MyHiddenPlace {
 	public void setContent(String content) {
 		this.content = content;
 	}
-<<<<<<< HEAD
 	public String getWriteDate() {
 		return writeDate;
 	}
 	public void setWriteDate(String writeDate) {
-=======
-	
-	public Date getWriteDate() {
-		return writeDate;
-	}
-	
-	public void setWriteDate(Date writeDate) {
->>>>>>> refs/remotes/dongjin1204/master
 		this.writeDate = writeDate;
 	}
 	

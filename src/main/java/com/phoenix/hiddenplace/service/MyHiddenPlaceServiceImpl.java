@@ -21,8 +21,6 @@ public class MyHiddenPlaceServiceImpl implements MyHiddenPlaceService {
 	public void insert(MyHiddenPlace myHiddenPlace) throws Exception {
 		dao.insert(myHiddenPlace);		
 	}
-
-<<<<<<< HEAD
 	@Override
 	public List<MyHiddenPlace> list(String page) throws Exception {
 
@@ -39,6 +37,4 @@ public class MyHiddenPlaceServiceImpl implements MyHiddenPlaceService {
 	public List<MyHiddenPlace> bestMHP() throws Exception {
 		return dao.bestMHP(); 
 	}
-=======
->>>>>>> refs/remotes/dongjin1204/master
 }
