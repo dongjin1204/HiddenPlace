@@ -16,5 +16,4 @@ public interface MyHiddenPlaceService {
 	
 	int listCount(String page) throws Exception;
 	
-	
 }

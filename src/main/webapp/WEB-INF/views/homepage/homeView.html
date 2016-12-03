@@ -21,8 +21,9 @@
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="../../../resources/js/hiddenPlace/myHiddenPlace.js"></script>
 <script
-	src="../../../resources/js/hiddenPlace/myHiddenPlaceController.js"></script>
-<script src="../../../resources/js/myRoute/myRouteController.js"></script>
+	src="../../../resources/js/myhiddenplace/myHiddenPlaceController.js"></script>
+<script src="../../../resources/js/myroute/myRouteController.js"></script>
+<script src="../../../resources/js/hiddenplaceHome/hiddenPlaceHomeController.js"></script>
 </head>
 
 <!-- 홈페이지 이벤트 핸들링 -->
@@ -156,7 +157,7 @@
 </script>
 
 <!-- 지역 선택 이벤트 핸들링 -->
-<script  type="text/javascript">
+<script type="text/javascript">
 
 	$(document).ready(function() {
 		
@@ -170,7 +171,52 @@
 		});
 		
 	});
-	</script>
+</script>
+
+<!-- 날씨api -->
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	var weather = document.getElementById("weather_iframe");
+	
+    if(navigator.geolocation == undefined){
+    	weather.innerHTML = "위치 정보 기능을 지원하지 않습니다.";
+        return;
+    }
+    
+    navigator.geolocation.getCurrentPosition(success, error);
+	  
+	  function success(position) {
+	    var latitude  = position.coords.latitude; 
+	    var longitude = position.coords.longitude;
+
+	    weather.innerHTML="<iframe id='forecast_embed1' type='text/html' frameborder='0' height='245' width='30%' src='http://forecast.io/embed/#lat="+latitude+"&lon="+longitude+"&name=SEOUL&color=#00aaff&font=Georgia&units=uk'></iframe>";
+	  };
+
+	  function error() {
+		  weather.innerHTML = "위치 정보 기능을 지원하지 않습니다.";
+	  };
+
+});
+</script>
+
+<!-- 검색 이벤트 핸들링 -->
+<script>
+   $(document).ready(function() {
+
+         $('#search_button').click(function() {
+
+               var search = $('#input_search').val();
+
+               var searchController = new HiddenPlaceHomeController();
+               searchController.requestSearch(search);
+
+
+         });
+
+      });
+</script>
 
 <body>
 	<!-- 상단 메인 메뉴 바 -->
@@ -183,8 +229,10 @@
 
 		<div class="col-sm-9">
 			<div id="login_button" class="btn-group">
-				<button type="button" class="btn btn">로그인</button>
-				<button type="button" class="btn btn">회원가입</button>
+				<a href=loginview><button type="button" class="btn btn"
+						style="background-color: white; color: blue;">로그인</button></a> <a
+					href=userInsertview><button type="button" class="btn btn"
+						style="background-color: white; color: blue;">회원가입</button></a>
 			</div>
 		</div>
 		<div class="col-sm-7">
@@ -209,8 +257,8 @@
 			<form id="custom-search-form"
 				class="form-search form-horizontal pull-right">
 				<div class="input-append span12">
-					<input type="text" class="search-query" placeholder="#내가 알지 못한 곳">
-					<button type="submit" class="glyphicon glyphicon-search">
+					<input id="input_search" type="text" class="search-query" placeholder="#내가 알지 못한 곳">
+					<button id="search_button" type="submit" class="glyphicon glyphicon-search">
 						<i class="icon-search"></i>
 					</button>
 				</div>
@@ -235,27 +283,85 @@
 	</div>
 
 
-
 	<!-- 내알못 추천 -->
 	<div id="main_body" class="container">
-		<div id="main_hiddenPlace" class="row"></div>
-	</div>
+		<div id="main_hiddenPlace" class="row">
+			<div class="col-sm-4">
+				<div class="personal_article_space">
+					<div class="col-sm-1">
+						<img src="bookcafe.jpeg" class="img-circle">
+					</div>
+					<div class="col-sm-3">
+						<div class="personal_article">
+							<a href=""><h7 class="name">존멋지훈</h7></a>
+						</div>
+						<div class="personal_article">
+							<h7 class="insert_date">2016-11-21</h7>
+						</div>
+					</div>
+				</div>
+				<div>
+					<a href="#"><img class="hiddenPlace_img" src="route.png"></a>
+				</div>
 
+			</div>
+			<div class="col-sm-4">
+				<div class="personal_article_space">
+					<div class="col-sm-1">
+						<img src="17H.jpg" class="img-circle">
+					</div>
+					<div class="col-sm-3">
+						<div class="personal_article">
+							<a href="#"><h7 class="name">노답류지은</h7></a>
+						</div>
+						<div class="personal_article">
+							<h7 class="insert_date">2016-11-21</h7>
+						</div>
+					</div>
+				</div>
+				<div>
+					<a href="#"><img class="hiddenPlace_img" src="camera.jpeg"></a>
+				</div>
+			</div>
 
-
-	<!-- youtube & 날씨 들어갈 예정 -->
-	<div class="container" style="text-align: center;">
-		<div class="col-sm-1"></div>
-		<div class="col-sm-5">
-			<h4>날씨 자리</h4>
-			
+			<div class="col-sm-4">
+				<div class="personal_article_space">
+					<div class="col-sm-1">
+						<img src="17H.jpg" class="img-circle">
+					</div>
+					<div class="col-sm-3">
+						<div class="personal_article">
+							<a href="#"><h7 class="name">노답류지은</h7></a>
+						</div>
+						<div class="personal_article">
+							<h7 class="insert_date">2016-11-21</h7>
+						</div>
+					</div>
+				</div>
+				<div>
+					<a href="#"><img class="hiddenPlace_img" src="beer.jpeg"></a>
+				</div>
+			</div>
 		</div>
-		<div class="col-sm-5">
-			<h4>유튜브 자리</h4>
-		</div>
-		<div class="col-sm-1"></div>
-	</div>
-	<!-- footer.html 공간 나중에 밑에 div 삭제 -->
-	<div id="bottom_body" class="container"></div>
+	</div><br><br><br><br><br><br>
+
+
+   <!-- youtube & 날씨  -->
+   <div class = "col-sm-1"></div>
+      <div class="col-sm-5">
+         <div id="visual">
+            <div id="video-bg">
+               <iframe src="https://www.youtube.com/embed/PaQi8KVcJbQ"></iframe>
+            </div>
+         </div>
+      </div>
+
+         <!--  http://www.kma.go.kr/index.jsp -->
+         <div id="weather_iframe"></div>
+   
+      <div class="col-sm-1"></div>
+<!--    </div> --><br><br><br>
+   <!-- footer.html 공간 나중에 밑에 div 삭제 -->
+   <div id="bottom_body" class="container"></div>
 </body>
 </html>

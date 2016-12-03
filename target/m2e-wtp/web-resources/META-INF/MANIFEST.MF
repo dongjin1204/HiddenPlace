@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: kosta16
 Build-Jdk: 1.8.0_111
+=======
+Built-By: kosta21
+Build-Jdk: 1.8.0_101
+>>>>>>> refs/remotes/dongjin1204/master
 Created-By: Maven Integration for Eclipse
 

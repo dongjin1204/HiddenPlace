@@ -1,4 +1,4 @@
-$('head').append('<script src=\'../../../resources/js/hiddenPlace/myHiddenPlaceDao.js\'><\/script>');
+$('head').append('<script src=\'../../../resources/js/myhiddenplace/myHiddenPlaceDao.js\'><\/script>');
 
 //myHiddenPlace controller 객체
 function MyHiddenPlaceController() {

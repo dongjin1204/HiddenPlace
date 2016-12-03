@@ -22,10 +22,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 회원탈퇴 -->
 	<delete id="delete">
-
 		delete from TBL_USER
 		where userPw = #{userPw}
 	</delete>
+	
+	<!-- 로그인 -->
+	<select id="selectUser" resultType="User">
+      select userId, userPw
+      from TBL_USER
+      where userId = #{userId}
+   </select>
 
 
 </mapper>

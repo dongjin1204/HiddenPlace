@@ -36,6 +36,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void update(User user) throws Exception {
+
 		session.update(namespace + ".update", user);
 
 	}
@@ -46,5 +47,13 @@ public class UserDaoImpl implements UserDao {
 		session.delete(namespace + ".delete", userPw);
 
 	}
+
+	@Override
+	public User loginPro(User user) throws Exception {
+
+		return session.selectOne(namespace + ".selectUser", user);
+
+	}
+
 
 }

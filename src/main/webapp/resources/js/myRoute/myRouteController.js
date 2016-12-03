@@ -1,4 +1,4 @@
-$('head').append('<script src=\'../../../resources/js/myRoute/myRouteDao.js\'><\/script>');
+$('head').append('<script src=\'../../../resources/js/myroute/myRouteDao.js\'><\/script>');
 
 //myHiddenPlace controller 객체
 function MyRouteController() {

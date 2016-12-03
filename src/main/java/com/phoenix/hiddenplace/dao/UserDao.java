@@ -17,4 +17,7 @@ public interface UserDao {
 
 	// 회원탈퇴
 	public void delete(String userPw) throws Exception;
+	
+	//로그인
+	public User loginPro(User vo) throws Exception;
 }

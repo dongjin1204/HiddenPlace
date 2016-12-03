@@ -17,5 +17,8 @@ public interface UserService {
 
 	// 회원탈퇴
 	public void delete(String userPw) throws Exception;
+	
+	//로그인
+	public User login(User user) throws Exception;
 
 }

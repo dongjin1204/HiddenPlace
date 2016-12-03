@@ -1,6 +1,6 @@
 $('head').append('<script src=\'../../../resources/js/user/userDao.js\'><\/script>');
 
-// user controller 객체
+//user controller 객체
 function UserController() {
 
 	var dao = new UserDao();
@@ -50,14 +50,13 @@ function UserController() {
 		return isEmailCheck;
 
 	}
-	// 로그인
-	this.requestLogin = function(id, pw) {
+	//	로그인 controller 메서드
+	this.requestLogin = function(user) {
 
-		var isSuccess = dao.userLogin(id, pw);
-
+		var isSuccess = dao.userLoginDao(user);
 		return isSuccess;
 
-	}
+	};
 
 	// 회원정보 수정
 	this.requestUpdate = function(user) {

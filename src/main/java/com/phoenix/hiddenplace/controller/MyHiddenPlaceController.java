@@ -29,6 +29,7 @@ public class MyHiddenPlaceController {
 		return "/views/myhiddenplace/myHiddenPlaceSelectAll";
 
 	}
+<<<<<<< HEAD
 	
 //	//request insert 컨트롤러 get 메서드
 //	@RequestMapping(value ="/insert", method = RequestMethod.GET)
@@ -56,4 +57,24 @@ public class MyHiddenPlaceController {
 //
 //	}
 	
+=======
+
+	//request insert 컨트롤러 post 메서드
+	@RequestMapping(value ="/insert", method = RequestMethod.POST)
+	public String insertPOST(MyHiddenPlace myHiddenPlace, RedirectAttributes rttr) throws Exception {
+
+		logger.info("insert post ............");
+		logger.info(myHiddenPlace.toString());
+
+		service.insert(myHiddenPlace);
+
+		//		model.addAttribute("result", "success");
+		rttr.addFlashAttribute("msg", "SUCCESS");
+
+		//		return "/board/success";
+		return "redirect:/hiddenplace/hiddenPlaceSelectAll";
+
+	}
+
+>>>>>>> refs/remotes/dongjin1204/master
 }
