@@ -17,8 +17,15 @@ public class MyHiddenPlace {
 	private double longitude; 
 	private String detailAddress;
 	private String userNickName; //닉네임 유저
+	private String titleImgURL;
 	private String titleImgUrl;
 	
+	public String getTitleImgURL() {
+		return titleImgURL;
+	}
+	public void setTitleImgURL(String titleImgURL) {
+		this.titleImgURL = titleImgURL;
+	}
 	public String getUserNickName() {
 		return userNickName;
 	}
@@ -142,10 +149,11 @@ public class MyHiddenPlace {
 	}
 	@Override
 	public String toString() {
-		return "Domain [num=" + num + ", userId=" + userId + ", regionTownCode=" + regionTownCode + ", themeCode="
-				+ themeCode + ", title=" + title + ", content=" + content + ", writeDate=" + writeDate + ", upCount="
-				+ upCount + ", readCount=" + readCount + ", storeName=" + storeName + ", code=" + code + ", latitude="
-				+ latitude + ", longitude=" + longitude + ", detailAddress=" + detailAddress + "]";
+		return "MyHiddenPlace [num=" + num + ", userId=" + userId + ", regionTownCode=" + regionTownCode
+				+ ", themeCode=" + themeCode + ", title=" + title + ", content=" + content + ", writeDate=" + writeDate
+				+ ", upCount=" + upCount + ", readCount=" + readCount + ", storeName=" + storeName + ", code=" + code
+				+ ", latitude=" + latitude + ", longitude=" + longitude + ", detailAddress=" + detailAddress
+				+ ", userNickName=" + userNickName + ", titleImgURL=" + titleImgURL + "]";
 	}
 	
 }

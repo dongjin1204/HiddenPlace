@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 import com.phoenix.hiddenplace.domain.MyHiddenPlace;
 import com.phoenix.hiddenplace.domain.PageMaker;
+import com.phoenix.hiddenplace.domain.Theme;
 
 public interface MyHiddenPlaceService {
 
@@ -17,7 +18,10 @@ public interface MyHiddenPlaceService {
 
 	String store(MultipartFile file) throws Exception;
 	
+	List<Theme> themeList() throws Exception;
+
 	public MyHiddenPlace selectOne(int num) throws Exception;
 	
-	List<MyHiddenPlace> bookmarkAll(String userId) throws Exception; //내알못 베스트 3
+	List<MyHiddenPlace> bookmarkAll(String userId) throws Exception;
+
 }

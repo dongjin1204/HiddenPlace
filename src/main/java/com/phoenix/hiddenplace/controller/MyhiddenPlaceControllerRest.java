@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.phoenix.hiddenplace.domain.MyHiddenPlace;
 import com.phoenix.hiddenplace.domain.PageMaker;
+import com.phoenix.hiddenplace.domain.Theme;
 import com.phoenix.hiddenplace.service.MyHiddenPlaceService;
 
 @RestController
@@ -30,7 +31,7 @@ public class MyhiddenPlaceControllerRest {
 		try {
 			
 			pageMaker.setTotalCount(service.listCount(pageMaker));
-			System.out.println(pageMaker.getEndPage());
+
 			entity = new ResponseEntity<PageMaker>(pageMaker, HttpStatus.OK);
 			
 		} catch (Exception e) {
@@ -55,6 +56,23 @@ public class MyhiddenPlaceControllerRest {
 		}
 		return entity;
 	}	
+	
+	//테마 목록
+		@RequestMapping(value = "/themeList", method = RequestMethod.GET)
+		public ResponseEntity<List<Theme>> themeList() throws Exception {
+			
+			ResponseEntity<List<Theme>> entity = null;
+			
+			try {
+				service.themeList();
+				entity = new ResponseEntity<List<Theme>>(service.themeList(), HttpStatus.OK);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("테마 목록에서 오류");
+				entity = new ResponseEntity<List<Theme>>(HttpStatus.BAD_REQUEST);
+			}
+			return entity;
+		}	
 	
 	
 	//내알못 베스트 3

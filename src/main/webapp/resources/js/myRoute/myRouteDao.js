@@ -73,6 +73,86 @@ function MyRouteDao() {
 		
 	};
 	
+this.myRouteSelectAll = function() {
+		
+		alert("나만의 루트 리스트 클라이언트dao 도착");
+		var myRouteAll = [];
+
+		try{
+
+			/*$.ajax({
+				url: '/' , //홈페이지 불러올 주소
+				async : false, //false: 동기, true: 비동기
+				type: 'get', //요청방식 get or post      
+				data: { //보내줄 데이터 없으면 비어둬도되고 data 아에 없애도 되고
+					
+					title : title,
+					userNickName : userNickName,
+					writeDate : writeDate,
+					readCount : readCount,
+					titleImgURL : titleImgURL,
+					themeCode : themeCode, //테마별 정렬용
+					userId : userId //로그인 상태 확인
+					
+				},
+				dataType: 'xml', //서버에서 보내오는 데이터 타입
+				success: function (data) { //서버에서 보내오는 데이터
+					$(data).find('myHiddenPlace').each( function(){
+						var myHiddenPlace = {
+								title:$(this).find('title').text(), //글제목
+								userNickName:$(this).find('userNickName').text(), //작성자 닉네임
+								writeDate:$(this).find('writeDate').text(), //작성일자
+								readCount:$(this).find('readCount').text(), //조회수
+								titleImgURL:$(this).find('titleImgURL').text(), //이미지경로
+								themeCode:$(this).find('themeCode').text(), //테마별 정렬용
+								userId:$(this).find('userId').text() //로그인 상태 확인
+								
+						}					
+						myHiddenPlaceAll.push(myHiddenPlace);
+					});	
+
+				}
+			});*/
+			var myRoute = {
+					
+					num: 1,
+					title: "걷기좋은 데이트코스", //글제목
+					userNickName: "toolbee", //작성자 닉네임
+					writeDate: "2016-12-08", //작성일자
+					readCount: 5635, //조회수
+					titleImgURL: "images/face2.jpg", //이미지경로
+					themeCode: 1, //테마별 정렬용
+					userId:"toobee", //로그인 상태 확인
+					bookmark: 1
+					
+			}
+var myRoute2 = {
+					
+					num: 1,
+					title: "걷기좋은 데이트코스", //글제목
+					userNickName: "toolbee", //작성자 닉네임
+					writeDate: "2016-12-08", //작성일자
+					readCount: 5635, //조회수
+					titleImgURL: "images/face2.jpg", //이미지경로
+					themeCode: 1, //테마별 정렬용
+					userId:"toobee", //로그인 상태 확인
+					bookmark: 1
+					
+			}
+			
+			myRouteAll.push(myRoute);
+			myRouteAll.push(myRoute2);
+			
+
+
+		} catch(e) {
+			console.log('나만의 루트 Dao 객체 : 나만의 루트 리스트 메서드에서 예외 발생');
+			console.log(e.message);
+		}
+
+		return myRouteAll;
+
+	};
 
 //	내알못 로그인한 유저의 즐겨찾기 목록 요청 dao 메서드
 	this.bookmarkAll = function(nowLoginId) {

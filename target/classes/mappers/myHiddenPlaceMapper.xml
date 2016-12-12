@@ -40,13 +40,22 @@
 
  	<select id="list" resultType="MyHiddenPlace">
 
-		  select TBL_BOARD.NUM, TBL_BOARD.WRITEDATE, TBL_USER.USERNICKNAME
+		  select TBL_BOARD.NUM, TBL_BOARD.TITLE, TBL_BOARD.WRITEDATE, TBL_USER.USERNICKNAME, TBL_BOARD.READCOUNT, 
+		  TBL_BOARD.TITLEIMGURL, TBL_BOARD.THEMECODE
 		  from TBL_BOARD, TBL_USER
 		  where TBL_BOARD.NUM > 0 and TBL_BOARD.USERID = TBL_USER.USERID
 		  order by TBL_BOARD.NUM DESC  
 		  limit #{page}, 12
 		  
 		<!-- <include refid="search"></include> -->
+  
+	</select> 
+	
+	<select id="themeList" resultType="Theme">
+
+		  select *
+		  from TBL_THEME
+		  
   
 	</select> 
 	

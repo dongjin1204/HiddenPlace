@@ -305,13 +305,85 @@ function MyHiddenPlaceDao() {
 			return isSuccess;
 		};
 		
+//		내알못 리스트 dao 메서드
+		this.hiddenPlaceSelectAll = function() {
 
+			var myHiddenPlaceAll = [];
+			
+			try{
+
+				$.ajax({
+					url: '/myhiddenplace/myhiddenplaceSelectAll', //홈페이지 불러올 주소
+					async : false, //false: 동기, true: 비동기
+					type: 'get', //요청방식 get or post      
+					data: { //보내줄 데이터 없으면 비어둬도되고 data 아에 없애도 되고
+						
+						num : num
+					},
+					dataType: 'json', //서버에서 보내오는 데이터 타입
+					success: function (data) { //서버에서 보내오는 데이터
+							
+							myHiddenPlaceAll = data;
+					}
+				});
+				
+			} catch(e) {
+				console.log('내알못Dao 객체 : 내알못 리스트 메서드에서 예외 발생');
+				console.log(e.message);
+			}
+			return myHiddenPlaceAll;
+		};
+
+		
 //		내알못 로그인한 유저의 즐겨찾기 목록 요청 dao 메서드
 		this.bookmarkAll = function(nowLoginId) {
 			
 			var bookmarkAll = [];
 
 			try{
+
+				$.ajax({
+					url: '/myhiddenplace/myhiddenplaceSelectAll', //홈페이지 불러올 주소
+					async : false, //false: 동기, true: 비동기
+					type: 'get', //요청방식 get or post      
+					data: { //보내줄 데이터 없으면 비어둬도되고 data 아에 없애도 되고
+					},
+					dataType: 'json', //서버에서 보내오는 데이터 타입
+					success: function (data) { //서버에서 보내오는 데이터
+							
+							myHiddenPlaceAll = data;
+					}
+				});
+//				var myHiddenPlace = {
+//						
+//						num: 1,
+//						title: "#신촌#맛집#고기", //글제목(해시태그)
+//						userNickName: "toolbee", //작성자 닉네임
+//						writeDate: "2016-12-07", //작성일자
+//						readCount: 2, //조회수
+//						titleImgURL: "images/face1.jpg", //이미지경로
+//						themeCode: 1, //테마별 정렬용
+//						userId:"toobee", //로그인 상태 확인
+//						bookmark: 0
+//						
+//				}			
+//	var myHiddenPlace2 = {
+//						
+//						num: 1,
+//						title: "#신촌#맛집#고기", //글제목(해시태그)
+//						userNickName: "toolbee", //작성자 닉네임
+//						writeDate: "2016-12-07", //작성일자
+//						readCount: 2, //조회수
+//						titleImgURL: "images/face1.jpg", //이미지경로
+//						themeCode: 1, //테마별 정렬용
+//						userId:"toobee", //로그인 상태 확인
+//						bookmark: 0
+//						
+//				}					
+//				myHiddenPlaceAll.push(myHiddenPlace);
+//				myHiddenPlaceAll.push(myHiddenPlace2);
+				
+
 
 //				$.ajax({
 //					url: '/myhiddenplace/bookmarkAll' , //홈페이지 불러올 주소
@@ -346,11 +418,64 @@ function MyHiddenPlaceDao() {
 				bookmarkAll.push(bookmark3);
 			
 			} catch(e) {
-				console.log('myHiddenPlaceDao 객체 : bookmarkAll Dao 메서드에서 예외 발생');
+				console.log('내알못Dao 객체 : 내알못 리스트 메서드에서 예외 발생');
 				console.log(e.message);
 			}
 
-			return bookmarkAll;
+			return myHiddenPlaceAll;
+
+		};
+		
+		//테마 카테고리 Dao 
+		this.themeCategory = function() {
+			var themeCategoryAll = [];
+			try{
+				$.ajax({
+					url: '/myhiddenplace/themeList',
+					async : false,
+					type: 'get',               
+					data: {
+					},
+					dataType: 'json', //서버에서 보내오는 데이터 타입
+					success: function (data) { 
+						themeCategoryAll = data;
+					}
+				});
+				
+			}catch(e) {
+				console.log('myHiddenPlaceDao 객체 : 테마 Dao 메서드에서 예외 발생');
+				console.log(e.message);
+			}   
+
+			return themeCategoryAll;
+		};
+
+		
+		this.bookmarkAll = function() {
+			var themeCategoryAll = [];
+			try{
+				$.ajax({
+				url: '/myhiddenplace/bookmarkAll' , //홈페이지 불러올 주소
+				async : false, //false: 동기, true: 비동기
+				type: 'get', //요청방식 get or post      
+				data: {
+					userId : nowLoginId//보내줄 데이터 없으면 비어둬도되고 data 아에 없애도 되고
+				},
+				dataType: 'json', //서버에서 보내오는 데이터 타입
+				success: function (data) { //서버에서 보내오는 데이터
+				
+						bookmarkAll = data;
+				
+				}
+				
+			});
+		
+		} catch(e) {
+			console.log('myHiddenPlaceDao 객체 : bookmarkAll Dao 메서드에서 예외 발생');
+			console.log(e.message);
+		}
+	
+		return bookmarkAll;
 			
 		};
 

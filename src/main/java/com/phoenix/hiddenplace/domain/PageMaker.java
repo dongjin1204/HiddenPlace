@@ -13,7 +13,7 @@ public class PageMaker {
 	private boolean next;
 	private int page = 1;	
 	private int perPageNum = 12;
-	
+	private int themeCode = 0;
 	private int displayPageNum = 10;
 	
 	public PageMaker() {
@@ -141,6 +141,14 @@ public class PageMaker {
 	public int getPerPageNum(){
 
 		return this.perPageNum;
+	}
+	
+	public int getThemeCode() {
+		return themeCode;
+	}
+
+	public void setThemeCode(int themeCode) {
+		this.themeCode = themeCode;
 	}
 
 	

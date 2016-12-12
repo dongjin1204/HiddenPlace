@@ -90,6 +90,21 @@ function MyHiddenPlaceController() {
 
 	};
 	
+	// 내알못 리스트 controller 메서드
+	   this.requestHiddenPlaceSelectAll = function() {
+
+	      var myHiddenPlaceAll  = dao.hiddenPlaceSelectAll();
+	      return myHiddenPlaceAll;
+
+	   };
+	   
+		// 테마 카테고리 요청 controller 메서드
+	   this.requestThemeCategory = function() {
+
+	      var themeCategoryAll  = dao.themeCategory();
+	      return themeCategoryAll;
+
+	   };
 	
 //홈페이지 현재 로그인 유저의 내알못 즐겨찾기 목록	
 	this.requestBookmarkAllMHP = function(nowLoginId) {

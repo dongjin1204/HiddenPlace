@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.phoenix.hiddenplace.dao.MyHiddenPlaceDao;
 import com.phoenix.hiddenplace.domain.MyHiddenPlace;
 import com.phoenix.hiddenplace.domain.PageMaker;
+import com.phoenix.hiddenplace.domain.Theme;
 
 @Service
 public class MyHiddenPlaceServiceImpl implements MyHiddenPlaceService {
@@ -44,6 +45,11 @@ public class MyHiddenPlaceServiceImpl implements MyHiddenPlaceService {
 		
 		String a = "a";
 		return a;
+	}
+	@Override
+	public List<Theme> themeList() throws Exception {
+		return dao.themeList();
+
 	}
 	
 	@Transactional

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.phoenix.hiddenplace.domain.MyHiddenPlace;
 import com.phoenix.hiddenplace.domain.PageMaker;
+import com.phoenix.hiddenplace.domain.Theme;
 
 @Repository
 public class MyHiddenPlaceDaoImpl implements MyHiddenPlaceDao {
@@ -46,8 +47,9 @@ public class MyHiddenPlaceDaoImpl implements MyHiddenPlaceDao {
 		}
 		
 		page = (page - 1) * 10;
+		pageMaker.setPage(page);
 		
-		return sqlSession.selectList(namespace + ".list" , page);
+		return sqlSession.selectList(namespace + ".list" , pageMaker);
 	}
 
 	@Override
@@ -61,9 +63,15 @@ public class MyHiddenPlaceDaoImpl implements MyHiddenPlaceDao {
 		return sqlSession.selectList(namespace + ".bestMHP");
 		
 	}
+
+	@Override
+	public List<Theme> themeList() throws Exception {
+		return sqlSession.selectList(namespace + ".themeList");
+	}
 	
 	@Override
 	public List<MyHiddenPlace> bookmarkAll(String userId) throws Exception {
+//		return sqlSession.bookmarkAll(namespace + ".bookmarkAll");
 		return sqlSession.selectList(namespace + ".bookmarkAll");
 		
 	}
