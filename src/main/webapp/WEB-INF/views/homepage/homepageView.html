@@ -89,6 +89,7 @@ hr {
 			nowLoginId="ss";
 			
 			var mhpController = new MyHiddenPlaceController();
+			mhpController.requestUpdateBestMHP();
 			var myHiddenPlaces = mhpController.requestBestMHP();
 			
 			var bestNum1 = myHiddenPlace[0].num;
@@ -150,7 +151,7 @@ hr {
 	});
 </script>
 
-<!-- 홈페이지 MyRoute best4 이벤트 핸들링 -->
+<!-- 홈페이지 MyRoute best3 이벤트 핸들링 -->
 <script type="text/javascript">
 	$(document).ready(function() {
 

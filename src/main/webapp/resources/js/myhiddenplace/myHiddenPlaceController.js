@@ -98,5 +98,13 @@ function MyHiddenPlaceController() {
 		
 		return bookmarkAll;
 		
-	}
+	};
+	
+	
+	//홈페이지 내알못베스트 업데이트
+	 this.requestUpdateBestMHP = function() {
+
+		   dao.updateBestMHP();
+
+	 };
 }

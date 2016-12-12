@@ -20,4 +20,6 @@ public interface MyHiddenPlaceService {
 	public MyHiddenPlace selectOne(int num) throws Exception;
 	
 	List<MyHiddenPlace> bookmarkAll(String userId) throws Exception; //내알못 베스트 3
+	
+	public void bestUpdateMHP() throws Exception; // 내알못 베스트 업데이트
 }

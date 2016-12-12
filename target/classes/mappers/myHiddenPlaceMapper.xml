@@ -234,4 +234,26 @@
 		  where userId = #{userId}
 	</select>
 	
+	<update id="bestCodeReset">
+	update TBL_BOARD
+	set MHPBESTCODE = 0
+	where MHPBESTCODE = 1
+	</update>
+	
+	<select id="bestUpdateMHP" resultType="String">
+
+	select STORENAME
+	from TBL_BOARD
+	where UPCOUNT  >= 500
+		 
+	</select>
+	
+	<update id="bestFinalUpdateMHP">
+	update TBL_BOARD 
+	set MHPBESTCODE = 1 
+	 <where>
+         FIND_IN_SET(STORENAME, #{title_Name})
+      </where>
+	</update> 
+	
 </mapper>

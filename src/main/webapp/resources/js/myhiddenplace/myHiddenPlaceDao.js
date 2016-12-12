@@ -340,5 +340,31 @@ function MyHiddenPlaceDao() {
 			return bookmarkAll;
 			
 		};
+		
+		
+		//내알못 베스트 업데이트
+		this.updateBestMHP = function() {
+
+			try{
+
+				$.ajax({
+					url: '/myhiddenplace/bestUpdateMHP' , //홈페이지 불러올 주소
+					async : false, //false: 동기, true: 비동기
+					type: 'get', //요청방식 get or post      
+					data: {
+						//보내줄 데이터 없으면 비어둬도되고 data 아에 없애도 되고
+					},
+					dataType: 'text', //서버에서 보내오는 데이터 타입
+					success: function (data) { //서버에서 보내오는 데이터
+									
+						alert(data);
+
+					}
+				});
+			} catch (e) {
+				console.log('updateBestMHP 객체 : updateBestMHP 메서드에서 예외 발생');
+				console.log(e.message);
+			}
+		};
 
 }

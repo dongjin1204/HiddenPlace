@@ -58,5 +58,12 @@ public class MyHiddenPlaceServiceImpl implements MyHiddenPlaceService {
 	public List<MyHiddenPlace> bookmarkAll(String userId) throws Exception {
 		return dao.bookmarkAll(userId); 
 	}
+	
+	//내알못 베스트 업데이트
+	@Override
+	public void bestUpdateMHP() throws Exception {
+		
+		dao.bestUpdateMHP();
+	}
 
 }

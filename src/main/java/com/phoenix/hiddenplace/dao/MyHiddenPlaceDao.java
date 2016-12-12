@@ -18,4 +18,6 @@ public interface MyHiddenPlaceDao {
 	public int listCount(PageMaker pageMaker);
 	
 	List<MyHiddenPlace> bookmarkAll(String userId) throws Exception;//현재 로그인 유저의 즐겨찾기 목록
+	
+	public void bestUpdateMHP() throws Exception; // 내알못 베스트 업데이트
 }

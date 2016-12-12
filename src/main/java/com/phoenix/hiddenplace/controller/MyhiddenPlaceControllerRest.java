@@ -137,7 +137,25 @@ public class MyhiddenPlaceControllerRest {
 			}
 			
 			return entity;
-		}	
+		}
+		
+		// 내알못 베스트 업데이트
+		@RequestMapping(value = "/bestUpdateMHP", method = RequestMethod.GET)
+		public ResponseEntity<String> bestUpdateMHP() throws Exception {
+			
+			ResponseEntity<String> entity = null;		
+			
+			try {
+				service.bestUpdateMHP();
+				entity = new ResponseEntity<String>("success", HttpStatus.OK);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("목록보기에서 오류");
+				entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+			}
+			return entity;
+		}
 	   
 	}   
 
