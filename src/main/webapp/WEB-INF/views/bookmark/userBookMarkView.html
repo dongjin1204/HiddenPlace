@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>ZUPA - Responsive Website Template / Portfolio</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+<link rel="shortcut icon"
+	href="../../../resources/HTML/images/favicon.ico" />
+<link
+	href='https://fonts.googleapis.com/css?family=Lato:400,300,700&amp;subset=latin,latin-ext'
+	rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css"
+	href="../../../resources/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../../resources/bootstrap/css/animate.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../../resources/bootstrap/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../../resources/bootstrap/css/swiper.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../../resources/bootstrap/css/style.css" />
+<script src="../../../resources/bootstrap/js/pace.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="../../../resources/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../resources/bootstrap/js/modernizr-custom.js"></script>
+<script src="../../../resources/bootstrap/js/script.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script src="../../../resources/js/user/user.js"></script>
+<script src="../../../resources/js/user/userController.js"></script>
+
+      <script src="../../../resources/js/bookmark/bookMarkController.js"></script>
+
+      <style>
+         @font-face {
+            font-family: 'baemin';
+            src: url(fonts/baemin.ttf) format('truetype');
+         }
+         font,
+         input,
+         button, 
+         button > p, 
+         .category > p {
+            font-family: 'baemin';
+         }
+         
+         .category{
+            width: 45px;
+            height: 45px;
+         }
+         .theme_category {
+            width: 90%;
+            margin-left: 17%;
+         }
+         .theme_category > button {
+
+            background-color: white;
+         }
+
+         .portfolio figure > figcaption > p {
+            margin-left: -80px;
+            margin-top: -20px;
+         }
+
+         .theme_category button:hover {
+            opacity: 0.5;
+            transform: rotateY(180deg);
+            backface-visibility: hidden;
+            -webkit-transform: scale(1.12);
+            transform: scale(1.12);
+         }
+         
+         .btn-default {
+            color: black;
+            background-color: white;
+         }
+
+         .btn-default:focus, .btn-default.focus {
+            color: #ffffff;
+            background-color: #9d9da6;
+         }
+
+         .btn-default:hover {
+            opacity: 0.5;
+            color: white;
+            background-color: black;
+         }
+
+         .btn-default.is-checked {
+            color: white;
+            background-color: black;
+         }
+
+         #delete_button {
+            float: right;
+            color: white;
+            background-color: black;
+         }
+         #delete_checking {   
+            float: right;   
+         }
+
+         .checking {
+            position: absolute;
+            right: 5%;
+            top: 7%;
+            transform: scale(3);
+            opacity: 0;
+            transition: opacity 0.35s
+            border: none;
+            z-index: 3;
+            background-color: white;
+         }
+         .portfolio figure:hover input {
+            opacity: 1;
+         }
+         input:checked {
+            opacity: 1;
+         }
+         #checkingAll {
+            transform: scale(3);
+            position: absolute;
+            margin: auto;
+            left: -140%;
+            top: 40%;
+         }
+
+         #checkingAll_word {
+            position: absolute;
+            margin: auto;
+            left: -100%;
+            top: 25%;
+         }
+
+
+
+      </style>
+<!-- 글목록 불러오기 이벤트 핸들링-->
+<!-- <script type="text/javascript">
+   $(document)
+         .ready(
+               function() {
+
+                  var mhpController = new MyHiddenPlaceController();
+                  var myHiddenPlaceAll = mhpController
+                        .requestHiddenPlaceSelectAll();
+
+                  for (var i = 0; i < myHiddenPlaceAll.length; i++) {
+
+                     var figureMHP = $('<figure class="figureMHP" data-animation="fadeIn"></figure>'); //figure태그
+                     var checkBoxMHP = $('<input class="checking" type="checkbox" name="" />'); //체크박스
+                     var imgMHP = $('<img src="' + myHiddenPlaceAll[i].imageUrl + '"/>'); //이미지
+                     var figcaptionMHP = $('<figcaption></figcaption>'); //figcaption태그
+                     var pUserNicknameMHP = $('<p></p>').html(
+                           myHiddenPlaceAll[i].userNickname); //작성자(닉네임)
+                     var pDateMHP = $('<p></p>').html(
+                           myHiddenPlaceAll[i].writeDate); //작성일자
+                     var pReadCountMHP = $('<p></p>').html(
+                           myHiddenPlaceAll[i].readCount); //조회수
+                     var pNumMHP = $('<p hidden="hidden"></p>').html(
+                           myHiddenPlaceAll[i].num); //글번호
+
+                     figcaptionMHP.append(pUserNicknameMHP, pDateMHP,
+                           pReadCountMHP, pNumMHP); //figcaption태그에 작성자, 작성일자, 추천수, 글번호
+                     figureMHP
+                           .append(checkBoxMHP, imgMHP, figcaptionMHP); // figure태그에 이미지, figcaption append
+                     $('#selectAllMHP').append(figureMHP); //내알못 div에 selectAllMHP[i] 게시글 append
+                  }
+               });
+</script> -->
+
+<!-- 검색결과에 따른 내알못/나만의 루트 전환 탭 버튼 이벤트 -->
+<script>
+   $('.portfolio').isotope({
+      itemSelector : 'figure',
+      layoutMode : 'masonry'
+   });
+   $('.filters').on('click', 'button', function() {
+      var filterValue = $(this).attr('data-filter');
+      $('.filters').find('.is-checked').removeClass('is-checked');
+      $(this).addClass('is-checked');
+      $('.portfolio').isotope({
+         filter : filterValue
+      });
+   });
+</script>
+
+<!-- 선택 삭제 이벤트 핸들링 -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+
+	
+		$('#delete_button').click(function(){
+		alert("delete작동");
+			var delete_nums = [];
+			
+			var mhps = $('#selectAllMHP').children();
+		
+			for(var i = 0 ; i < mhps.length ; i++) {
+				
+				var checked = mhps.eq(i).children().eq(0).prop('checked');
+				if(checked) {
+					
+					var mhpBookMark_delete_num = mhps.eq(i).children().eq(2).children().eq(2).text();
+					delete_nums += mhpBookMark_delete_num +',';
+				}
+				
+			}
+			
+			var bookMarkController = new BookMarkController();
+			
+			 var length = delete_nums.length;
+			  
+			 bookMarkController.requestSelectedDeleteMHP(delete_nums.substring(0, length-1));
+	          
+		});
+
+	});
+</script>
+
+<script type="text/javascript">
+   $(function(){
+       //전체선택 체크박스 클릭
+      $("#checkingAll").click(function(){
+         //만약 전체 선택 체크박스가 체크된상태일경우
+         if($("#checkingAll").prop("checked")) {
+            //해당화면에 전체 checkbox들을 체크해준다
+            $("input[type=checkbox]").prop("checked",true);
+         // 전체선택 체크박스가 해제된 경우
+         } else {
+            //해당화면에 모든 checkbox들의 체크를해제시킨다.
+            $("input[type=checkbox]").prop("checked",false);
+         }
+      })
+   })
+</script>
+   </head>
+
+   <body class="home-page">
+
+    
+      <!-- 메인 사진 섹션 -->
+      <section>
+
+         <div class="swiper-container">
+            <div class="parallax-bg" style="background-image:url(images/slider.jpg)" data-swiper-parallax="-15%"></div>
+            <div class="swiper-wrapper">
+               <div class="swiper-slide">
+                  <div class="swiper-caption">
+                     <div class="title" data-swiper-parallax="-100" data-animation="fadeInDownBig">Zupa - Responsive Template</div>
+                     <div class="subtitle" data-swiper-parallax="-200" data-animation="fadeIn">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                     <div class="text" data-swiper-parallax="-300" data-animation="fadeInUpBig">
+                        <a href="card.html" class="btn btn-custom btn-lg">read more</a>
+                     </div>
+                  </div>
+               </div>
+               <div class="swiper-slide">
+                  <div class="swiper-caption">
+                     <div class="title" data-swiper-parallax="-100" data-animation="fadeInDownBig">New Menu</div>
+                     <div class="subtitle" data-swiper-parallax="-200" data-animation="fadeIn">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                     <div class="text" data-swiper-parallax="-300" data-animation="fadeInUpBig">
+                        <a href="card.html" class="btn btn-custom btn-lg">read more</a>
+                     </div>
+                  </div>
+               </div>
+               <div class="swiper-slide">
+                  <div class="swiper-caption">
+                     <div class="title" data-swiper-parallax="-100" data-animation="fadeInDownBig">Lorem ipsum dolor sit</div>
+                     <div class="subtitle" data-swiper-parallax="-200" data-animation="fadeIn">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                     <div class="text" data-swiper-parallax="-300" data-animation="fadeInUpBig">
+                        <a href="card.html" class="btn btn-custom btn-lg">read more</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination swiper-pagination-white"></div>
+            <!-- Add Navigation -->
+            <div class="swiper-button-prev swiper-button-white"></div>
+            <div class="swiper-button-next swiper-button-white"></div>
+         </div>
+      </section>
+
+      
+
+      <div class="container">
+         <div class="row">
+            <!-- 선택 탭 -->
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+
+            <div id="navbar" class="navbar-collapse collapse">
+                  <ul class="nav navbar-center navbar-nav">
+                     <li class="dropdown"><a><h3><font>즐겨찾기</font></h3></a> 
+                     </li>
+                     </ul>
+                     </div>
+
+               <!-- 내알못/나만의 루트 선택 탭 -->
+               <div class="btn-group filters">
+                  <button class="btn btn-default is-checked" data-filter="*"><font>전체보기</font></button>
+                  <button class="btn btn-default" data-filter=".appetizers"><font>내 알 못</font></button>
+                  <button class="btn btn-default" data-filter=".entrees"><font>나만의 루트</font></button>
+               </div>
+
+               <!-- 전체선택 및 삭제 버튼 -->
+               <div id="delete_checking" class="btn-group">
+                  <input id="checkingAll" type="checkbox" class="btn btn-default" name="" value="" /><font id="checkingAll_word">전체선택</font>
+                  <button id="delete_button" class="btn btn-default"><font>삭제</font></button>
+               </div>
+            </div>
+
+
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+               <div class="portfolio grid-3" id="selectAllMHP">
+                  <figure class="entrees">
+                     <input class="checking" type="checkbox" name="">
+                     <img src="images/portfolio/1.jpg" alt="" />
+                     <figcaption>
+                        <h2><font>부자피자</font></h2>
+                        <p><font>2016-12-06</font><br><font>유지은</font><br><font>조회수</font></p>
+                        <p class="bookmarkNum" hidden="">1</p>
+                        <a href="portfolio-item.html">View more</a>
+
+
+                     </figcaption>
+                  </figure>
+                  <figure class="entrees">
+                     <input class="checking" type="checkbox" name="">
+                     <img src="images/portfolio/1.jpg" alt="" />
+                     <figcaption>
+                        <h2><font>부자피자</font></h2>
+                        <p><font>2016-12-06</font><br><font>유지은</font><br><font>조회수</font></p>
+                        <p class="bookmarkNum" hidden="">2</p>
+                        <a href="portfolio-item.html">View more</a>
+
+
+                     </figcaption>
+                  </figure>
+                
+               </div>
+            </div>
+         </div>
+
+      </div>
+
+
+      <!-- 푸터 섹션 -->
+      <footer class="page-footer">
+         <div class="container">
+            <div class="row">
+               <div class="row-xs-12">
+                  <div class="divider"></div>
+                  <div class="text-center">
+                     <a href="index.html"><img src="images/logos/logo.png" alt="" class="logo">
+                     </a>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-sm-9">
+                  <ul class="footer-links">
+                     <li><a href="#">Privacy Policy</a>
+                     </li>
+                     <li><a href="blog-index.html">Blog</a>
+                     </li>
+                     <li><a href="contact.html">Contact</a>
+                     </li>
+                  </ul>
+               </div>
+               <div class="col-sm-3">
+                  <p>© ZUPA 2016</p>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+         <script src="../../../resources/bootstrap/js/bootstrap.min.js"></script>
+         <script src="../../../resources/bootstrap/js/swiper.jquery.min.js"></script>
+         <script src="../../../resources/bootstrap/js/animate-on-scroll.js"></script>
+         <script src="../../../resources/bootstrap/js/script.js"></script>
+         <script src="../../../resources/bootstrap/js/isotope.min.js"></script>
+      <script>
+         var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            parallax: true,
+            speed: 600,
+            autoplay: 2500,
+            onSlideChangeStart: (function (swiper) {
+               var active = swiper.slides[swiper.activeIndex];
+               var animated = $(active).find('*[data-animation]');
+               $.each(animated, function (key, value) {
+                  $(value).addClass($(value).data('animation'));
+                  $(value).addClass('animated');
+               });
+            })
+         });
+
+      </script>
+      <!-- 검색결과에 따른 내알못/나만의 루트 전환 탭 버튼 이벤트 -->
+      <script>
+         $('.portfolio').isotope({
+            itemSelector: 'figure',
+            layoutMode: 'masonry'
+         });
+         $('.filters').on('click', 'button', function () {
+            var filterValue = $(this).attr('data-filter');
+            $('.filters').find('.is-checked').removeClass('is-checked');
+            $(this).addClass('is-checked');
+            $('.portfolio').isotope({
+               filter: filterValue
+            });
+         });
+
+      </script>
+
+   </body>
+
+   </html>

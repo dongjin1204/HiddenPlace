@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.phoenix.hiddenplace.mapper.BookMarkMapper">
+
+
+	<delete id="bookMarkDelete" parameterType="string">
+		DELETE
+		FROM
+		TBL_BOOKMARK
+		<where>
+			FIND_IN_SET(BOOKMARKNUM, #{nums})
+		</where>
+	</delete>
+
+</mapper>
