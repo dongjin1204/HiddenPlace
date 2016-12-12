@@ -35,8 +35,8 @@ public class MyHiddenPlaceServiceImpl implements MyHiddenPlaceService {
 	}
 
 	@Override
-	public List<MyHiddenPlace> bestMHP(String userId) throws Exception {
-		return dao.bestMHP(userId); 
+	public List<MyHiddenPlace> bestMHP() throws Exception {
+		return dao.bestMHP(); 
 	}
 	
 	@Override

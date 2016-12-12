@@ -25,7 +25,5 @@ public class MyRouteController {
 		   
 	      return "/views/myroute/myRouteSelectOne";
 	   }
-	
-	
 
 }

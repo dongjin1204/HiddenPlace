@@ -62,7 +62,7 @@ public class MyHiddenPlaceDaoImpl implements MyHiddenPlaceDao {
 	}
 
 	@Override
-	public List<MyHiddenPlace> bestMHP(String userId) throws Exception {
+	public List<MyHiddenPlace> bestMHP() throws Exception {
 		return sqlSession.selectList(namespace + ".bestMHP");
 		
 	}

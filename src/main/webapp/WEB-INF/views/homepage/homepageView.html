@@ -16,18 +16,178 @@
 <link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/swiper.min.css" />
 <link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/style.css" />
 <link rel="stylesheet" type="text/css" href="../../../resources/customize/css/homepageView.css" />
-<script src="javascript/pace.min.js"></script>
 
+<script src="../../../resources/bootstrap/js/pace.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="javascript/swiper.jquery.min.js"></script>
-<script src="javascript/animate-on-scroll.js"></script>
-<script src="javascript/script.js"></script>
+<script src="../../../resources/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../resources/bootstrap/js/swiper.jquery.min.js"></script>
+<script src="../../../resources/bootstrap/js/animate-on-scroll.js"></script>
+<script src="../../../resources/bootstrap/js/script.js"></script>
 
 <script src="../../../resources/js/myroute/myRoute.js"></script>
 <script src="../../../resources/js/myroute/myRouteController.js"></script>
 <script src="../../../resources/js/myhiddenplace/myHiddenPlace.js"></script>
 <script src="../../../resources/js/myhiddenplace/myHiddenPlaceController.js"></script>
+
+<!-- 로그인,회원가입 스타일-->
+<style>
+.home-headmenu {
+  font-size: 12px;
+  margin-bottom: 50px; 
+  text-align: center;
+}
+.home-headmenu .menu-links {
+  display: inline-block;
+  padding: 15px;
+  list-style: none;
+}
+.home-headmenu .menu-links li {
+  float: left;
+  margin-right: 15px;
+}
+li {
+    float: left;
+   font-size: 14px;
+}
+li p, .dropbtn {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+li.dropdown {
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.dropdown-content p {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+.dropdown-content p:hover {background-color: #f1f1f1}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#headmenu-header {
+   margin-top: 0 !important;
+}
+
+.jumbotron {
+   padding: 0;
+   position: fixed;
+   width: 100%;
+   height: 71px;
+   opacity: 0.8;
+   z-index: 3;
+   margin: 0;
+   background-color: #25d2d2;
+}
+
+section {
+   padding-top: 71px;
+}
+
+.logo {
+   width: 180px;
+   margin: 10px;
+   margin-left: 19%;
+}
+
+#headmenu-div {
+    float: right; 
+    margin: 12px 18% 8px 1%; 
+    
+   /*background-color: #eee;
+            background: #eee;*/
+   z-index: 5;
+}
+
+#headmenu-login, #headmenu-userInsert,
+#headmenu-logout, #headmenu-myInfo,
+#headmenu-bookmark{
+	color: black;
+	/*font-weight: bold;*/
+	font-size: 13px;
+	border:none;
+	background-color: #25d2d2;
+}
+
+#headmenu-logout:hover,#headmenu-login:hover,
+#headmenu-userInsert:hover,#headmenu-myInfo:hover,
+#headmenu-bookmark:hover {
+	color:white;
+}
+
+header {
+	margin: 0;
+}
+.jumbotron {
+	padding: 0;
+	position: fixed;
+	width: 100%;
+	opacity: 0.8;
+	z-index: 3;
+	margin: 0;
+}
+
+section {
+	padding-top: 71px; 
+}
+
+.logo {
+	width: 180px;
+	margin: 10px;
+	margin-left: 18%; 
+}
+
+#headmenu_div {
+	float: right;
+	margin: 15px 18% 8px 1%;
+	z-index: 5;
+}
+
+#headmenu-login, #headmenu-userInsert,
+#headmenu-logout, #headmenu-myInfo,
+#headmenu-bookmark {
+	color: black;
+	/*font-weight: bold;*/
+	font-size: 16px;
+}
+
+#search_bar {
+	width: 400px;
+	height: 40px;
+	font-size: 20px;
+}
+
+.search_bar:focus + button {
+	z-index: 3;   
+}
+
+#search_bar,
+#search_button {
+	position: absolute;
+	right: 45%;
+	top: 15px;
+	border: 0;
+}
+
+#search_bar:focus {
+	outline: none;
+}
+
+</style>
+
 <style>
 
 @font-face {
@@ -72,32 +232,55 @@
  	height: 360px;
 }
 
-
-
 hr {
 	border: solid 1px #f7f5f0;
 }
 
+
 </style>
 </head>
 
-<!-- 홈페이지 MyHiddenPlace best3 이벤트 핸들링 -->
+
+<!-- 홈페이지 head menu 이벤트 핸들링 -->
+<script type="text/javascript">
+   $(document).ready(function() {
+      
+      //session에 저장되있는 userId값 가져오기
+//    var loginState = localStorage.getItem('userId');
+      var loginState = "kimsky@gmail.com";
+      
+      var headmenuLink1;
+      var headmenuLink2;
+      var headmenuLink3;
+
+      if(loginState == null) {
+         headmenuLink1 = $('<button id="headmenu-login" class="btn btn-default">로그인</button>');
+         headmenuLink2 = $('<button id="headmenu-userInsert" class="btn btn-default">회원가입</button>');
+      
+         $('#headmenu-div').append(headmenuLink1, headmenuLink2);
+      } else {
+         headmenuLink1 = $('<button id="headmenu-myInfo" class="btn btn-default">'+loginState+'</button>');
+         headmenuLink2 = $('<button id="headmenu-bookmark" class="btn btn-default">즐겨찾기</button>');
+         headmenuLink3 = $('<button id="headmenu-logout" class="btn btn-default">로그아웃</button>');
+     
+         $('#headmenu-div').append(headmenuLink1, headmenuLink2, headmenuLink3);
+      }
+      
+   });
+</script>
+
+<!-- 홈페이지 MyHiddenPlace best4 이벤트 핸들링 -->
+
 <script type="text/javascript">
 	$(document).ready(function() {
 
 			var nowLoginId = localStorage.getItem('userId');
-			nowLoginId="ss";
-			
+			nowLoginId = "kimsky@gmail.com";
 			var mhpController = new MyHiddenPlaceController();
 			mhpController.requestUpdateBestMHP();
 			var myHiddenPlaces = mhpController.requestBestMHP();
-			
-			var bestNum1 = myHiddenPlace[0].num;
-			var bestNum2 = myHiddenPlace[1].num;
-			var bestNum3 = myHiddenPlace[2].num;
-			
 			var bookmarkAll = mhpController.requestBookmarkAllMHP(nowLoginId);
-			
+
 			if(nowLoginId == null) {
 				
 				for (var i = 0; i < myHiddenPlaces.length; i++) {
@@ -129,20 +312,26 @@ hr {
 					var pDateMHP = $('<p></p>').html(myHiddenPlaces[i].writeDate); //작성일자
 					var pReadCountMHP = $('<p></p>').html(myHiddenPlaces[i].readCount); //추천수
 					var pNumMHP = $('<p hidden></p>').html(myHiddenPlaces[i].num); //글번호
-				
-					for(var i = 0; i < bookmarkAll.length; i++) {
+					
+					if(bookmarkAll.length > 0) {
+						for(var j = 0; j < bookmarkAll.length; j++) {
 						
-						if(bookmarkAll[i].num == bestNum1 || bookmarkAll[i].num == bestNum2 || bookmarkAll[i].num == bestNum3) {
-							var imgBookmark = $('<img class="bookmark_star" style="opacity:1" src="../../../resources/bootstrap/img/bookmark_success_star.png" data-toggle="tooltip" data-placement="left" title="즐겨찾기 추가하기" />')	
-						} else {
-							var	imgBookmark = $('<img class="bookmark_star" style="opacity:1" src="../../../resources/bootstrap/img/bookmark_star.png" data-toggle="tooltip" data-placement="left" title="즐겨찾기 추가하기" />')						
+								if(myHiddenPlaces[i].num == bookmarkAll[j].num) {
+									var imgBookmark = $('<img class="bookmark_star" style="opacity:1" src="../../../resources/customize/images/bookmark_success_star.png" data-toggle="tooltip" data-placement="left" title="즐겨찾기 삭제하기" />');
+									break;
+								} else {
+									var	imgBookmark = $('<img class="bookmark_star" style="opacity:1" src="../../../resources/customize/images/bookmark_star.png" data-toggle="tooltip" data-placement="left" title="즐겨찾기 추가하기" />');
+								}
+							
 						}
+					} else {
+						var	imgBookmark = $('<img class="bookmark_star" style="opacity:1" src="../../../resources/customize/images/bookmark_star.png" data-toggle="tooltip" data-placement="left" title="즐겨찾기 추가하기" />');
+					}
 
-					}	
-						
-					figcaptionMHP.append(hTitle, pUserNicknameMHP, pDateMHP, pReadCountMHP, pNumMHP, imgBookmark); //figcaption태그에 작성자, 작성일자, 추천수, 글번호
-					figureMHP.append(imgMHP, figcaptionMHP); // figure태그에 이미지, figcaption append
-					$('#bestMHP3').append(figureMHP); //내알못 div에 bestMHP[i] 게시글 append
+ 
+				figcaptionMHP.append(hTitle, pUserNicknameMHP, pDateMHP, pReadCountMHP, pNumMHP, imgBookmark); //figcaption태그에 작성자, 작성일자, 추천수, 글번호
+				figureMHP.append(imgMHP, figcaptionMHP); // figure태그에 이미지, figcaption append
+				$('#bestMHP3').append(figureMHP); //내알못 div에 bestMHP[i] 게시글 append
 					
 				}
 				
@@ -152,13 +341,17 @@ hr {
 </script>
 
 <!-- 홈페이지 MyRoute best3 이벤트 핸들링 -->
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/dongjin1204/master
 <script type="text/javascript">
 	$(document).ready(function() {
 
 		var nowLoginId = localStorage.getItem('userId');
-		
 		var mrController = new MyRouteController();
-		var myRoutes = mrController.requestBestMR(nowLoginId);
+		var myRoutes = mrController.requestBestMR();
+		var bookmarkAll = mrController.requestBookmarkAllMR(nowLoginId);
 		
 		if(nowLoginId == null) {
 			
@@ -192,10 +385,19 @@ hr {
 				var pReadCountMR = $('<p></p>').html(myRoutes[i].readCount); //추천수
 				var pNumMR = $('<p hidden></p>').html(myRoutes[i].num); //글번호
 			
-				if(myRoutes[i].bookmark == 1) {
-					var imgBookmark = $('<img class="bookmark_star" style="opacity:1" src="../../../resources/bootstrap/img/bookmark_success_star.png" data-toggle="tooltip" data-placement="left" title="즐겨찾기 추가하기" />')
+				if(bookmarkAll.length > 0) {
+					for(var j = 0; j < bookmarkAll.length; j++) {
+					
+							if(myRoutes[i].num == bookmarkAll[j].num) {
+								var imgBookmark = $('<img class="bookmark_star" style="opacity:1" src="../../../resources/customize/images/bookmark_success_star.png" data-toggle="tooltip" data-placement="left" title="즐겨찾기 삭제하기" />');
+								break;
+							} else {
+								var	imgBookmark = $('<img class="bookmark_star" style="opacity:1" src="../../../resources/customize/images/bookmark_star.png" data-toggle="tooltip" data-placement="left" title="즐겨찾기 추가하기" />');
+							}
+						
+					}
 				} else {
-					var	imgBookmark = $('<img class="bookmark_star" style="opacity:1" src="../../../resources/bootstrap/img/bookmark_star.png" data-toggle="tooltip" data-placement="left" title="즐겨찾기 추가하기" />')						
+					var	imgBookmark = $('<img class="bookmark_star" style="opacity:1" src="../../../resources/customize/images/bookmark_star.png" data-toggle="tooltip" data-placement="left" title="즐겨찾기 추가하기" />');
 				}
 
 				figcaptionMR.append(hTitle, pUserNicknameMR, pDateMR, pReadCountMR, pNumMR, imgBookmark); //figcaption태그에 작성자, 작성일자, 추천수, 글번호
@@ -244,10 +446,10 @@ $(document).ready(function() {
    		var isSuccess = mhpController.requestInsertBookmark(userId, num);
    		
    	 	if(isSuccess == true) {
-	   	 	$(this).attr("src","../../../resources/bootstrap/img/bookmark_success_star.png");
+	   	 	$(this).attr("src","../../../resources/customize/images/bookmark_success_star.png");
 		   	 alert("즐겨찾기에 등록되었습니다!");
    		} else {
-   			$(this).attr("src","../../../resources/bootstrap/img/bookmark_star.png");
+   			$(this).attr("src","../../../resources/customize/images/bookmark_star.png");
    			alert("즐겨찾기가 해제되었습니다!");
    		}
 			
@@ -257,14 +459,32 @@ $(document).ready(function() {
 
 <body class="home-page">
 	
+	
+<!-- 상단 메뉴 헤더 -->
+   <header id="headmenu-header" style="margin-top:0%;">
+         <!-- <div class="container"> -->
+			<div class="jumbotron">
+			<a href="index.html"><img class="logo" src="../../../resources/customize/images/mhp.png" alt="Logo" /></a>
+			<input id="search_bar" type="text" placeholder="#가산 #내가알지못한곳" />
+            <button id="search_button" class="btn btn-default" type="button">
+               <span class="glyphicon glyphicon-search"></span>
+            </button>
+			<div id="headmenu-div" class="btn-group">
+             
+             
+			</div>
+		</div>
+   </header>
+      
+	
 	<section>
-				<img src="../../../resources/bootstrap/images/home.jpg" alt="" />
+			<img src="../../../resources/customize/images/home.jpg" alt="" />
 	</section>
 
 	<section>
 		<div class="row" style="margin:0 5% 0 5%;">
 			<div class="col-sm-12 col-md-12 col-md-offset-1" style="margin:0;"> 
-				<p class="bestTitle">★내알못 베스트★</p>
+				<p class="bestTitle">★My Hidden Place Best 1~3★</p>
 				<div id="bestMHP3" class="portfolio grid-3">
 
 				
@@ -278,7 +498,7 @@ $(document).ready(function() {
 	<section>
 		<div class="row" style="margin:0 5% 0 5%;">
 			<div class="col-sm-12 col-md-12 col-md-offset-1" style="margin:0;"> 
-				<p class="bestTitle">★나만의루트 베스트★</p>
+				<p class="bestTitle">★My Route Best 1~3★</p>
 				<div id="bestMR3" class="portfolio grid-3">
 
 				

@@ -2,60 +2,57 @@
 function MyHiddenPlaceDao() {
 
 //	내알못 best 3 요청 dao 메서드
-	this.bestMHP = function(nowLoginId) {
+	this.bestMHP = function() {
 		
 		var myHiddenPlaces = [];
 
 		try{
 
-			$.ajax({
-				url: '/myhiddenplace/bestMHP' , //홈페이지 불러올 주소
-				async : false, //false: 동기, true: 비동기
-				type: 'get', //요청방식 get or post      
-				data: {
-					userId : nowLoginId//보내줄 데이터 없으면 비어둬도되고 data 아에 없애도 되고
-				},
-				dataType: 'json', //서버에서 보내오는 데이터 타입
-				success: function (data) { //서버에서 보내오는 데이터
-				
-						myHiddenPlaces = data;
-				
-				}
-			});
+//			$.ajax({
+//				url: '/myhiddenplace/bestMHP' , //홈페이지 불러올 주소
+//				async : false, //false: 동기, true: 비동기
+//				type: 'get', //요청방식 get or post      
+//				data: {
+//					//보내줄 데이터 없으면 비어둬도되고 data 아에 없애도 되고
+//				},
+//				dataType: 'json', //서버에서 보내오는 데이터 타입
+//				success: function (data) { //서버에서 보내오는 데이터
+//				
+//						myHiddenPlaces = data;
+//				
+//				}
+//			});
 			
-			/*var myHiddenPlace1 = {
+			var myHiddenPlace1 = {
 					num:1, //글번호 hidden으로할거임
 					userNickname:"이동진", //유저닉네임
 					writeDate:20161206, //작성일자
 					readCount:1, //조회수
 					imageUrl:"../../../resources/customize/images/camera.jpeg", //이미지 경로
-					bookmark:1, //북마크 여부 0or1
-					title:"ㅎㅎㅎ" //글제목
+					title:"#여기" //글제목
 			}
 			
 			var myHiddenPlace2 = {
-					num:2, //글번호 hidden으로할거임
-					userNickname:"이동진", //유저닉네임
-					writeDate:20161206, //작성일자
-					readCount:1, //조회수
-					imageUrl:"../../../resources/customize/images/beer.jpeg", //이미지 경로
-					bookmark:1, //북마크 여부 0or1
-					title:"ㅎㅎㅎ" //글제목
+					num:2,
+					userNickname:"이동진",
+					writeDate:20161206,
+					readCount:1,
+					imageUrl:"../../../resources/customize/images/beer.jpeg",
+					title:"#부천 #북카페"
 			}
 			
 			var myHiddenPlace3 = {
-					num:3, //글번호 hidden으로할거임
-					userNickname:"이동진", //유저닉네임
-					writeDate:20161206, //작성일자
-					readCount:1, //조회수
-					imageUrl:"../../../resources/customize/images/bookcafe.jpeg", //이미지 경로
-					bookmark:1, //북마크 여부 0or1
-					title:"ㅎㅎㅎ" //글제목
+					num:3,
+					userNickname:"이동진",
+					writeDate:20161206,
+					readCount:1,
+					imageUrl:"../../../resources/customize/imagesg/bookcafe.jpeg",
+					title:"#가산디지털단지 #여기는 어디인가요"
 			}
 			
 			myHiddenPlaces.push(myHiddenPlace1);
 			myHiddenPlaces.push(myHiddenPlace2);
-			myHiddenPlaces.push(myHiddenPlace3);*/
+			myHiddenPlaces.push(myHiddenPlace3);
 			
 		} catch(e) {
 			console.log('bestMHP Dao 객체 : bestMHP Dao 메서드에서 예외 발생');
@@ -310,27 +307,43 @@ function MyHiddenPlaceDao() {
 		
 
 //		내알못 로그인한 유저의 즐겨찾기 목록 요청 dao 메서드
-		this.bestMHP = function(nowLoginId) {
+		this.bookmarkAll = function(nowLoginId) {
 			
 			var bookmarkAll = [];
 
 			try{
 
-				$.ajax({
-					url: '/myhiddenplace/bookmarkAll' , //홈페이지 불러올 주소
-					async : false, //false: 동기, true: 비동기
-					type: 'get', //요청방식 get or post      
-					data: {
-						userId : nowLoginId//보내줄 데이터 없으면 비어둬도되고 data 아에 없애도 되고
-					},
-					dataType: 'json', //서버에서 보내오는 데이터 타입
-					success: function (data) { //서버에서 보내오는 데이터
-					
-							bookmarkAll = data;
-					
-					}
-					
-				});
+//				$.ajax({
+//					url: '/myhiddenplace/bookmarkAll' , //홈페이지 불러올 주소
+//					async : false, //false: 동기, true: 비동기
+//					type: 'get', //요청방식 get or post      
+//					data: {
+//						userId : nowLoginId//보내줄 데이터 없으면 비어둬도되고 data 아에 없애도 되고
+//					},
+//					dataType: 'json', //서버에서 보내오는 데이터 타입
+//					success: function (data) { //서버에서 보내오는 데이터
+//					
+//							bookmarkAll = data;
+//					
+//					}
+//					
+//				});
+				
+				var bookmark1 = {
+						num:"2" //글번호 hidden으로할거임
+				}
+				
+				var bookmark2 = {
+						num:"3"
+				}
+				
+				var bookmark3 = {
+						num:"4"
+				}
+				
+				bookmarkAll.push(bookmark1);
+				bookmarkAll.push(bookmark2);
+				bookmarkAll.push(bookmark3);
 			
 			} catch(e) {
 				console.log('myHiddenPlaceDao 객체 : bookmarkAll Dao 메서드에서 예외 발생');

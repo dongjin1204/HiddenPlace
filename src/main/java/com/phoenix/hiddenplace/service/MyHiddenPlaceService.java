@@ -11,8 +11,8 @@ public interface MyHiddenPlaceService {
 
 	List<MyHiddenPlace> list(PageMaker pageMaker) throws Exception; //내알못 목록
 	
-	List<MyHiddenPlace> bestMHP(String userId) throws Exception; //내알못 베스트 3
-	
+	List<MyHiddenPlace> bestMHP() throws Exception; //내알못 베스트 3
+
 	int listCount(PageMaker pageMaker) throws Exception;
 
 	String store(MultipartFile file) throws Exception;

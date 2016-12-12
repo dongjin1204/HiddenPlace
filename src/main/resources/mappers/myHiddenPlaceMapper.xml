@@ -83,7 +83,6 @@
 		  TBL_BOARD.READCOUNT, TBL_BOARD.TITLE, TBL_BOARD.타이틀이미지
 		  from TBL_BOARD, TBL_USER
 		  where TBL_BOARD.베스트코드 > 0
-		  
 	</select> 
 
 	<select id="bookmark" resultType="int">
@@ -228,6 +227,7 @@
 		values("qwer522", #{storeName}, #{titleImgUrl},#{themeCode},#{title},#{content}, #{latitude}, #{longitude})
 		</insert>
 	
+	<!-- 로그인한 유저의 즐겨찾기 목록 -->
 	<select id="bookmarkAll" resultType="MyHiddenPlace">
 		  select TBL_BOOKMARK.NUM
 		  from TBL_BOOKMARK

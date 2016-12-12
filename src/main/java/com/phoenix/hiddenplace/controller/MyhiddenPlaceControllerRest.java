@@ -59,15 +59,13 @@ public class MyhiddenPlaceControllerRest {
 	
 	//내알못 베스트 3
 	@RequestMapping(value = "/bestMHP", method = RequestMethod.GET)
-	public ResponseEntity<List<MyHiddenPlace>> bestMHP(MyHiddenPlace myHiddenPlace) throws Exception {
+	public ResponseEntity<List<MyHiddenPlace>> bestMHP() throws Exception {
 		
 		ResponseEntity<List<MyHiddenPlace>> entity = null;
 		
-		String userId = myHiddenPlace.getUserId();
-		
 		try {
 			
-			entity = new ResponseEntity<List<MyHiddenPlace>>(service.bestMHP(userId), HttpStatus.OK);
+			entity = new ResponseEntity<List<MyHiddenPlace>>(service.bestMHP(), HttpStatus.OK);
 			
 		} catch (Exception e) {
 			
