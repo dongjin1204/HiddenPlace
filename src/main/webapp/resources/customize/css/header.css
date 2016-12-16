@@ -19,44 +19,25 @@ section {
 	padding-top: 71px;
 }
 
-#headmenu-div {
-    float: right; 
-    margin: 12px 18% 8px 1%; 
-	z-index: 5;
-}
-
-#headmenu-login, #headmenu-userInsert,
-#headmenu-logout, #headmenu-myInfo,
-#headmenu-bookmark{
-	color: black;
-	font-size: 16px;
-	border:none;
-	background-color: white;
-}
-
-#headmenu-logout:hover,#headmenu-login:hover,
-#headmenu-userInsert:hover,#headmenu-myInfo:hover,
-#headmenu-bookmark:hover {
-	color:white;
-}
-
 header {
 	margin: 0;
 }
 
 .jumbotron {
-	padding: 0;
-	position: fixed;
-	width: 100%;
-	opacity: 0.8;
-	z-index: 3;
-	margin: 0;
+   padding: 0;
+   position: fixed;
+   width: 100%;
+   opacity: 0.8;
+   z-index: 3;
+   margin: 0;
+   background-color: transparent;
+   transition: background-color 0.5s;
 }
 
 .logo {
-	width: 180px;
-	margin: 10px;
-	margin-left: 18%; 
+   width: 150px;
+   margin: 10px;
+   margin-left: 18%; 
 }
 
 #headmenu_div {
@@ -65,36 +46,14 @@ header {
 	z-index: 5;
 }
 
-#search_bar {
-	width: 400px;
-	height: 40px;
-	font-size: 20px;
-}
 
-.search_bar:focus + button {
-	z-index: 3;   
-}
 
-#search_bar,
-#search_button {
-	position: absolute;
-	right: 45%;
-	top: 15px;
-	border: 0;
-}
+
+
 
 #search_bar:focus {
 	outline: none;
 }
-
-
-
-
-
-button, h2, a, input, label, span, text, div, form, p, font {
-	font-family: 'baemin';
-}
-
 
 #login-modal .modal-dialog {
 	width: 350px;
@@ -283,4 +242,66 @@ button, h2, a, input, label, span, text, div, form, p, font {
 
 .modal-backdrop.in {
    opacity: .3;
+}
+
+.jumbotron:hover {
+   background-color: #eee;
+   /*transform: 2s;*/
+}
+
+.jumbotron:hover #headmenu-login,
+.jumbotron:hover #headmenu-userInsert,
+.jumbotron:hover #headmenu-logout,
+.jumbotron:hover #headmenu-myInfo,
+.jumbotron:hover #headmenu-bookmark, 
+.jumbotron:hover #loginModal{
+   color: black;
+   /*transform: 2s;*/
+}
+
+#headmenu-div {
+   float: right;
+   margin: 15px 20% 8px 1%;
+   z-index: 5;
+}
+
+#headmenu-login, #headmenu-userInsert,
+#headmenu-logout, #headmenu-myInfo,
+#headmenu-bookmark {
+   color: white;
+   font-weight: bold;
+   font-size: 16px;
+   background-color: transparent;
+   border: none;
+   outline: none;
+   transition: color 0.5s;
+}
+#headmenu-login:active, #headmenu-userInsert:active,
+#headmenu-logout:active, #headmenu-myInfo:active,
+#headmenu-bookmark:active {
+   border: none;
+   outline: none;
+}
+
+#search_bar {
+   width: 400px;
+   height: 40px;
+   font-size: 16px;
+}
+
+.search_bar:focus + button {
+   z-index: 3;   
+}
+
+#search_bar,
+#search_button {
+   position: absolute;
+   right: 50%;
+   top: 15px;
+   border: 0;
+   /*background: none;*/
+}
+
+#search_bar:focus {
+   outline: none;
 }

@@ -10,6 +10,20 @@
 <script src="/resources/js/homepage/homepageController.js"></script>
 <script src="/resources/js/user/userController.js"></script>
 <script src="/resources/js/myhiddenplace/myHiddenPlaceController.js"></script>
+
+<style>
+#loginModal {
+	border: none;
+    outline: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    transition: color 0.5s;
+}
+</style>
 </head>
 
 <!-- head menu 이벤트 핸들링 -->
@@ -659,20 +673,21 @@ $(document).ready(function() {
       }
    });
 </script>
-
-
-
+      
 <!-- 상단 메뉴 헤더 -->
-<header id="headmenu-header" style="margin-top: 0%;">
-   <div class="jumbotron">
-      <a><img class="logo"
-         src="../../../resources/customize/images/mhp.png" alt="Logo"
-         style="cursor: pointer" /></a> <input id="search_bar" type="text"
-         placeholder="#가산 #내가알지못한곳" name="search_bar"/>
-      <button id="search_button" class="btn btn-default" type="button">
-         <span class="glyphicon glyphicon-search"></span>
-      </button>
-      <div id="headmenu-div" class="btn-group"></div>
+   <header>
+      <div class="jumbotron">
+         <img class="logo" src="/resources/customize/images/mhp.png" alt="Logo" style="cursor: pointer" />
+         
+         <input id="search_bar" type="text" placeholder=" 키워드를 입력해주세요" name="search_bar"/>
+         <button id="search_button" class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+         </button>
+
+         <div id="headmenu-div" class="btn-group"></div>
+
+      </div>
+   </header>
       
    </div>
    <!-- BEGIN # MODAL LOGIN -->
