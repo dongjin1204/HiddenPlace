@@ -236,7 +236,7 @@
 	<update id="upCount">
 
 		  update TBL_BOARD set UPCOUNT = UPCOUNT + 1
-		  where NUM = #{num} and USERID = #{userId}
+		  where NUM = #{num}
 		  
 	</update> 
 	

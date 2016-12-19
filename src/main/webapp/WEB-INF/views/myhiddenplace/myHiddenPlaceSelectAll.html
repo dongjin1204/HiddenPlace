@@ -1,33 +1,25 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<title>ZUPA - Responsive Website Template / Home</title>
+<title>내가 알지 못한 곳</title>
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <link rel="shortcut icon" href="images/favicon.ico" />
-<link
-	href='https://fonts.googleapis.com/css?family=Lato:400,300,700&amp;subset=latin,latin-ext'
-	rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css"
-	href="/resources/bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="/resources/bootstrap/css/animate.css" />
-<link rel="stylesheet" type="text/css"
-	href="/resources/bootstrap/css/font-awesome.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="/resources/bootstrap/css/swiper.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="/resources/bootstrap/css/style.css" />
+<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+<link rel="stylesheet" type="text/css"   href="/resources/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"   href="/resources/bootstrap/css/animate.css" />
+<link rel="stylesheet" type="text/css"   href="/resources/bootstrap/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css"   href="/resources/bootstrap/css/swiper.min.css" />
+<link rel="stylesheet" type="text/css"   href="/resources/bootstrap/css/style.css" />
 <script src="/resources/bootstrap/js/pace.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script   src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/resources/bootstrap/js/swiper.jquery.min.js"></script>
+<script src="/resources/bootstrap/js/animate-on-scroll.js"></script>
+<script src="/resources/bootstrap/js/script.js"></script>
+<script src="/resources/bootstrap/js/isotope.min.js"></script>
 <script src="/resources/js/myhiddenplace/myHiddenPlaceController.js"></script>
 <script src="/resources/js/page/pageController.js"></script>
 <script src="/resources/js/search/searchController.js"></script>
@@ -36,129 +28,218 @@
 <script src="/resources/js/user/userController.js"></script>
 
 <style>
-@font-face {
-	font-family: 'baemin';
-	src: url(/resources/customize/fonts/배달의민족주아체.ttf) format('truetype');
-}
 
-*, font, button, button>p, .category>p {
-	font-family: 'baemin';
-}
+   /*폰트 적용*/
+   @font-face {
+      font-family: 'baemin';
+      src: url(/resources/bootstrap/fonts/배달의민족주아체.ttf) format('truetype');
+   }
+   
+   *,
+   font,
+   button, 
+   button > p, 
+   .category > p,
+   #login_button, 
+   #userInsert_button {
+      font-family: 'baemin';
+   }
+   
+   .category{
+      width: 35px;
+      height: 35px;
+   }
+   
+   #theme_category {
+      
+      margin: 0 18% 0 17%;
+   }
+   
+   #theme_category > button {
+      opacity: 0.5;
+      background-color: white;
+   }
 
-.category {
-	max-width: 45px;
-	width: 100%;
-	height: auto;
-}
+   #theme_category button:hover {
+      opacity: 1;
+      backface-visibility: hidden;
+      transform: scale(1.25);
+   }
+   
+   #theme_category_active {
+      opacity: 1 !important;
+      backface-visibility: hidden;
+      transform: scale(1.25);
+   }
+   
+   .portfolio figure > figcaption > p {
+      margin-left: -100px;
+      font-size: 15px;
+   }
+   
+   .data {
+      margin-top : -40px;
+      
+   }
+   
+   .data2 {
+      margin-top : -60px;
+   }
+   
+   .btn-default {
+      color: black;
+      background-color: white;
+   }
 
-#theme_category {
-	width: 90%;
-	/*margin: 0 17% 0 17%;*/
-	padding: 0 5% 0 17%;
-}
+   .btn-default:focus, .btn-default.focus {
+      color: #ffffff;
+      background-color: #9d9da6;
+   }
 
-#theme_category>button {
-	background-color: white;
-}
+   .btn-default:hover {
+      opacity: 0.5;
+      color: white;
+      background-color: black;
+   }
 
-.portfolio figure>figcaption>p {
-	margin-left: -80px;
-	margin-top: -20px;
-}
+   .btn-default.is-checked {
+      color: white;
+      background-color: black;
+   }
 
-#theme_category button:hover {
-	opacity: 0.5;
-	transform: rotateY(180deg);
-	backface-visibility: hidden;
-	-webkit-transform: scale(1.12);
-	transform: scale(1.12);
-}
+   section {
+      padding-top: 71px;
+      padding-bottom: 20px; 
+   }
 
-.bookmark_star {
-	position: absolute !important;
-	right: 3%;
-	top: 3%;
-	max-width: 25px;
-	height: auto;
-	margin: 0;
-	z-index: 3;
-}
+   #main_img {
+      width: 100%;
+      height: 580px;
+   }
+   
+   #main_img_park {
+      opacity: 0.8;
+      border-radius: 5px;
+      width: 100%;
+      height: 580px;
+   }
+   
+   #main_title {
+         position: absolute;
+         top: 60%;
+         left: 12%; 
+
+      }
+    #main_title > p {
+         opacity: 0.6;
+       font-size: 120px;
+       /*font-weight: bold;*/
+       color: white;
+       /*color: black;*/
+       margin: 0;
+       text-align: center;
+       font-family: 'Indie Flower', cursive;
+    }
+ 
+   #main_img_div {
+      padding: 0;
+   }
+
+    .imgSize { 
+       border-radius: 10px;
+       width: 100%; 
+       height: 350px; 
+    } 
+
+   .bookmark_star {
+      position: absolute !important;
+      right: 3%;
+      top: 3%;
+      max-width: 25px;
+      height: auto;
+      margin: 0;
+      z-index: 3;
+   }
+             
 </style>
-
-<!-- 글조회 (MHP) 이벤트 핸들링 -->
-<script>
-$(document).ready(function() {
-      $('.figureMHP').click(function() {
-         var num = $(this).children().eq(1).children().eq(4).text();
-         var mhpController = new MyHiddenPlaceController();
-         mhpController.requestSelectOneMhpPage(num);
-      });
-});
-</script>
 
 <!-- 즐겨찾기(header) 클릭이벤트 -->
 <script>
 $(document).ready(function() {
-	$('#headmenu-bookmark').click(function() {
-		var homepageController = new HomepageController;
-		homepageController.requestBookmarkUrl();
-	});
+   $('#headmenu-bookmark').click(function() {
+      var homepageController = new HomepageController;
+      homepageController.requestBookmarkUrl();
+   });
 });
 </script>
 
 <!-- MHP 즐겨찾기 등록 이벤트 핸들링 -->
 <script>
 $(document).ready(function() {
-	$('.bookmark_star').click(function() {
-		$('.figureMHP').unbind("click");
-		
-		var nowLoginId = localStorage.getItem('userId'); //현재 로그인한 사용자 아이디 가져오기
-		var num = $(this).parent().children().eq(4).text();	//현재 클릭한 게시글의 글번호 가져오기
-   		var mhpController = new MyHiddenPlaceController(); 
-		var bookmarkAll = mhpController.requestBookmarkAllMHP(nowLoginId); //현재 로그인한 유저의 즐겨찾기 목록을 가져오기
-		var isSuccess = false;
-		
-		for(i = 0; i < bookmarkAll.length; i++) {
-   			if(num == bookmarkAll[i].num) {
-   				var deleteBookmarkState = mhpController.requestDeleteBookmark(nowLoginId, num);
-   		   		$(this).attr("src","../../../resources/customize/images/bookmark_star.png");
-   		   		$(this).attr("title","즐겨찾기 추가하기");
-   		   	   	alert("즐겨찾기가 해제되었습니다!");
-   		   	   	isSuccess = true;
-   			}
-   		}
-		
-		if(isSuccess == false) {
-			var insertBookmarkState = mhpController.requestInsertBookmark(nowLoginId, num);
-		   	$(this).attr("src","../../../resources/customize/images/bookmark_success_star.png");
-		   	$(this).attr("title","즐겨찾기 삭제하기");
-		   	alert("즐겨찾기에 등록되었습니다!");
-		}
-			
-		window.location.reload(); //새로고침(f5), 즐겨찾기 아이콘 클릭시 글조회 이벤트가 삭제되므로 되살리기 위해 사용
-	});	
+   $(document).on("click",".bookmark_star", function(){
+      $('.figureMHP').unbind("click");
+      
+      var nowLoginId = localStorage.getItem('userId'); //현재 로그인한 사용자 아이디 가져오기
+      var num = $(this).parent().children().eq(4).text();   //현재 클릭한 게시글의 글번호 가져오기
+         var mhpController = new MyHiddenPlaceController(); 
+      var bookmarkAll = mhpController.requestBookmarkAllMHP(nowLoginId); //현재 로그인한 유저의 즐겨찾기 목록을 가져오기
+      var isSuccess = false;
+      
+      for(i = 0; i < bookmarkAll.length; i++) {
+            if(num == bookmarkAll[i].num) {
+               var deleteBookmarkState = mhpController.requestDeleteBookmark(nowLoginId, num);
+                  $(this).attr("src","../../../resources/customize/images/bookmark_star.png");
+                  $(this).attr("title","즐겨찾기 추가하기");
+                     alert("즐겨찾기가 해제되었습니다!");
+                     isSuccess = true;
+            }
+         }
+      
+      if(isSuccess == false) {
+         var insertBookmarkState = mhpController.requestInsertBookmark(nowLoginId, num);
+            $(this).attr("src","../../../resources/customize/images/bookmark_success_star.png");
+            $(this).attr("title","즐겨찾기 삭제하기");
+            alert("즐겨찾기에 등록되었습니다!");
+      }
+         
+      window.location.reload(); //새로고침(f5), 즐겨찾기 아이콘 클릭시 글조회 이벤트가 삭제되므로 되살리기 위해 사용
+   });   
 });
 </script>
 
 <!-- 글쓰기 (MHP) 이벤트 핸들링 -->
 <script>
 $(document).ready(function() {
+   var nowLoginId = localStorage.getItem('userId'); //현재 로그인한 사용자 아이디 가져오기
+   var insertButton;
+    if (nowLoginId != null) {
+       insertButton = $('<button id="insert_button" class="btn btn-default"><font>글쓰기</font></button>');
+      $('#insert_button_div').append(insertButton);
+   } else {
+      insertButton = $('<button id="insert_button" class="btn btn-default" data-toggle="modal" data-target="#login-modal"><font>글쓰기</font></button>');
+      $('#insert_button_div').append(insertButton);
       $('#insert_button').click(function() {
-    	 var mhpController = new MyHiddenPlaceController();
-         mhpController.requestInsertView();
+         alert("로그인 후 이용가능합니다.");
+      });
+   }
+      $('#insert_button').click(function() {
+         if (nowLoginId != null) {
+            var mhpController = new MyHiddenPlaceController();
+                mhpController.requestInsertView();
+         }
       });
 });
 </script>
 
 <script>
 $(document).ready(function() {
-	$("#headerDiv").load("/resources/js/include/header.html");
+   $("#headerDiv").load("/resources/js/include/header.html");
 });
 </script>
 
 <script>
 $(document).ready(function() {
-	$("#footerDiv").load("/resources/js/include/footer.html");
+   $("#footerDiv").load("/resources/js/include/footer.html");
 });
 </script>
 
@@ -166,379 +247,352 @@ $(document).ready(function() {
 
 <body class="home-page">
 
-	<!-- 상단 메뉴 헤더 -->
-	<div id="headerDiv"></div>
+   <!-- 상단 메뉴 헤더 -->
+   <div id="headerDiv"></div>
 
-	<!-- 메인 사진 섹션 -->
-	<section>
+   <br><br><br>
 
-		<div class="swiper-container">
-			<div class="parallax-bg"
-				style="background-image: url(/resources/customize/images/home.jpg)"
-				data-swiper-parallax="-15%"></div>
+      <!-- 메인 사진 섹션 -->
+         <section>
+            <div class="container">
+               <div id="main_img_div" class="col-sm-12 col-md-10 col-md-offset-1">
+                  
+               </div>
 
-			<!-- Add Pagination -->
-			<div class="swiper-pagination swiper-pagination-white"></div>
-			<!-- Add Navigation -->
-			<div class="swiper-button-prev swiper-button-white"></div>
-			<div class="swiper-button-next swiper-button-white"></div>
-		</div>
-	</section>
+            </div>
+         </section>
 
-	<!-- 본문 -->
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12 col-md-10 col-md-offset-1">
+   <!-- 본문 -->
+   <div class="container">
+      <div class="row">
+         <div class="col-sm-12 col-md-10 col-md-offset-1">
 
-				<!-- 카테고리 선택 탭 -->
-				<div class="btn-group" id="theme_category">
-					<button class="btn btn themeCategory">
-						<img class="category" src="/resources/bootstrap/image/theme0.png" />
-						<p>전체보기</p>
-						<p hidden="hidden">0</p>
-					</button>
-				</div>
-				<br> <br>
+            <!-- 카테고리 선택 탭 -->
+            <div class="btn-group filters theme_category" id="theme_category">
+               <button class="btn btn" data-filter="*">
+                  <img class="category" src="/resources/bootstrap/image/theme0.png"/>
+                  <p>전체보기</p>
+                  <p hidden="hidden">0</p>
+               </button>
+            </div>
+            
+            <br> <br>
 
-				<!-- 내알못/나만의 루트 선택 탭 -->
-				<div class="btn-group">
-					<button class="btn btn-default" id="figureMHP">
-						<font>내 알 못</font>
-					</button>
-					<button class="btn btn-default" id="figureMR">
-						<font>나만의 루트</font>
-					</button>
-				</div>
+            <!-- 내알못/나만의 루트 선택 탭 -->
+            <div class="btn-group">
+               <button class="btn btn-default" id="figureMHP">
+                  <font>내 알 못</font>
+               </button>
+               <button class="btn btn-default" id="figureMR">
+                  <font>나만의 루트</font>
+               </button>
+            </div>
 
-				<!-- 글쓰기 탭 -->
-				<div id="insert_button_div" class="btn-group">
-					<button id="insert_button" class="btn btn-default">
-						<font>글쓰기</font>
-					</button>
-				</div>
-			</div>
+            <!-- 글쓰기 탭 -->
+            <div id="insert_button_div" class="btn-group">
 
-			<!-- 글목록 -->
-			<div class="col-sm-12 col-md-10 col-md-offset-1">
-				<div class="portfolio grid-3"></div>
-			</div>
-		</div>
+            </div>
+         </div>
 
-	</div>
+         <!-- 글목록 -->
+         <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <div class="portfolio grid-2"></div>
+         </div>
+      </div>
 
-	<!-- 페이징 -->
-	<section>
-		<nav class="text-center">
-			<ul id="page_append" class="pagination">
+   </div>
 
-			</ul>
-		</nav>
-	</section>
-	
-	<!-- 하단 메뉴 푸터 -->
-	<div id="footerDiv"></div>
-	
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="../../../resources/bootstrap/js/bootstrap.min.js"></script>
-	<script src="../../../resources/bootstrap/js/swiper.jquery.min.js"></script>
-	<script src="../../../resources/bootstrap/js/animate-on-scroll.js"></script>
-	<script src="../../../resources/bootstrap/js/script.js"></script>
-	<script src="../../../resources/bootstrap/js/isotope.min.js"></script>
-	<script>
-				var swiper = new Swiper('.swiper-container', {
-					pagination: '.swiper-pagination',
-					paginationClickable: true,
-					nextButton: '.swiper-button-next',
-					prevButton: '.swiper-button-prev',
-					parallax: true,
-					speed: 600,
-					autoplay: 2500,
-					onSlideChangeStart: (function (swiper) {
-						var active = swiper.slides[swiper.activeIndex];
-						var animated = $(active).find('*[data-animation]');
-						$.each(animated, function (key, value) {
-							$(value).addClass($(value).data('animation'));
-							$(value).addClass('animated');
-						});
-					})
-				});
+   <!-- 페이징 -->
+   <section>
+      <nav class="text-center">
+         <ul id="page_append" class="pagination">
 
-			</script>
+         </ul>
+      </nav>
+   </section>
+   
+   <!-- 하단 메뉴 푸터 -->
+   <div id="footerDiv"></div>
+   
+   <script>
+      var swiper = new Swiper('.swiper-container', {
+         pagination: '.swiper-pagination',
+         paginationClickable: true,
+         nextButton: '.swiper-button-next',
+         prevButton: '.swiper-button-prev',
+         parallax: true,
+         speed: 600,
+         autoplay: 2500,
+         onSlideChangeStart: (function (swiper) {
+            var active = swiper.slides[swiper.activeIndex];
+            var animated = $(active).find('*[data-animation]');
+            $.each(animated, function (key, value) {
+               $(value).addClass($(value).data('animation'));
+               $(value).addClass('animated');
+            });
+         })
+      });
+   </script>
 
-	<!-- 즐겨찾기 등록 이벤트 핸들링 -->
-	<script>
-		//툴팁(말풍선) 넣기
-		$(document).ready(function(){
-			$('[data-toggle="tooltip"]').tooltip();   
-		});
-	</script>
+   <!-- 즐겨찾기 등록 이벤트 핸들링 -->
+   <script>
+      //툴팁(말풍선) 넣기
+      $(document).ready(function(){
+         $('[data-toggle="tooltip"]').tooltip();   
+      });
+   </script>
 
 
 
-	<!-- 내알못 / 나만의 루트 버튼 이벤트 핸들링-->
-	<script type="text/javascript">
+<!-- 내알못 / 나만의 루트 버튼 이벤트 핸들링-->
+<script type="text/javascript">
+   $(document).ready(function() {
+      /* 나만의 루트 버튼 이벤트 */
+       $('#figureMR').on('click', function() {
+          $('.portfolio *').remove(); //기존에 append 되었던 것 전부 삭제 
+          
+      var mrController = new MyRouteController();
+      var myRouteAll = mrController.requestMyRouteSelectAll();
 
-	$(document).ready(function() {
-		/* 나만의 루트 버튼 이벤트 */
-		 $('#figureMR').on('click', function() {
-			 $('.portfolio *').remove(); //기존에 append 되었던 것 전부 삭제 
-			 
-		var mrController = new MyRouteController();
-		var myRouteAll = mrController.requestMyRouteSelectAll();
-
-		for (var i = 0; i < myRouteAll.length; i++) {
-			
-			var figureMR = $('<figure class="figureMR"></figure>'); //figure태그
-			var imgMR = $('<img src="' + myRouteAll[i].titleImgURL + '"/>'); //이미지
-			var figcaptionMR = $('<figcaption></figcaption>'); //figcaption태그
-			var hTitle = $('<h2 class="hTextLine"></h2>').html(myRouteAll[i].title);
-			var pUserNicknameMR = $('<p></p>').html(myRouteAll[i].userNickName); //작성자(닉네임)
-			var pDateMR = $('<p></p>').html(myRouteAll[i].writeDate); //작성일자
-			var pReadCountMR = $('<p></p>').html(myRouteAll[i].readCount); //조회수
-			var pNumMR = $('<p hidden="hidden"></p>').html(myRouteAll[i].num); //글번호
-			
-			if(myRouteAll[i].bookmark == 1){
+      for (var i = 0; i < myRouteAll.length; i++) {
+         
+         var figureMR = $('<figure class="figureMR"></figure>'); //figure태그
+         var imgMR = $('<img src="' + myRouteAll[i].titleImgURL + '"/>'); //이미지
+         var figcaptionMR = $('<figcaption></figcaption>'); //figcaption태그
+         var hTitle = $('<h2 class="hTextLine"></h2>').html(myRouteAll[i].title);
+         var pUserNicknameMR = $('<p></p>').html(myRouteAll[i].userNickname); //작성자(닉네임)
+         var pDateMR = $('<p></p>').html(myRouteAll[i].writeDate); //작성일자
+         var pReadCountMR = $('<p></p>').html(myRouteAll[i].readCount); //조회수
+         var pNumMR = $('<p hidden="hidden"></p>').html(myRouteAll[i].num); //글번호
+         
+         if(myRouteAll[i].bookmark == 1){
                var imgBookmark = $('<img class="bookmark_star" style="opacity:1" src="/resources/bootstrap/image/bookmark_success_star.png" data-toggle="tooltip" data-placement="left" title="즐겨찾기 추가하기" />')
             } else {
                var   imgBookmark = $('<img class="bookmark_star" style="opacity:1" src="/resources/bootstrap/image/bookmark_star.png" data-toggle="tooltip" data-placement="left" title="즐겨찾기 추가하기" />')                  
             }
 
-			figcaptionMR.append(hTitle, pUserNicknameMR, pDateMR, pReadCountMR, pNumMR, imgBookmark); //figcaption태그에 작성자, 작성일자, 추천수, 글번호
-			figureMR.append(imgMR, figcaptionMR); // figure태그에 이미지, figcaption append
-			$('.portfolio').append(figureMR); //나만의 루트 div에 selectAllMR[i] 게시글 append
-			}
-		}); 
-		
-		 /* 내알못  버튼 이벤트 */		 
-		 $('#figureMHP').on('click', function() {
-			 
-			 $('.portfolio *').remove(); //기존에 append 되었던 것 전부 삭제 
-			
-		var mhpController = new MyHiddenPlaceController();
-		var myHiddenPlaceAll = mhpController.requestHiddenPlaceSelectAll();
-
-		for (var i = 0; i < myHiddenPlaceAll.length; i++) {
-			
-			var figureMHP = $('<figure class="figureMHP"></figure>'); //figure태그
-			var imgMHP = $('<img src="' + myHiddenPlaceAll[i].titleImgURL + '"/>'); //이미지
-			var figcaptionMHP = $('<figcaption></figcaption>'); //figcaption태그
-			var hTitle = $('<h2 class="hTextLine"></h2>').html(myHiddenPlaceAll[i].title);
-			var pUserNicknameMHP = $('<p></p>').html(myHiddenPlaceAll[i].userNickName); //작성자(닉네임)
-			var pDateMHP = $('<p></p>').html(myHiddenPlaceAll[i].writeDate); //작성일자
-			var pReadCountMHP = $('<p></p>').html(myHiddenPlaceAll[i].readCount); //조회수
-			var pNumMHP = $('<p hidden="hidden"></p>').html(myHiddenPlaceAll[i].num); //글번호
-			
-			if(myHiddenPlaceAll[i].bookmark == 1){
-               var imgBookmark = $('<img class="bookmark_star" style="opacity:1" src="/resources/bootstrap/image/bookmark_success_star.png" data-toggle="tooltip" data-placement="left" title="즐겨찾기 추가하기" />')
-            } else {
-               var   imgBookmark = $('<img class="bookmark_star" style="opacity:1" src="/resources/bootstrap/image/bookmark_star.png" data-toggle="tooltip" data-placement="left" title="즐겨찾기 추가하기" />')                  
-            }
-
-			figcaptionMHP.append(hTitle, pUserNicknameMHP, pDateMHP, pReadCountMHP, pNumMHP, imgBookmark); //figcaption태그에 작성자, 작성일자, 추천수, 글번호
-			figureMHP.append(imgMHP, figcaptionMHP); // figure태그에 이미지, figcaption append
-			$('.portfolio').append(figureMHP); //내알못 div에 selectAllMHP[i] 게시글 append
-			}
-		 });
-		 
-	});
+         figcaptionMR.append(hTitle, pUserNicknameMR, pDateMR, pReadCountMR, pNumMR, imgBookmark); //figcaption태그에 작성자, 작성일자, 추천수, 글번호
+         figureMR.append(imgMR, figcaptionMR); // figure태그에 이미지, figcaption append
+         $('.portfolio').append(figureMR); //나만의 루트 div에 selectAllMR[i] 게시글 append
+         }
+      }); 
+      
+   });
 </script>
 
 <!-- 내알못 목록 호출 핸들링(페이징 검색 테마 포함) -->
 <script>
 
-$(document).ready(function() {
-	
-   var url = decodeURI(location.href); 
-   
-   var keyWordUrl = url.split('='); 
-   var keyWord = keyWordUrl[1];
-   
-   if(keyWord == undefined){
-	 keyWord = "";
-   }
-	
-	var pageController  = new PageController();
-  	var mhpController = new MyHiddenPlaceController();
-  	var searchController = new SearchController();
-	var endPage;
-  	var startPage; 
-  	var themeCode = 0;
-  	var page = 1;
-  	
-  	mhpSelectAll();
+   $(document).ready(function() {
+      
+      var url = decodeURI(location.href); 
+      
+      var keyWordUrl = url.split('='); 
+      var keyWord = keyWordUrl[1];
+      
+      if(keyWord == undefined){
+       keyWord = "";
+      }
+      
+       var mhpController = new MyHiddenPlaceController();
+      var pageController  = new PageController();
+        var mhpController = new MyHiddenPlaceController();
+        var searchController = new SearchController();
+      var endPage;
+        var startPage; 
+        var themeCode = 0;
+        var page = 1;
         
-        // 페이지 버튼 클릭시
-        $(document).on("click","#page_append a", function(){
-        	
-            page = $(this).text(); //내가 클릭한 페이지의 번호를 가져온다.
-            
-            if(page == $("#laquo").text()){ //왼쪽 그림 클릭 했을시
-             	page = startPage - 1;
-             } 
-            
-            if(page == $("#raquo").text()){ //오른쪽 그림 클릭 했을시
-             	page = endPage + 1;
-             } 
-            
+        mhpSelectAll();
+           
+           // 페이지 버튼 클릭시
+           $(document).on("click","#page_append a", function(){
+              
+               page = $(this).text(); //내가 클릭한 페이지의 번호를 가져온다.
+               
+               if(page == $("#laquo").text()){ //왼쪽 그림 클릭 했을시
+                   page = startPage - 1;
+                } 
+               
+               if(page == $("#raquo").text()){ //오른쪽 그림 클릭 했을시
+                   page = endPage + 1;
+                } 
+               
+               mhpSelectAll();
+   
+           });
+           
+           // 테마별 목록 버튼 이벤트 핸들링
+         $(document).on("click","#theme_category button", function(){
+   
+             var num = $(this).children().eq(2).text();
+             themeCode = num;//테마 코드 담기
+             page = 1;
+             mhpSelectAll();
+          
+         });
+   
+   
+          /* 내알못  버튼 이벤트 */       
+          $('#figureMHP').on('click', function() {
+             
             mhpSelectAll();
-
-        });
-        
-        // 테마별 목록 버튼 이벤트 핸들링
-		$(document).on("click","#theme_category button", function(){
-
-			 var num = $(this).children().eq(2).text();
-			 themeCode = num;//테마 코드 담기
-			 page = 1;
-			 mhpSelectAll();
-		 
-		});
-        
-	    // 검색시 이벤트 핸들링
-	    $('#search_button').click(function() {
-		 
-	    	keyWord = $('#search_bar').val();
-	    	themeCode = 0;
-	    	page = 1;
-	    	mhpSelectAll();
-	    	
-	    });
-	    
-	    //목록 호출
-	    function mhpSelectAll() {
-
-	      	var myHiddenPlaceAll = searchController.requestSearch(themeCode, page, keyWord);
-	    	var pageMaker = pageController.requestPage(themeCode, page, keyWord);
-	    	var nowLoginId = localStorage.getItem('userId');
-			var bookmarkAll = mhpController.requestBookmarkAllMHP(nowLoginId);
-			
-	    	endPage = pageMaker.endPage;
-	      	startPage = pageMaker.startPage; 
-	    	
-	    	$('.portfolio *').remove(); //기존에 어펜드되있던 목록들을 싹다 지운다.
-            $('#page_append *').remove(); //기존에 어펜드되있던 목록들을 싹다 지운다.
+          
+          });
+          
+          /* 글조회 (MHP) 이벤트 핸들링 */
+           $('.figureMHP').on('click', function() {
+                   var num = $(this).children().eq(1).children().eq(4).text();
+                   var mhpController = new MyHiddenPlaceController();
+                   mhpController.requestSelectOneMhpPage(num);
+            });
+          
+           //목록 호출
+          function mhpSelectAll() {
+   
+               var myHiddenPlaceAll = searchController.requestSearch(themeCode, page, keyWord);
+             var pageMaker = pageController.requestPage(themeCode, page, keyWord);
+             var nowLoginId = localStorage.getItem('userId');
+            var bookmarkAll = mhpController.requestBookmarkAllMHP(nowLoginId);
+            var themeCategoryAll = mhpController.requestThemeCategory();
             
-			if(nowLoginId == null) {
-				
-				for (var i = 0; i < myHiddenPlaceAll.length; i++) {
-
-					var figureMHP = $('<figure class="figureMHP" data-animation="fadeIn"></figure>'); //figure태그
-					var imgMHP = $('<img class="imgSize" src="' + myHiddenPlaceAll[i].titleImgURL + '"/>'); //이미지
-					var figcaptionMHP = $('<figcaption></figcaption>'); //figcaption태그
-					var hTitle = $('<h2 class="hTextLine"></h2>').html(myHiddenPlaceAll[i].title);
-					var pUserNicknameMHP = $('<p></p>').html(myHiddenPlaceAll[i].userNickname); //작성자
-					var pDateMHP = $('<p></p>').html(myHiddenPlaceAll[i].writeDate); //작성일자
-					var pReadCountMHP = $('<p></p>').html(myHiddenPlaceAll[i].readCount); //조회수
-					var pNumMHP = $('<p hidden></p>').html(myHiddenPlaceAll[i].num); //글번호
-					
-					figcaptionMHP.append(hTitle, pUserNicknameMHP, pDateMHP, pReadCountMHP, pNumMHP); //figcaption태그에 작성자, 작성일자, 추천수, 글번호
-					figureMHP.append(imgMHP, figcaptionMHP); // figure태그에 이미지, figcaption append
-					$('.portfolio').append(figureMHP); //내알못 div에 bestMHP[i] 게시글 append
-
-				}
-				
-			} else {
-			
-				for (var i = 0; i < myHiddenPlaceAll.length; i++) {
-
-					var figureMHP = $('<figure class="figureMHP" data-animation="fadeIn"></figure>'); //figure태그
-					var imgMHP = $('<img class="imgSize" src="' + myHiddenPlaceAll[i].titleImgURL + '"/>'); //이미지
-					var figcaptionMHP = $('<figcaption></figcaption>'); //figcaption태그
-					var hTitle = $('<h2 class="hTextLine"></h2>').html(myHiddenPlaceAll[i].title);
-					var pUserNicknameMHP = $('<p></p>').html(myHiddenPlaceAll[i].userNickName); //작성자
-					var pDateMHP = $('<p></p>').html(myHiddenPlaceAll[i].writeDate); //작성일자
-					var pReadCountMHP = $('<p></p>').html(myHiddenPlaceAll[i].readCount); //추천수
-					var pNumMHP = $('<p hidden></p>').html(myHiddenPlaceAll[i].num); //글번호
-					
-					if(bookmarkAll.length > 0) {
-						
-						for(var j = 0; j < bookmarkAll.length; j++) {
-						
-							if(myHiddenPlaceAll[i].num == bookmarkAll[j].num) {
-								var imgBookmark = $('<img class="bookmark_star" style="opacity:1" src="/resources/customize/images/bookmark_success_star.png" data-toggle="tooltip" data-placement="left" title="즐겨찾기 삭제하기" />');
-								break;
-							} else {
-								var	imgBookmark = $('<img class="bookmark_star" style="opacity:1" src="/resources/customize/images/bookmark_star.png" data-toggle="tooltip" data-placement="left" title="즐겨찾기 추가하기" />');
-							}
-							
-						}
-						
-					} else {
-						var	imgBookmark = $('<img class="bookmark_star" style="opacity:1" src="/resources/customize/images/bookmark_star.png" data-toggle="tooltip" data-placement="left" title="즐겨찾기 추가하기" />');
-					}
- 
-				figcaptionMHP.append(hTitle, pUserNicknameMHP, pDateMHP, pReadCountMHP, pNumMHP, imgBookmark); //figcaption태그에 작성자, 작성일자, 추천수, 글번호
-				figureMHP.append(imgMHP, figcaptionMHP); // figure태그에 이미지, figcaption append
-				$('.portfolio').append(figureMHP); //내알못 div에 bestMHP[i] 게시글 append
-					
-				}
-				
-			}
+             endPage = pageMaker.endPage;
+               startPage = pageMaker.startPage; 
+             
+             $('.portfolio *').remove(); //기존에 어펜드되있던 목록들을 싹다 지운다.
+               $('#page_append *').remove(); //기존에 어펜드되있던 목록들을 싹다 지운다.
+               $('#theme_category *').remove(); //기존에 어펜드되있던 목록들을 싹다 지운다.
+               $('#main_img_div *').remove(); //기존에 어펜드되있던 목록들을 싹다 지운다.
+            if(nowLoginId == null) {
+               
+               for (var i = 0; i < myHiddenPlaceAll.length; i++) {
+                  
+                  var figureMHP = $('<figure class="figureMHP" data-animation="fadeIn"></figure>'); //figure태그
+                  var imgMHP = $('<img class="imgSize" src="' + myHiddenPlaceAll[i].titleImgURL + '"/>'); //이미지
+                  var figcaptionMHP = $('<figcaption></figcaption>'); //figcaption태그
+                  var hTitle = $('<h2 class="hTextLine"></h2>').html(myHiddenPlaceAll[i].title);
+                  var pUserNicknameMHP = $('<p></p>').html(myHiddenPlaceAll[i].userNickname); //작성자
+                  var pDateMHP = $('<p class="data"></p>').html(myHiddenPlaceAll[i].writeDate.substring(0, 10)); //작성일자
+                  var pReadCountMHP = $('<p class="data2"></p>').html(myHiddenPlaceAll[i].readCount); //조회수
+                  var pNumMHP = $('<p hidden></p>').html(myHiddenPlaceAll[i].num); //글번호
+                  
+                  figcaptionMHP.append(hTitle, pUserNicknameMHP, pDateMHP, pReadCountMHP, pNumMHP); //figcaption태그에 작성자, 작성일자, 추천수, 글번호
+                  figureMHP.append(imgMHP, figcaptionMHP); // figure태그에 이미지, figcaption append
+                  $('.portfolio').append(figureMHP); //내알못 div에 bestMHP[i] 게시글 append
+   
+               }
+               
+            } else {
             
-           //페이지 번호 처리
-		   if(pageMaker.prev == true) {//왼쪽그림 링크/ 링크 누르면 필요한것 startPage- 1, page,perPageNum,searchType,keyword
-	           var laquo_link =  $('<li><a id = "laquo" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>');
-	           $('#page_append').append(laquo_link); //최종 append 
-	       }
-	       
-	         for(var i = 0 ; pageMaker.startPage < pageMaker.endPage + 1  ; pageMaker.startPage++ ){
-	           
-	           if(page == pageMaker.startPage){ //클릭이 됬을때는 a링크 없애고 버튼 활성화  이걸로 다시 바꾸기 pageMaker.cri.page
-	                 
-	                var displayPageNum_active =  $('<li class = "active"><a>'+pageMaker.startPage+'</a></li>');
-	                $('#page_append').append(displayPageNum_active); //최종 append 
-	                 
-	           }else{  //우리는 active 클래스 정의된게 없어서 클래스만 추가됨 해당 번호에 
-	        	 
-	           		var displayPageNum_nonActive =  $('<li><a>'+pageMaker.startPage+'</a></li>'); //누르면 서치이벤트 페이지 전환되야함
-  		            $('#page_append').append(displayPageNum_nonActive); //최종 append 
-	          
-	           }
-	           i++; 
-	           
-	           }
+               for (var i = 0; i < myHiddenPlaceAll.length; i++) {
+   
+                  var figureMHP = $('<figure class="figureMHP" data-animation="fadeIn"></figure>'); //figure태그
+                  var imgMHP = $('<img class="imgSize" src="' + myHiddenPlaceAll[i].titleImgURL + '"/>'); //이미지
+                  var figcaptionMHP = $('<figcaption></figcaption>'); //figcaption태그
+                  var hTitle = $('<h2 class="hTextLine"></h2>').html(myHiddenPlaceAll[i].title);
+                  var pUserNicknameMHP = $('<p></p>').html(myHiddenPlaceAll[i].userNickname); //작성자
+                  var pDateMHP = $('<p></p>').html(myHiddenPlaceAll[i].writeDate.substring(0, 10)); //작성일자
+                  var pReadCountMHP = $('<p></p>').html(myHiddenPlaceAll[i].readCount); //추천수
+                  var pNumMHP = $('<p hidden></p>').html(myHiddenPlaceAll[i].num); //글번호
+                  var imgBookmark;
+                  
+                  if(bookmarkAll.length > 0) {
+                     
+                     for(var j = 0; j < bookmarkAll.length; j++) {
+                     
+                        if(myHiddenPlaceAll[i].num == bookmarkAll[j].num) {
+                           imgBookmark = $('<img class="bookmark_star" style="opacity:1;" src="/resources/customize/images/bookmark_success_star.png" data-toggle="tooltip" data-placement="left" title="즐겨찾기 삭제하기" />');
+                           break;
+                        } else {
+                           imgBookmark = $('<img class="bookmark_star" style="opacity:1;" src="/resources/customize/images/bookmark_star.png" data-toggle="tooltip" data-placement="left" title="즐겨찾기 추가하기" />');
+                        }
+                        
+                     }
+                     
+                  } else {
+                     imgBookmark = $('<img class="bookmark_star" style="opacity:1;" src="/resources/customize/images/bookmark_star.png" data-toggle="tooltip" data-placement="left" title="즐겨찾기 추가하기" />');
+                  }
+                  
+               figcaptionMHP.append(hTitle, pUserNicknameMHP, pDateMHP, pReadCountMHP, pNumMHP, imgBookmark); //figcaption태그에 작성자, 작성일자, 추천수, 글번호
+               figureMHP.append(imgMHP, figcaptionMHP); // figure태그에 이미지, figcaption append
+               $('.portfolio').append(figureMHP); //내알못 div에 bestMHP[i] 게시글 append
+                  
+               }
+               
+            }
+               
+              //페이지 번호 처리
+            if(pageMaker.prev == true) {//왼쪽그림 링크/ 링크 누르면 필요한것 startPage- 1, page,perPageNum,searchType,keyword
+                 var laquo_link =  $('<li><a id = "laquo" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>');
+                 $('#page_append').append(laquo_link); //최종 append 
+             }
+             
+               for(var i = 0 ; pageMaker.startPage < pageMaker.endPage + 1  ; pageMaker.startPage++ ){
+                 
+                 if(page == pageMaker.startPage){ //클릭이 됬을때는 a링크 없애고 버튼 활성화  이걸로 다시 바꾸기 pageMaker.cri.page
+                       
+                      var displayPageNum_active =  $('<li class = "active"><a>'+pageMaker.startPage+'</a></li>');
+                      $('#page_append').append(displayPageNum_active); //최종 append 
+                       
+                 }else{  //우리는 active 클래스 정의된게 없어서 클래스만 추가됨 해당 번호에 
+                  
+                       var displayPageNum_nonActive =  $('<li><a>'+pageMaker.startPage+'</a></li>'); //누르면 서치이벤트 페이지 전환되야함
+                       $('#page_append').append(displayPageNum_nonActive); //최종 append 
+                
+                 }
+                 i++; 
+                 
+                 }
+   
+              if(pageMaker.next > 0 && pageMaker.endPage > 0) {//오른쪽그림 링크/ 링크 누르면 필요한것 startPage- 1, page,perPageNum,searchType,keyword
+                  var raquo_link =  $(' <li><a aria-label="Next" id = "raquo" ><span aria-hidden="true">&raquo;</span></a></li>');
+                  $('#page_append').append(raquo_link); //최종 append 
+              } 
+             
+              /* 테마 카테고리 불러오기  이벤트 핸들링 */
+            for (var i = 0; i < themeCategoryAll.length; i++) {
+               
+               var buttonTheme;
+               
+               buttonTheme = $('<button class="btn btn" data-filter="*"></button>'); //button태그
+               
+               if(themeCode == themeCategoryAll[i].themeCode){ //내가 클릭한것과 같으면
+                  buttonTheme = $('<button class="btn btn" data-filter="*" id = "theme_category_active"></button>'); //button태그
+                  var themeImage= $('<img id="main_img" src="/resources/bootstrap/image/themeImage' + themeCategoryAll[i].themeCode + '.jpg">');
+                  
+                  if(themeCode == 5 || themeCode == 6){
+                     themeImage= $('<img id="main_img_park" src="/resources/bootstrap/image/themeImage' + themeCategoryAll[i].themeCode + '.jpg">');
+                  }
+                  
+                  var mainTitle = $('<div id="main_title"><p>Hidden Places</p></div>');
+                  $('#main_img_div').append(themeImage,mainTitle);
 
-	        if(pageMaker.next > 0 && pageMaker.endPage > 0) {//오른쪽그림 링크/ 링크 누르면 필요한것 startPage- 1, page,perPageNum,searchType,keyword
-	            var raquo_link =  $(' <li><a aria-label="Next" id = "raquo" ><span aria-hidden="true">&raquo;</span></a></li>');
-	            $('#page_append').append(raquo_link); //최종 append 
-	        } 
-	      
-	   }
-        
- });
+                  
+               }
+               
+               var imgTheme = $('<img class="category" src="/resources/bootstrap/image/theme' + themeCategoryAll[i].themeCode + '.png"/>'); //이미지
+               var pThemeName = $('<p>' + themeCategoryAll[i].themeName + '</p>'); //button 이름 태그
+               var pThemeCode = $('<p hidden="hidden">' + themeCategoryAll[i].themeCode + '</p>'); //button 테마 코드 태그
+               
+               buttonTheme.append(imgTheme, pThemeName, pThemeCode); //buttonTheme태그에 이미지 append
+               $('#theme_category').append(buttonTheme); //테마 카테고리 div에 themeCategoryAll[i] 카테고리 append
+               
+            }
+            
+         }
+           
+    });
  
 </script>
 
+<!-- 즐겨찾기 등록 이벤트 핸들링 -->
+<script>
 
-	<!-- 즐겨찾기 등록 이벤트 핸들링 -->
-	<script>
-	//툴팁(말풍선) 넣기
-	$(document).ready(function(){
-		$('[data-toggle="tooltip"]').tooltip();   
-	});
-</script>
-
-	<!-- 테마 카테고리 불러오기  이벤트 핸들링-->
-	<script type="text/javascript">
-	$(document).ready(function() {
-
-		var mhpController = new MyHiddenPlaceController();
-		var themeCategoryAll = mhpController.requestThemeCategory();
-
-		for (var i = 0; i < themeCategoryAll.length; i++) {
-			
-			var buttonTheme = $('<button class="btn btn themeCategory"></button>'); //button태그
-			var imgTheme = $('<img class="category" src="/resources/bootstrap/image/theme' + themeCategoryAll[i].themeCode + '.png"/>'); //이미지
-			var pThemeName = $('<p>' + themeCategoryAll[i].themeName + '</p>'); //button 이름 태그
-			var pThemeCode = $('<p hidden="hidden">' + themeCategoryAll[i].themeCode + '</p>'); //button 테마 코드 태그
-			
-			buttonTheme.append(imgTheme, pThemeName, pThemeCode); //buttonTheme태그에 이미지 append
-			$('#theme_category').append(buttonTheme); //테마 카테고리 div에 themeCategoryAll[i] 카테고리 append
-		}
-		
-	});
-	
+   //툴팁(말풍선) 넣기
+   $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();   
+   });
+   
 </script>
 
 </body>

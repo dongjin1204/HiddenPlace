@@ -340,11 +340,26 @@ $(document).ready(function(){
 });
 </script>
 
+
+<script>
+$(document).ready(function() {
+	$("#headerDiv").load("/resources/js/include/header.html");
+});
+</script>
+
+<script>
+$(document).ready(function() {
+	$("#footerDiv").load("/resources/js/include/footer.html");
+});
+</script>
+
 </head>
 
-
+<!-- 상단 메뉴 헤더 -->
+<div id="headerDiv"></div>
 
 <body>
+   <br><br><br><br><br><br>
    <div class="row"></div>
 
    <div class="col-md-2"></div>
@@ -425,5 +440,8 @@ $(document).ready(function(){
       <button type="submit" id="success_button" name="submit"
          class="btn btn-primary pull-right">Submit Form</button>
    </div>
+   
+   <!-- 하단 메뉴 푸터 -->
+   <div id="footerDiv"></div>
 </body>
 </html>

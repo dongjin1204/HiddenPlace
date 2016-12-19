@@ -2,34 +2,50 @@
 <html lang="en">
 
 <head>
-<title>inquiry</title>
+<title>조회</title>
 <meta charset="utf-8">
 <meta name="viewport"
    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <link rel="shortcut icon" href="images/favicon.ico" />
-<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<link
+   href='https://fonts.googleapis.com/css?family=Lato:400,300,700&amp;subset=latin,latin-ext'
+   rel='stylesheet' type='text/css'>
 <!-- <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/> -->
-<link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/animate.css" />
-<link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/font-awesome.min.css" />
-<link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/style.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css"
+   href="/resources/bootstrap/css/animate.css" />
+<link rel="stylesheet" type="text/css"
+   href="/resources/bootstrap/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css"
+   href="/resources/bootstrap/css/style.css" />
+<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="/resources/js/myhiddenplace/myHiddenPlaceController.js"></script>
 <!-- <script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=   f617f92098af4b2430be59f43550867c"></script> -->
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script src="/resources/js/user/userController.js"></script>
 <script src="/resources/js/homepage/homepageController.js"></script>
-<script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=   f617f92098af4b2430be59f43550867c"></script>
+<script type="text/javascript"
+   src="http://apis.daum.net/maps/maps3.js?apikey=   f617f92098af4b2430be59f43550867c"></script>
 
 <link rel="shortcut icon" href="images/favicon.ico" />
-<link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/swiper.min.css" />
-<link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/style.css" />
-<link rel="stylesheet" type="text/css" href="/resources/customize/css/homepageView.css" />
-<link rel="stylesheet" type="text/css" href="/resources/customize/css/header.css" />
+<link rel="stylesheet" type="text/css"
+   href="/resources/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"
+   href="/resources/bootstrap/css/swiper.min.css" />
+<link rel="stylesheet" type="text/css"
+   href="/resources/bootstrap/css/style.css" />
+<!-- <link rel="stylesheet" type="text/css" -->
+<!--    href="/resources/customize/css/homepageView.css" /> -->
+<link rel="stylesheet" type="text/css"
+   href="/resources/customize/css/header.css" />
+<link rel="stylesheet" type="text/css"
+   href="/resources/customize/css/myHiddenPlaceSelectOneStyle.css" />
+<link href="https://fonts.googleapis.com/css?family=Indie+Flower"
+   rel="stylesheet">
 
 <script src="/resources/bootstrap/js/pace.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 <script src="/resources/bootstrap/js/swiper.jquery.min.js"></script>
 <script src="/resources/bootstrap/js/animate-on-scroll.js"></script>
@@ -61,20 +77,35 @@
    margin-top: 50px;
 }
 
-#commentUpdateText {
-   width: 100%;
-   resize: none;
-}
 /* 하트 */
 #up {
    margin-top: 10%;
-   margin-left: 39%;
    width: 50px;
    height: 50px;
+   text-align: center;
 }
 /* 입력 */
 #commentParentSubmit {
    float: right;
+   border-radius: 20px;
+   border: 1px solid #cccccc;
+   margin-right: 10px;
+}
+
+#commentParentSubmit:hover {
+   opacity: 0.5;
+   color: #00c3bd;
+   background-color: white;
+   border-color: #00c3bd;
+}
+
+#commentUpdateText {
+   width: 100%;
+   resize: none;
+   background-color: white;
+   border: 1px solid #cccccc;
+   margin-bottom: 5px;
+   margin-top: 5px;
 }
 
 #recommended {
@@ -100,27 +131,44 @@
 }
 
 .btn-group {
-   margin-right: 260px;
-   float: right;;
+   float: right;
+}
+
+.btn-border {
+   background-color: white;
+   margin-right: 5;
 }
 
 #main_hiddenPlace {
-   margin-top: 30px;
+   margin-top: 0px;
+   background-color: #fbfbfb;
 }
 
 .title {
    text-align: center;
    color: white;
 }
+/* 목록수정삭제버튼 */
+#button_group {
+   margin-top: 1%;
+}
 
-#btn-delete {
-   /* /* margin-left:4%; */
-   margin-right: 0%;
+#btn-selectAll {
+   margin: 0;
+   float: right;
+   margin-right: 1%;
 }
 
 #btn-update {
-   margin-left: 79%;
-   margin-right: -2%;
+   margin: 0;
+   margin-right: 1%;
+   float: right;
+}
+
+#btn-delete {
+   margin: 0;
+   margin-right: 1%;
+   float: right;
 }
 
 #up_count {
@@ -128,12 +176,11 @@
 }
 
 #up_count_img {
-   margin-left: 15.5%;
+   text-align: center;
 }
 
 .title {
    max-width: 600px;
-   position: absolute;
    left: 30%;
    top: 285px;
 }
@@ -151,11 +198,11 @@
    color: white;
 }
 
-.userNickname {
+#userNickname {
    max-width: 600px;
    position: absolute;
    left: 90%;
-   top: 430px;
+   top: 700px;
    color: white;
 }
 
@@ -163,43 +210,81 @@
    width: 100%;
    font-size: 35px;
 }
-
+/* 테이블  */
 .table-condensed {
-   margin-left: 30%;
+   /*    margin-left: 30%; */
    margin-top: 5%;
-   margin-right: 25%;
+   /*    margin-right: 25%; */
+   border: 0 #cccccc;
 }
 
-#commentParentSubmit {
-   margin: 0;
+.table-border {
+   border: 1 #cccccc;
+   background: white
+}
+
+#r1:hover {
+   opacity: 0.8;
+   color: #d9534f;
 }
 
 .hiddenPlace_img {
    opacity: 0.7;
 }
+/* 수정확인버튼 */
+.form-group {
+   float: right;
+}
 
 #commentUpdateSubmit {
    margin: 0;
+   background-color: white;
+   border: 1px solid #cccccc;
+   border-radius: 20px;
 }
 
-.reply_input {
-   
+#commentUpdateSubmit:hover {
+   background-color: white;
+   opacity: 0.5;
+   color: #00c3bd;
+   border-color: #00c3bd;
+}
+
+#commentCancel {
+   margin: 0;
+   margin-left: 3px;
+   background-color: white;
+   border: 1px solid #cccccc;
+   border-radius: 20px;
+}
+
+#commentCancel:hover {
+   background-color: white;
+   opacity: 0.5;
+   color: #00c3bd;
+   border-color: #00c3bd;
 }
 
 #commentParentText {
    margin-left: 1%;
    margin-right: 0%;
-   width: 80%;
+   margin-top: 1.5%;
+   width: 100%;
+   resize: none;
+   border: 0 #cccccc;
 }
 
 #reply_line {
-   width: 1000px;
-   margin: auto;
-   margin-top: -2%;
+   margin-top: 0%;
+   margin-bottom: 0%;
+   border: 0;
+   border-top: 1px solid #d9534f;
+   width: 45px;
+   float: left;
 }
 
 #commentTable {
-   margin-top: -10%;
+   margin-top: -20%;
 }
 
 #reply_underLine {
@@ -207,11 +292,33 @@
    border-top: 1px solid #cccccc;
    width: 100%;
 }
+
+h4 {
+   margin-top: 3%;
+   margin-bottom: 0%;
+   text-align: left;
+}
+
+h4:hover {
+   opacity: 0.5;
+   color: black;
+}
+
+#line {
+   border: 0;
+   border-top: 1px solid #cccccc;
+}
+
+#commentEditor {
+   border: 3px soild black;
+}
 </style>
 
 <!-- 내알못 조회 이벤트 핸들링 -->
 <script type="text/javascript">
-   $(document).ready(function() {
+   $(document)
+         .ready(
+               function() {
 
                   var url = unescape(location.href); // url = http://localhost:8080/user/forgetPwUpdateView/pty0902@naver.com
                   var numUrl = url.split('='); // pm[0] = http: , pm[1] = , 
@@ -221,62 +328,71 @@
                   var homepageController = new HomepageController();
                   var userId = localStorage.getItem('userId');
                   var upImage;
-                  var nickname = userController.requestGetNickname(userId);
-                  var upCountCode = mhpController.requestUpCountCode(userId, num);
-                  if(userId != null) {
+                  var nickname = userController
+                        .requestGetNickname(userId);
+                  var upCountCode = mhpController.requestUpCountCode(
+                        userId, num);
+                  if (userId != null) {
                      if (upCountCode == 1) {
                         upImage = $('<img id="up" class="hiddenPlace_logo" src="/resources/customize/images/like.png" ></div>'); // 채워진 하트 이미지
                      } else {
                         upImage = $('<img id="up" class="hiddenPlace_logo" src="/resources/customize/images/unLike.png"></div>'); //안채워진 하트 이미지
                      }
-                     
-                     replyButton = $('<button type="button" id="commentParentSubmit" name="commentParentSubmit" class="btn btn-default">입력</button>');
-                      $('#replyButton').append(replyButton);
-                  } else {
-                     
-                     upImage = $('<img id="up" class="hiddenPlace_logo" src="/resources/customize/images/unLike.png" data-toggle="modal" data-target="#login-modal"></div>');
-                      $('#up_count_img').append(upImage);
-                      $('#up').click(function() {
-                           alert("로그인 후 이용가능합니다.");
-                           });
-                      replyButton = $('<button type="button" id="commentParentSubmit" name="commentParentSubmit" class="btn btn-default" data-toggle="modal" data-target="#login-modal">입력</button>');
-                      $('#replyButton').append(replyButton); 
-                      $('#commentParentSubmit').click(function() {
-                         $("#commentParentText").val("");   
-                         alert("로그인 후 이용가능합니다.");
-                           });
-                  }
-                  
-                  var myHiddenPlace = mhpController.requestSelectOneMHP(num); // 임의에 글번호 14번을 넣어놈(목록에서 받아오면됨)
 
+                     replyButton = $('<button type="button" id="commentParentSubmit" name="commentParentSubmit" class="btn btn-default">입력</button>');
+                     $('#replyButton').append(replyButton);
+                  } else {
+
+                     upImage = $('<img id="up" class="hiddenPlace_logo" src="/resources/customize/images/unLike.png" data-toggle="modal" data-target="#login-modal"></div>');
+                     $('#up_count_img').append(upImage);
+                     $('#up').click(function() {
+                        alert("로그인 후 이용가능합니다.");
+                     });
+                     replyButton = $('<button type="button" id="commentParentSubmit" name="commentParentSubmit" class="btn btn-default" data-toggle="modal" data-target="#login-modal">입력</button>');
+                     $('#replyButton').append(replyButton);
+                     $('#commentParentSubmit').click(function() {
+                        $("#commentParentText").val("");
+                        alert("로그인 후 이용가능합니다.");
+                     });
+                  }
+                  var myHiddenPlace = mhpController
+                        .requestSelectOneMHP(num); // 임의에 글번호 14번을 넣어놈(목록에서 받아오면됨)
                   //상단 메인 사진과 제목 만드는 코드
-                  var titleimage = $('<img style="width: 100%; height: 100%" class="hiddenPlace_img" src=" '+ myHiddenPlace.titleImgURL + ' ">'); //타이틀 이미지
-                  var title = $('<div id="title_div">' + myHiddenPlace.title + '</div>'); //제목 내용 들어가는 부분
-                  var storeName = $('<div id="storeName">' + myHiddenPlace.storeName + '</div>'); //상호명 내용 들어가는 부분
-                  var userNickname = $('<div id="userNickname">작성자 : ' + myHiddenPlace.userNickname + '</div>'); //상호명 내용 들어가는 부분
-                  $('#mainImageAndTitle').append(titleimage);
-                  $('.title').append(title);
-                  $('.store_name').append(storeName);
-                  $('.userNickname').append(userNickname);
+                  var titleimage = $('<img style="width: 100%; height: 100%"  id="main_img" src=" '
+                        + myHiddenPlace.titleImgURL + ' ">'); //타이틀 이미지
+                  //                   var titleimage = $('<div id="main_img" style="background-image: url(' + myHiddenPlace.titleImgURL + ');"></div>');
+
+                  var storeNameAndTitle = $('<div id="main_letter"></div>');
+                  var storeName = $('<p class="storeName">'
+                        + myHiddenPlace.storeName + '</p>');
+                  var title = $('<p class = "title">'
+                        + myHiddenPlace.title + '</p>');
+                  var userNickname = $('<div id="userNickname">작성자 : '
+                        + myHiddenPlace.userNickname + '</div>'); //상호명 내용 들어가는 부분
+                  var main_letter = storeNameAndTitle.append(storeName,
+                        title);
+                  $('#titleImgBox').append(titleimage, main_letter,
+                        userNickname);
+
                   //사진&내용 만드는 코드
                   var content_left = $('<div class="col-sm-2"></div>');
-                  var content_mid = $('<div class="col-sm-8">' + myHiddenPlace.content + '</div>'); // 받아오는게 아직 없어서 오류남
+                  var content_mid = $('<div class="col-sm-8">'
+                        + myHiddenPlace.content + '</div>'); // 받아오는게 아직 없어서 오류남
                   var content_right = $('<div class="col-sm-2"></div>');
-                  $('#hiddenPlaceContent').append(content_left, content_mid, content_right);
+                  $('#hiddenPlaceContent').append(content_left,
+                        content_mid, content_right);
 
-                  
-                  alert(userId);
-                  alert(myHiddenPlace.userId);
-                  if(userId == myHiddenPlace.userId){ //현재 로그인된 아이디와 글을쓴아이디가 같다면 수정과 삭제버튼 추가
-                 	 var upanddeletebutton = $('<center><button class="btn btn-default" id ="btn-selectAll">목록</button><button class="btn btn-default" id ="btn-update">수정</button><button class="btn btn-default" id = "btn-delete">삭제</button></center>');
-                  }else {
-                	 var upanddeletebutton= $('<center><button class="btn btn-default" id ="btn-selectAll">목록</button></center>');                        
+                  if (userId == myHiddenPlace.userId) { //현재 로그인된 아이디와 글을쓴아이디가 같다면 수정과 삭제버튼 추가
+                     var upanddeletebutton = $(' <button class="btn btn-default" id = "btn-delete">삭제</button><button class="btn btn-default" id ="btn-update">수정</button> <button class="btn btn-default" id ="btn-selectAll">목록</button> ');
+                  } else {
+                     var upanddeletebutton = $('<button class="btn btn-default" id ="btn-selectAll">목록</button>');
                   }
 
                   //수정 삭제 버튼
                   $('#button_group').append(upanddeletebutton);
                   //추천수 만드는 코드
-                  var upcount = $('<div>' + myHiddenPlace.upCount + '</div>');
+                  var upcount = $('<div>' + myHiddenPlace.upCount
+                        + '</div>');
                   $('#up_count').append(upcount);
                   $('#up_count_img').append(upImage);
 
@@ -320,30 +436,36 @@
                   //                   });    
 
                   //추천수 버튼 이벤트 발생
-                  
-                  $('#up').click(function() {
-                     if(userId != null) {
-                        if (upCountCode == 1) {
-                           alert("이미 추천했습니다.");
-                        } else {
-                              var likeImg = document.getElementById("up");
-                              likeImg.src = "/resources/customize/images/like.png"
-         
-                              var isSuccess = mhpController.requestUpCount(1, userId, num); //추천수 1증가시키고, db에 저장 
-         
-                              if (isSuccess == "success") {
-                                 window.location.reload();
-                              }
-   
-                           }
-                        }
-                     });
+
+                  $('#up')
+                        .click(
+                              function() {
+                                 if (userId != null) {
+                                    if (upCountCode == 1) {
+                                       alert("이미 추천했습니다.");
+                                    } else {
+                                       var likeImg = document
+                                             .getElementById("up");
+                                       likeImg.src = "/resources/customize/images/like.png"
+
+                                       var isSuccess = mhpController
+                                             .requestUpCount(1,
+                                                   userId, num); //추천수 1증가시키고, db에 저장 
+
+                                       if (isSuccess == "success") {
+                                          window.location
+                                                .reload();
+                                       }
+
+                                    }
+                                 }
+                              });
 
                   //목록 버튼 이벤트 발생
-				  $("#btn-selectAll").click(function() {
-						homepageController.requestSelectAllUrl();
-				  });
-                  
+                  $("#btn-selectAll").click(function() {
+                     homepageController.requestSelectAllUrl();
+                  });
+
                   //수정 버튼 이벤트 발생
                   $("#btn-update").click(function() {
                      mhpController.requestUpdateMhpPage(num);
@@ -353,6 +475,7 @@
                   $("#btn-delete").click(function() {
                      mhpController.requestMyHiddenPlaceDelete(num);
                   });
+
                   var replies = mhpController.requestReplySelectAll(num); // 임의에 글번호 1번을 넣어놈(목록에서 받아오면됨)
                   for (var i = 0; i < replies.length; i++) {
                      if (replies[i].userId == userId) {
@@ -397,18 +520,24 @@
 
                   }
                   //댓글을 다는 이벤트
-                  $("#commentParentSubmit").click(function() {
+                  $("#commentParentSubmit")
+                        .click(
+                              function() {
                                  //ajax로 저장하고 성공하면 저장한 데이터를 가져와 넣어야 하는데 여기서는 테스트라 그냥 입력값을 가져옴                       
                                  var comment = $(
                                        "#commentParentText").val();
-                                 if ($.trim(comment) == "") {0
-                                    if(userId != null){
-                                    alert("내용을 입력하세요.");
-                                    $("#commentParentText").focus();
+                                 if ($.trim(comment) == "") {
+                                    0
+                                    if (userId != null) {
+                                       alert("내용을 입력하세요.");
+                                       $("#commentParentText")
+                                             .focus();
                                     }
                                     return;
                                  }
-                                 var isSuccess = mhpController.requestReplyInsert(userId,comment, num); // 서버 댓글번호 증가시켜줘야함.
+                                 var isSuccess = mhpController
+                                       .requestReplyInsert(userId,
+                                             comment, num); // 서버 댓글번호 증가시켜줘야함.
                                  if (isSuccess == "success") {
                                     $("#commentParentText").val("");
                                     window.location.reload();
@@ -417,25 +546,18 @@
                               });
 
                   /* 댓글 수정 버튼 클릭시 */
-                  $(document).on(
-                        "click",
-                        "#commentUpdateSubmit",
-                        function() {
+                  $(document).on("click","#commentUpdateSubmit",function() {
 
-                           var updateComment = $("#commentUpdateText")
-                                 .val();
+                           var updateComment = $("#commentUpdateText").val();
 
                            if ($.trim(updateComment) == "") {
                               alert("내용을 입력하세요.");
                               $("#commentUpdateText").focus();
                               return;
                            }
-                           var replyNum = $(this).parent().children()
-                                 .eq(1).text();
-
-                           var isSuccess = mhpController
-                                 .requestReplyUpdate(num, replyNum,
-                                       updateComment);
+                           var replyNum = $(this).parent().children().eq(2).text();
+                           alert("sdfsdf : " + replyNum);
+                           var isSuccess = mhpController.requestReplyUpdate(num, replyNum,updateComment);
 
                            if (isSuccess = "success") {
                               $("#commentEditor").remove();
@@ -510,66 +632,70 @@
 </script>
 
 <script>
-$(document).ready(function() {
-   $("#headerDiv").load("/resources/js/include/header.html");
-});
+   $(document).ready(function() {
+      $("#headerDiv").load("/resources/js/include/header.html");
+   });
 </script>
 
 </head>
 
-<body class="home-page">
-<!-- 상단 메뉴 헤더 -->
-<div id="headerDiv"></div>
 
-   <!-- 메인 사진 섹션 -->
+
+<body>
+
+   <!-- 상단 메뉴 헤더 -->
+   <div id="headerDiv"></div>
+
+
+   <!-- 타이틀 이미지 박스 -->
+   <section id="titleImgBox"></section>
    <section>
-      <!-- 타이틀 사진 들어갈 곳  -->
-      <div class="swiper-container" id="mainImageAndTitle">
-         <!-- 제목 넣기 -->
-         <div class="title"></div>
-         <!-- 상호명 넣기 -->
-         <div class="store_name"></div>
-         <!-- 작성자 넣기 -->
-         <div class="userNickname"></div>
-      </div>
-   </section>
+      <div id="middler" class="container-fluid">
+
+         <!-- 내용 들어가는 부분 -->
+         <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+               <div class=content id="hiddenPlaceContent"></div>
+
+               <!-- 지도 들어가는 부분  -->
+               <div class="container" id="map"></div>
+
+               <!-- 수정.삭제 버튼 들어가는 부분  -->
+               <div id="button_group"></div>
+
+               <div>
+                  <!-- 내알못 추천 -->
+                  <div id="up_count_img" class="col-md-12"></div>
+                  
+                  <!-- 추천수 -->
+                  <div id="up_count" class="col-md-12"></div>
+               </div>
+            </div>
+         </div>
+         <!-- 내알못 댓글 -->
+         <div id="main_hiddenPlace" class="row">
+
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+               <h4>댓글</h4>
+
+               <!--댓글 아래 선  -->
+               <!--          <div class="divider" id="reply_line"></div> -->
+               <hr id="reply_line">
 
 
-   <!-- 내용 들어가는 부분 -->
-   <div class=content id="hiddenPlaceContent"></div>
 
-   <!-- 지도 들어가는 부분  -->
-   <div class="container" id="map"></div>
+               <!--댓글 들어가는 부분  -->
+               <table class="table table-condensed">
+                  <tbody id="commentTable"></tbody>
+               </table>
 
-   <!-- 수정.삭제 버튼 들어가는 부분  -->
-   <div class="col-md-12" id="button_group"></div>
-
-
-   <!-- 내알못 추천 -->
-   <div>
-   <div id="up_count_img" class="col-md-12"></div>
-
-   <!-- 추천수 -->
-   <div id=up_count></div>
-   </div>
-
-   <!-- 내알못 댓글 -->
-   <div id="main_hiddenPlace" class="row">
-      <div class="col-sm-8">
-         <h2>ReplyBox</h2>
-
-         <!--댓글 아래 선  -->
-
-         <div class="divider" id="reply_line"></div>
-
-         <!--댓글 들어가는 부분  -->
-         <table class="table table-condensed">
-            <tbody id="commentTable"></tbody>
-         </table>
-         <table class="table table-condensed">
-            <tr>
-               <td>
-                  <!-- 페이지 메기기 --> 
+               <hr id="line">
+               <table class="table table-condensed table-border" border=1>
+                  <!--             <tr> -->
+                  <!--                <td> -->
+                  <!-- 페이지 메기기 -->
                   <!--    <div class="box-footer">
    <div class="text-center">
       <ul class="pagination" id="page_append">
@@ -578,22 +704,24 @@ $(document).ready(function() {
       </ul>
    </div>
 </div> -->
-               </td>
-            </tr>
-            <tr>
-               <td><span class="form-inline" role="form"> <textarea
-                        id="commentParentText" class="form-control col-lg-12" rows="4"></textarea>
-                     <div id="replyButton">
-                     </div>
-<!--                      <button type="button" id="commentParentSubmit" -->
-<!--                         name="commentParentSubmit" class="btn btn-default">입력</button> -->
 
-               </span></td>
-            </tr>
-         </table>
+                  <!--                </td> -->
+                  <!--             </tr> -->
+                  <tr>
+                     <td><span class="form-inline" role="form"> <textarea
+                              id="commentParentText" class="form-control col-lg-12" rows="4"
+                              placeholder=" 댓글을 입력해보세요."></textarea>
+                           <div id="replyButton"></div>
+                     </span></td>
+                  </tr>
+
+               </table>
+
+            </div>
+            <div class="col-sm-2"></div>
+         </div>
       </div>
-   </div>
-
+   </section>
 
 </body>
 

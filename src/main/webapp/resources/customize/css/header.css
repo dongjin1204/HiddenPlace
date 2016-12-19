@@ -1,18 +1,13 @@
 @charset "UTF-8";
 
-#headmenu-header {
-	margin-top: 0 !important;
+/*폰트 적용*/
+@font-face {
+   font-family: 'baemin';
+   src: url(/resources/bootstrap/fonts/배달의민족주아체.ttf) format('truetype');
 }
 
-.jumbotron {
-	padding: 0;
-	position: fixed;
-	width: 100%;
-	height: 71px;
-	opacity: 0.8;
-	z-index: 10;
-	margin: 0;
-	background-color: white;
+#headmenu-header {
+	margin-top: 0 !important;
 }
 
 section {
@@ -24,35 +19,98 @@ header {
 }
 
 .jumbotron {
-   padding: 0;
-   position: fixed;
-   width: 100%;
-   opacity: 0.8;
-   z-index: 3;
-   margin: 0;
-   background-color: transparent;
-   transition: background-color 0.5s;
+	padding: 0;
+	position: fixed;
+	width: 100%;
+	opacity: 1;
+	z-index: 50;
+	margin: 0;
+	background-color: #ff792a;
 }
 
 .logo {
-   width: 150px;
-   margin: 10px;
-   margin-left: 18%; 
-}
-
-#headmenu_div {
+	width: 170px;
+	margin: 10px 10% 10px 0%;
 	float: right;
-	margin: 15px 18% 8px 1%;
-	z-index: 5;
 }
 
+#search_bar {
+	width: 100%;
+	height: 50px;
+	font-size: 20px;
+	border: 0;
+	margin: 10px 0 10px 0;
+}
 
+.search_bar:focus+button {
+	z-index: 3;
+}
 
-
-
+#search_button {
+	position: absolute;
+	right: 2%;
+	top: 10px;
+	border: 0;
+	height: 50px;
+	/*background: none;*/
+}
 
 #search_bar:focus {
 	outline: none;
+}
+
+#headmenu-login:hover, #headmenu-userInsert:hover,
+#headmenu-logout:hover, #headmenu-myInfo:hover,
+#headmenu-bookmark:hover,#headmenu-qna:hover,
+#loginModal:hover {
+	color: white;
+}
+
+#home_search_bar, #home_search_button {
+	transition: opacity 0.3s;
+}
+
+#loginModal, #headmenu-userInsert, #headmenu-logout,
+#headmenu-myInfo, #headmenu-bookmark, #headmenu-qna {
+	color: white;
+	font-weight: bold;
+	font-size: 16px;
+	background-color: transparent;
+	border: none;
+	outline: none;
+}
+
+#headmenu-login:active, #headmenu-userInsert:active, #headmenu-logout:active,
+#headmenu-myInfo:active, #headmenu-bookmark:active, #headmenu-qna:active {
+	border: none;
+	outline: none;
+}
+
+#headmenu-div {
+	z-index: 5;
+	float: right;
+	width: 100%;
+}
+
+#headmenu-div>.btn-default:active {
+	outline: none;
+	border: none;
+}
+
+#login_menu_div {
+	margin-top: 13px;
+}
+
+#loginModal, #headmenu-myInfo{
+	padding-left: 10px
+}
+
+#login_img {
+	width: 30px;
+	float: left;
+	padding-top: 7px;
+	margin-left: 10%;
+	cursor: pointer;
 }
 
 #login-modal .modal-dialog {
@@ -99,13 +157,6 @@ header {
 
 #icon-login-msg.error, #icon-lost-msg.error, #icon-register-msg.error {
 	background-color: #eb575b !important;
-}
-
-#img_logo {
-	max-height: 150px;
-	max-width: 250px;
-	margin-top: -15px;
-	margin-bottom: -20px;
 }
 
 /* #########################################
@@ -241,67 +292,11 @@ header {
 }
 
 .modal-backdrop.in {
-   opacity: .3;
+	opacity: .3;
 }
 
-.jumbotron:hover {
-   background-color: #eee;
-   /*transform: 2s;*/
-}
-
-.jumbotron:hover #headmenu-login,
-.jumbotron:hover #headmenu-userInsert,
-.jumbotron:hover #headmenu-logout,
-.jumbotron:hover #headmenu-myInfo,
-.jumbotron:hover #headmenu-bookmark, 
-.jumbotron:hover #loginModal{
-   color: black;
-   /*transform: 2s;*/
-}
-
-#headmenu-div {
-   float: right;
-   margin: 15px 20% 8px 1%;
-   z-index: 5;
-}
-
-#headmenu-login, #headmenu-userInsert,
-#headmenu-logout, #headmenu-myInfo,
-#headmenu-bookmark {
-   color: white;
-   font-weight: bold;
-   font-size: 16px;
-   background-color: transparent;
-   border: none;
-   outline: none;
-   transition: color 0.5s;
-}
-#headmenu-login:active, #headmenu-userInsert:active,
-#headmenu-logout:active, #headmenu-myInfo:active,
-#headmenu-bookmark:active {
-   border: none;
-   outline: none;
-}
-
-#search_bar {
-   width: 400px;
-   height: 40px;
-   font-size: 16px;
-}
-
-.search_bar:focus + button {
-   z-index: 3;   
-}
-
-#search_bar,
-#search_button {
-   position: absolute;
-   right: 50%;
-   top: 15px;
-   border: 0;
-   /*background: none;*/
-}
-
-#search_bar:focus {
-   outline: none;
+#img_logo {
+	width: 200px;
+	margin-bottom: -20px;
+	margin-top: -20px;
 }

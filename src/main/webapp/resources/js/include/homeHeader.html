@@ -22,9 +22,50 @@
     border: none;
     outline: none;
 }
-</style>
 
+.jumbotron {
+	background-color: transparent;
+}
+</style>
 </head>
+
+
+<script>
+   $(document).ready(function() {
+
+      $(function() {
+
+         $(document).on('scroll', function() {
+
+            if ($(window).scrollTop() > 950) {
+               $('#loginModal').css('color', 'black')
+               $('#headmenu-qna').css('color', 'black')
+               $('#headmenu-myInfo').css('color', 'black')
+               $('#headmenu-logout').css('color', 'black')
+               $('#headmenu-bookmark').css('color', 'black')
+            } else {
+		       $('#loginModal').css('color', 'white')
+               $('#headmenu-qna').css('color', 'white')
+               $('#headmenu-myInfo').css('color', 'white')
+               $('#headmenu-logout').css('color', 'white')
+               $('#headmenu-bookmark').css('color', 'white')
+            }
+         });
+
+      });
+
+      function scrollToTop() {
+         verticalOffset = typeof (verticalOffset) != 'undefined' ? verticalOffset : 0;
+         element = $('body');
+         offset = element.offset();
+         offsetTop = offset.top;
+         $('html, body').animate({
+            scrollTop : offsetTop
+         }, 500, 'linear');
+      }
+
+   });
+</script>
 
 <!-- head menu 이벤트 핸들링 -->
 <script type="text/javascript">
@@ -56,15 +97,6 @@
    });
 </script>
 
-<!-- 로고(header) 클릭이벤트 -->
-<script>
-   $(document).ready(function() {
-      $('.logo').click(function() {
-         var homepageController = new HomepageController;
-         homepageController.requestHomepageUrl();
-      });
-   });
-</script>
 
 <!-- 마이페이지(header) 클릭이벤트 -->
 <script>
@@ -118,8 +150,8 @@
 <!-- 검색시 이벤트 핸들링 -->
 <script>
 $(document).ready(function() {
-	$('#search_button').click(function() {
-		var keyWord = $('#search_bar').val();
+	$('#home_search_button').click(function() {
+		var keyWord = $('#home_search_bar').val();
 		var myHiddenPlaceController = new MyHiddenPlaceController();
 		myHiddenPlaceController.requestSelectAllKeyWordUrl(keyWord);
 	});
@@ -128,14 +160,14 @@ $(document).ready(function() {
     
 <script>
 $(document).ready(function(){
-    $("input[name=search_bar]").keydown(function (key) {
+    $("input[name=home_search_bar]").keydown(function (key) {
         if(key.keyCode == 13){
         	search();
         }
     });
      
     search = function (){
-    	var keyWord = $('#search_bar').val();
+    	var keyWord = $('#home_search_bar').val();
     	
     	var myHiddenPlaceController = new MyHiddenPlaceController();
     	myHiddenPlaceController.requestSelectAllKeyWordUrl(keyWord);
@@ -143,7 +175,6 @@ $(document).ready(function(){
      
 });
 </script>
-      
 <script>
 $(document).ready(function(){
     $("input[name=id]").keydown(function (key) {
@@ -694,15 +725,11 @@ $(document).ready(function() {
       <div class="jumbotron">
          
          <div class="col-md-4">
-         	<img class="logo" src="/resources/customize/images/mhp.png" alt="Logo" style="cursor: pointer" />
          </div>
          
          <div class="col-md-4">
-         	<input id="search_bar" type="text" placeholder="  키워드를 입력해 주세요." name="search_bar"/>
-         	<button id="search_button" class="btn btn-default" type="button">
-            	<span class="glyphicon glyphicon-search"></span>
-         	</button>
 		 </div>
+		 
 		 <div id="login_menu_div" class="col-md-4">
          	<div id="headmenu-div" class="btn-group"></div>
 		 </div>

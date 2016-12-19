@@ -24,40 +24,16 @@ function UserController() {
 	// 로그아웃 controller 메서드
 	this.requestLogout = function(userId) {
 
-		// var userId = localStorage.getItem("userId");
-		// var userId = "pty0902@naver.com";
 		var isSuccess = dao.logout(userId);
 
 		return isSuccess;
-		/*
-		 * if (isSuccess === "success") { alert("로그아웃되었습니다.");
-		 * localStorage.clear(); // 클라이언트 세션 초기화 this.requestLoginUrl(); }
-		 */
-		// 홈 URL 메서드 자리
-	};
-
-	// 회원가입 페이지요청 controller 메서드
-	this.requestUserInsertUrl = function() {
-
-		var requestUrl = "userInsertView";
-
-		document.location = requestUrl;
-
+		
 	};
 
 	// 즐겨찾기 페이지요청 controller 메서드
 	this.requestBookmarkUrl = function() {
 
 		var requestUrl = "userBookMarkView";
-
-		document.location = requestUrl;
-
-	};
-
-	// 비밀번호 찾기 페이지요청 controller 메서드
-	this.requestForgetPwUrl = function() {
-
-		var requestUrl = "forgetPwView";
 
 		document.location = requestUrl;
 
@@ -77,7 +53,7 @@ function UserController() {
 
 		if (isSuccess === "success") {
 			alert("회원가입 성공");
-			modalAnimate($formRegist, $formLogin); // 회원가입 성공시 로그인 모달로 이동
+			modalAnimate($formRegister, $formLogin); // 회원가입 성공시 로그인 모달로 이동
 		} else {
 			alert("회원가입 실패");
 		}
