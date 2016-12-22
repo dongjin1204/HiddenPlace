@@ -4,36 +4,36 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.phoenix.hiddenplace.mapper.replyMapper">
-
-
-	<select id="listMHP" resultType="Reply">
-
-		  select TBL_REPLY.REPLYNUM, TBL_REPLY.USERID, TBL_REPLY.NUM, TBL_REPLY.REPLYCOMMENT, TBL_USER.USERNICKNAME
-		  from TBL_REPLY, TBL_USER
-		  WHERE NUM = #{num} AND TBL_REPLY.USERID = TBL_USER.USERID
-		  
-	</select> 
 	
-		<insert id="insert">
+	<select id="listMHP" resultType="Reply">
+		select TBL_REPLY.REPLYNUM, TBL_REPLY.USERID, TBL_REPLY.NUM, TBL_REPLY.REPLYCOMMENT, TBL_USER.USERNICKNAME, TBL_REPLY.WRITEDATE
+		from TBL_REPLY, TBL_USER
+		WHERE TBL_REPLY.NUM = #{num} AND TBL_REPLY.USERID = TBL_USER.USERID
+		limit #{page}, 10
+	</select> 
+   
+	<select id="listCount" resultType="int">
+		select count(TBL_REPLY.NUM) 
+		from TBL_REPLY, TBL_USER
+		where TBL_REPLY.NUM = #{num} AND TBL_REPLY.USERID = TBL_USER.USERID 
+	</select>
+
+	<insert id="insert">
 		insert into TBL_REPLY ( USERID, NUM, REPLYCOMMENT)
 		values( #{userId}, #{num},#{replyComment})
-		</insert>
-	
-	
+	</insert>
+
 	<!-- 댓글 삭제 -->
 	<delete id="delete">
-	
 		delete from TBL_Reply
 		where NUM = #{num} and REPLYNUM=#{replyNum}
-		
 	</delete>
-	
-	
+
 	<!-- 댓글 수정 -->
-	<select id="update" resultType="Reply">
+	<update id="update">
 		update TBL_REPLY
-		set REPLYCOMMENT = #{replyComment}
+		set REPLYCOMMENT = #{replyComment}, WRITEDATE = NOW()
 		where NUM = #{num} and REPLYNUM=#{replyNum}
-	</select>
+	</update>
 
 </mapper>

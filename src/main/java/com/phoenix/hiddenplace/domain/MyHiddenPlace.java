@@ -20,24 +20,31 @@ public class MyHiddenPlace {
 	public int getUpCountCode() {
 		return upCountCode;
 	}
+	
 	public void setUpCountCode(int upCountCode) {
 		this.upCountCode = upCountCode;
 	}
+	
 	public String getTitleImgURL() {
 		return titleImgURL;
 	}
+	
 	public void setTitleImgURL(String titleImgURL) {
 		this.titleImgURL = titleImgURL;
 	}
+	
 	public String getUserNickname() {
 		return userNickname;
 	}
+	
 	public void setUserNickname(String userNickname) {
 		this.userNickname = userNickname;
 	}
+	
 	public int getNum() {
 		return num;
 	}
+	
 	public void setNum(int num) {
 		this.num = num;
 	}
@@ -73,9 +80,11 @@ public class MyHiddenPlace {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
 	public String getWriteDate() {
 		return writeDate;
 	}
+	
 	public void setWriteDate(String writeDate) {
 		this.writeDate = writeDate;
 	}

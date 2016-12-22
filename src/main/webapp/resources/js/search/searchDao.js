@@ -5,8 +5,8 @@ function SearchDao() {
 		
 		var myHiddenPlaceAll = [];
 		var pageNum = page;
-		try{
-
+		
+		try {
 			$.ajax({
 				url: '/myhiddenplace/myhiddenplaceSelectAll' , //홈페이지 불러올 주소
 				async : false, //false: 동기, true: 비동기
@@ -28,7 +28,6 @@ function SearchDao() {
 		}
 
 		return myHiddenPlaceAll;
-		
 	};
 	
 }

@@ -6,11 +6,8 @@ function SearchController() {
 
 	//검색했을 시
 	this.requestSearch = function(themeCode, page, keyWord) {
-
 		var myHiddenPlaceAll  = dao.search(themeCode, page, keyWord);
-	      
 		return myHiddenPlaceAll;
-
 	};
-	
+
 }

@@ -1,4 +1,4 @@
-//bookmark dao 객체
+//bookmarkDao 객체
 function BookmarkDao() {
 
 	this.selectedDeleteMHP = function(delete_nums) {
@@ -15,24 +15,20 @@ function BookmarkDao() {
 				success: function (data) {
 				}
 			});
-
 		} catch(e) {
 			console.log('BookMarkDao 객체 : selectedDeleteDao 메서드에서 예외 발생');
 			console.log(e.message);
 		}
-
+		
 		return true;
-
 	};
-	
-	
-//	내알못 북마크 리스트 dao 메서드
-	this.hiddenPlaceBookmarkSelectAll = function(userId, page) {
-		
-		var myHiddenPlace = [];
-		
-		try{
 
+	//내알못 북마크 리스트 dao 메서드
+	this.hiddenPlaceBookmarkSelectAll = function(userId, page) {
+
+		var myHiddenPlace = [];
+
+		try{
 			$.ajax({
 				url: '/bookmark/bookmarkMHPAll', //홈페이지 불러올 주소
 				async : false, //false: 동기, true: 비동기
@@ -46,20 +42,21 @@ function BookmarkDao() {
 					myHiddenPlace = data;
 				}
 			});			
+			
 		} catch(e) {
 			console.log('내알못Dao 객체 : 내알못 리스트 메서드에서 예외 발생');
 			console.log(e.message);
 		}
+		
 		return myHiddenPlace;
 	};
-	
-//	마이루트 북마크 리스트 dao 메서드
+
+	//마이루트 북마크 리스트 dao 메서드
 	this.myRoutebookmarkSelectAll = function(userId) {
-	
+
 		var myRouteAll = [];
 
 		try{
-
 			$.ajax({
 				url: '/bookmark/bookmarkMRAll', //홈페이지 불러올 주소
 				async : false, //false: 동기, true: 비동기
@@ -69,7 +66,6 @@ function BookmarkDao() {
 				},
 				dataType: 'json', //서버에서 보내오는 데이터 타입
 				success: function (data) { //서버에서 보내오는 데이터
-						
 					myRouteAll = data;
 				}
 			});
@@ -78,8 +74,8 @@ function BookmarkDao() {
 			console.log('내알못Dao 객체 : 내알못 리스트 메서드에서 예외 발생');
 			console.log(e.message);
 		}
+		
 		return myRouteAll;
 	};
 
 }
-

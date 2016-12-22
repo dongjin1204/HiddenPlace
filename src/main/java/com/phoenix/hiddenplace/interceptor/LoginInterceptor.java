@@ -12,15 +12,12 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
 		HttpSession session = request.getSession();
-		System.out.println("LoginInterceptor 불러옴 preHandle ");
 
 		if (session.getAttribute("login") != null) {
-			System.out.println("세션에서 login 속성을 삭제함.");
 			session.removeAttribute("login");
 		}
 
 		return true;
-
 	}
 
 }

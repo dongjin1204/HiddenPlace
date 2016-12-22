@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+<script src="/resources/js/qna/qnaController.js"></script>
+
+<style>
+.contact-form{ margin-top:15px;}
+.contact-form .textarea{ min-height:220px; resize:none;}
+.form-control{ box-shadow:none; border-color:#eee; height:49px;}
+.form-control:focus{ box-shadow:none; border-color:#00b09c;}
+.form-control-feedback{ line-height:50px;}
+.main-btn{ background:#00b09c; border-color:#00b09c; color:#fff;}
+.main-btn:hover{ background:#00a491;color:#fff;}
+.form-control-feedback {
+line-height: 50px;
+top: 0px;
+}
+
+</style>
+
+<script>
+$(document).ready(function() {
+   $("#headerDiv").load("/resources/js/include/header.html");
+});
+</script>
+
+<script>
+$(document).ready(function() {
+   $("#footerDiv").load("/resources/js/include/footer.html");
+});
+</script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	var qnaController = new QnaController();
+	var url = unescape(location.href); // url = http://localhost:8080/user/forgetPwUpdateView/pty0902@naver.com
+	var numUrl = url.split('='); // pm[0] = http: , pm[1] = , 
+	var num = numUrl[1];
+	var qna = qnaController.requestQnaSelectOne(num);
+	alert(JSON.stringify(qna));
+	$("#qna_title").val(qna.title);
+     
+	$("#qna_content").val(qna.content);
+	
+	$("#success_button").click(function(){
+		
+		var title = $("#qna_title").val(); 		
+		var content = $("#qna_content").val();	
+	// localStorage.getItem('userId') */
+	qnaController.requestQnaUpdate(num, title, content);
+
+ });
+
+ });
+
+</script>
+</head>
+
+<body>
+
+<!-- 상단 메뉴 헤더 -->
+   <div id="headerDiv"></div>
+
+<br><br><br><br><br>
+
+<div class="container">
+	<div class="row">
+                    <div class="row">
+                		<div class="col-md-6">
+                  		<div class="form-group">
+                            <input type="text" class="form-control" name="Name" autocomplete="off" id="qna_title" placeholder="Title">
+                  		</div>
+                  		</div>
+                  	</div>
+                  	
+                  	<div class="row">
+                  		<div class="col-md-12">
+                  		<div class="form-group">
+                            <textarea class="form-control textarea" rows="10" name="Message" id="qna_content" placeholder="Message"></textarea>
+                  		</div>
+                  		</div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-12">
+                  <button type="submit" class="btn main-btn pull-right" id="success_button">Send a message</button>
+                  </div>
+                  </div>
+	</div>
+</div>
+
+<!-- 하단 메뉴 푸터 -->
+   <div id="footerDiv"></div>
+  
+</body>
+</html>

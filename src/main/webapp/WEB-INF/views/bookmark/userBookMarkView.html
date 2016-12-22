@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<title>ZUPA - Responsive Website Template / Portfolio</title>
+<title>내가 알지 못한 곳 - BOOKMARK</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<!--[if lt IE 9]>
-		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
 <link rel="shortcut icon" href="/resources/HTML/images/favicon.ico" />
-
+<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/animate.css" />
 <link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/swiper.min.css" />
 <link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/style.css" />
-
 <script src="/resources/bootstrap/HTML/javascript/pace.min.js"></script>
 <script src="/resources/bootstrap/js/pace.min.js"></script>
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 <script src="/resources/bootstrap/js/modernizr-custom.js"></script>
 <script src="/resources/bootstrap/js/script.js"></script>
@@ -28,456 +23,527 @@
 <script src="/resources/js/page/pageController.js"></script>
 <script src="/resources/js/homepage/homepageController.js"></script>
 <script src="/resources/js/bookmark/bookmarkController.js"></script>
+<script src="/resources/js/myhiddenplace/myHiddenPlaceController.js"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=4b4171dc34bbb0ee7ffec1544650e0d9&libraries=services"></script>
 
 <style>
 @font-face {
-   font-family: 'baemin';
-   src: url(/resources/customize/fonts/배달의민족주아체.ttf) format('truetype');
-}
-*,
-font,
-button, 
-button > p, 
-.category > p {
-   font-family: 'baemin';
-}
-   
-.category {
-   max-width: 45px;
-   width: 100%;
-   height: auto;
+	font-family: 'baemin';
+	src: url(/resources/customize/fonts/배달의민족주아체.ttf) format('truetype');
 }
 
+*, font, button, button>p, .category>p {
+	font-family: 'baemin';
+}
+
+.btn {
+	font-size:16px;
+}
+
+.category {
+	max-width: 45px;
+	width: 100%;
+	height: auto;
+}
 
 .portfolio figure>figcaption>p {
-   margin-left: -80px;
-   margin-top: -20px;
-}
-
-#delete_button {
-   float: right;
-   color: white;
-   background-color: black;
+	margin-left: -100px;
+	font-size: 15px;
 }
 
 #delete_checking {
-   float: right;
+	float: right;
 }
 
 .checking {
-   position: absolute;
-   right: 5%;
-   top: 7%;
-   transform: scale(3);
-   opacity: 0;
-   transition: opacity 0.35s border: none;
-   z-index: 3;
-   background-color: white;
+	position: absolute;
+	right: 5%;
+	top: 7%;
+	transform: scale(3);
+	opacity: 0;
+	transition: opacity 0.35s border: none;
+	z-index: 3;
+	background-color: white;
 }
 
 .portfolio figure:hover input {
-   opacity: 1;
+	opacity: 1;
 }
 
 input:checked {
-   opacity: 1;
+	opacity: 1;
 }
 
 #checkingAll {
-   transform: scale(3);
-   position: absolute;
-   margin: auto;
-   left: -140%;
-   top: 40%;
+	transform: scale(3);
+	position: absolute;
+	margin: auto;
+	left: -120%;
+	top: 42%;
 }
 
 #checkingAll_word {
-   position: absolute;
-   margin: auto;
-   left: -100%;
-   top: 25%;
+	position: absolute;
+	left: -80%;
+	top: 32.8%;
 }
 
+#selectAll {
+	margin-top: 20px;
+}
 
+/* 즐겨찾기 이미지 */
+#main_img_div {
+	padding: 0;
+	width: 950px;
+	height: 580px;
+	margin-left: 100px;
+}
+
+#main_title {
+	position: absolute;
+	top: 50%;
+	left: 11%;
+	margin-left: 500px;
+}
+
+#main_title>p {
+	opacity: 0.6;
+	font-size: 120px;
+	color: white;
+	margin: 0;
+	text-align: center;
+	font-family: 'Indie Flower', cursive;
+}
+
+/* 이미지 크기 */
+.figureMHP {
+	width: 100%;
+	height: 350px;
+}
+
+.imgSize {
+	width: 100%;
+	height: 100%;
+}
+
+/* 버튼 */
+.btn-default {
+	color: white;
+	background-color: #474747;
+}
+
+.btn-default:hover {
+	opacity: 0.5;
+	color: white;
+	background-color: black;
+}
+
+.btn-default.is-checked {
+	color: white;
+	background-color: black;
+}
+
+#delete_button {
+	float: right;
+	margin-top: 3px;
+	margin-left: 5px;
+	border-radius: 3px;
+}
+
+.btn-default:focus, .btn-default.focus {
+	color: #ffffff;
+	background-color: black;
+}
+
+#figureMap {
+	margin-left: 2px;
+	border-radius: 3px;
+}
+
+#figureMHP {
+	border-radius: 3px;
+}
+
+/* 지도 보기 스타일 Start */
+#map {
+	border: solid 1px #e9e9e9;
+	width: 150%;
+	height: 500px;
+}
+/* 지도 보기 스타일 End */
 </style>
 
 <!-- 내알못 글목록 불러오기 이벤트 핸들링-->
 <script type="text/javascript">
-	$(document).ready(function selectAllMHP() {
+	$(document).ready( function selectAllMHP() {
 
-// 		localStorage.setItem('userId', 'qwer522');
-        var userId = localStorage.getItem('userId');
+		var userId = localStorage.getItem('userId');
 		var bookmarkController = new BookmarkController();
-		var pageController  = new PageController();
+		var pageController = new PageController();
+		var mhpController = new MyHiddenPlaceController();
 		var page = 1;
 		var endPage;
-	  	var startPage; 
-		
-      	mhpSelectAll();
-      	
-        // 페이지 버튼 클릭시
-        $(document).on("click","#page_append a", function(){
-        	
-            page = $(this).text(); //내가 클릭한 페이지의 번호를 가져온다.
-           
-            if(page == $("#laquo").text()){ //왼쪽 그림 클릭 했을시
-             	page = startPage - 1;
-             } 
-            
-            if(page == $("#raquo").text()){ //오른쪽 그림 클릭 했을시
-             	page = endPage + 1;
-             } 
-            
-            mhpSelectAll();
+		var startPage;
 
-        });
-      	
-      	//즐겨찾기 목록 and 페이지 호출
-      	function mhpSelectAll() {
-      		
-   		var myHiddenPlace = bookmarkController.requestHiddenPlaceBookmarkSelectAll(userId, page);
- 		var pageMaker = pageController.requestBookmarkPage(page); //북마크 컨트롤러에 연결
- 		$('.portfolio *').remove(); //기존에 어펜드되있던 목록들을 싹다 지운다.
-        $('#page_append *').remove(); //기존에 어펜드되있던 목록들을 싹다 지운다.
-    	 
-     	endPage = pageMaker.endPage;
-       	startPage = pageMaker.startPage; 
-          	
-      	//즐겨찾기 목록 호출
-		for (var i = 0; i < myHiddenPlace.length; i++) {
-			
-			var figureMHP = $('<figure class="figureMHP"></figure>'); //figure태그
-			var checkBoxMHP = $('<input class="checking" type="checkbox" name="" />'); //체크박스
-			var imgMHP = $('<img src="' + myHiddenPlace[i].titleImgURL + '"/>'); //이미지
-			var figcaptionMHP = $('<figcaption></figcaption>'); //figcaption태그
-			var hTitle = $('<h2 class="hTextLine"></h2>').html(myHiddenPlace[i].title);
-			var pUserNicknameMHP = $('<p></p>').html(myHiddenPlace[i].userNickName); //작성자(닉네임)
-			var pDateMHP = $('<p></p>').html(myHiddenPlace[i].writeDate); //작성일자
-			var pReadCountMHP = $('<p></p>').html(myHiddenPlace[i].readCount); //조회수
-			var pNumMHP = $('<p hidden="hidden"></p>').html(myHiddenPlace[i].bookmarkNum); //북마크번호
-		   
-			figcaptionMHP.append(hTitle, pUserNicknameMHP, pDateMHP, pReadCountMHP, pNumMHP); //figcaption태그에 작성자, 작성일자, 추천수, 글번호
-			figureMHP.append(checkBoxMHP,imgMHP, figcaptionMHP); // figure태그에 이미지, figcaption append
-			$('.portfolio').append(figureMHP); //내알못 div에 selectAllMHP[i] 게시글 append
-			
-		}
-		
-		  //페이지 번호 처리
-		   if(pageMaker.prev == true) {//왼쪽그림 링크/ 링크 누르면 필요한것 startPage- 1, page,perPageNum,searchType,keyword
-	           var laquo_link =  $('<li><a id = "laquo" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>');
-	           $('#page_append').append(laquo_link); //최종 append 
-	       }
-	       
-	         for(var i = 0 ; pageMaker.startPage < pageMaker.endPage + 1  ; pageMaker.startPage++ ){
-	           
-	           if(page == pageMaker.startPage){ //클릭이 됬을때는 a링크 없애고 버튼 활성화  이걸로 다시 바꾸기 pageMaker.cri.page
-	                 
-	                var displayPageNum_active =  $('<li class = "active"><a>'+pageMaker.startPage+'</a></li>');
-	                $('#page_append').append(displayPageNum_active); //최종 append 
-	                 
-	           }else{  //우리는 active 클래스 정의된게 없어서 클래스만 추가됨 해당 번호에 
-	        	 
-	           		var displayPageNum_nonActive =  $('<li><a>'+pageMaker.startPage+'</a></li>'); //누르면 서치이벤트 페이지 전환되야함
-		            $('#page_append').append(displayPageNum_nonActive); //최종 append 
-	          
-	           }
-	           i++; 
-	           
-	           }
+		mhpSelectAll();
 
-	        if(pageMaker.next > 0 && pageMaker.endPage > 0) {//오른쪽그림 링크/ 링크 누르면 필요한것 startPage- 1, page,perPageNum,searchType,keyword
-	            var raquo_link =  $(' <li><a aria-label="Next" id = "raquo" ><span aria-hidden="true">&raquo;</span></a></li>');
-	            $('#page_append').append(raquo_link); //최종 append 
-	        } 
-      	}
-      	
+		// 페이지 버튼 클릭시
+		$(document).on("click", "#page_append a", function() {
+			
+   			page = $(this).text(); //내가 클릭한 페이지의 번호를 가져온다.
+   			
+   			if (page == $("#laquo").text()) { //왼쪽 그림 클릭 했을시
+   			   page = startPage - 1;
+  			}
+   			
+  		 	if (page == $("#raquo").text()) { //오른쪽 그림 클릭 했을시
+  		 	   page = endPage + 1;
+  			}
+  		 	
+   			mhpSelectAll();
 		});
+
+		/* 글조회 (MHP) 이벤트 핸들링 */
+       	$(".portfolio").on("click",".figureMHP",function() {
+       		
+  			var num = $(this).children().eq(2).children().eq(5).text();
+     		var mhpController = new MyHiddenPlaceController();
+  			mhpController.requestSelectOneMhpPage(num);
+  		});
+         	
+       	/* 체크박스 선택 이벤트 핸들링 */
+       	$(".portfolio").on("click",".checking",function(event) {
+       		event.stopPropagation();
+  		});
+             
+        /* 내알못  버튼 이벤트 */
+        $('#figureMHP').on('click', function() {
+        	mhpSelectAll();
+		});
+             
+		/* 지도 보기 버튼 이벤트 핸들링 */
+		$('#figureMap').on('click',function() {
+			
+			$('.portfolio *').remove(); //기존에 append 되었던 것 전부 삭제 
+  			$('#page_append *').remove(); //기존에 어펜드되있던 목록들을 싹다 지운다.
+  			
+  			var map  = $('<div class="col-md-8"><div id="map" class="col-md-4"></div></div>');
+     		$('.portfolio').append(map); //최종 append
+     		
+  			mapViewMHP();
+		});
+             
+		/* 지도 보기에서 글조회 이벤트 핸들링 */
+		$(document).on("click","#currentBoardNum",function() {
+			
+			var num = $(this).parent().children().eq(1).text();
+			var mhpController = new MyHiddenPlaceController();
+			mhpController.requestSelectOneMhpPage(num);
+		});
+
+        //즐겨찾기 목록 and 페이지 호출
+        function mhpSelectAll() {
+
+            var myHiddenPlace = bookmarkController.requestHiddenPlaceBookmarkSelectAll(userId, page);
+            var pageMaker = pageController.requestBookmarkPage(page, userId); //북마크 컨트롤러에 연결
+            
+            $('.portfolio *').remove(); //기존에 어펜드되있던 목록들을 싹다 지운다.
+            $('#page_append *').remove(); //기존에 어펜드되있던 목록들을 싹다 지운다.
+
+            endPage = pageMaker.endPage;
+            startPage = pageMaker.startPage;
+
+            //즐겨찾기 목록 호출
+            for (var i = 0; i < myHiddenPlace.length; i++) {
+
+				var figureMHP = $('<figure class="figureMHP"></figure>'); //figure태그
+                var checkBoxMHP = $('<input class="checking" type="checkbox" name="" />'); //체크박스
+                var imgMHP = $('<img class="imgSize" src="' + myHiddenPlace[i].titleImgURL + '"/>'); //이미지
+                var figcaptionMHP = $('<figcaption></figcaption>'); //figcaption태그
+                var hTitle = $('<h2 class="hTextLine"></h2>').html(myHiddenPlace[i].title);
+                var pUserNicknameMHP = $('<p></p>').html(myHiddenPlace[i].userNickName); //작성자(닉네임)
+                var pDateMHP = $('<p></p>').html(
+					myHiddenPlace[i].writeDate.substring(0, 10)); //작성일자
+                var pReadCountMHP = $('<p></p>').html(
+                    myHiddenPlace[i].readCount); //조회수
+                var pBookmarkNumMHP = $('<p hidden="hidden"></p>').html(myHiddenPlace[i].bookmarkNum); //북마크번호
+                var pNumMHP = $('<p hidden="hidden"></p>').html(myHiddenPlace[i].num); //북마크번호
+
+                figcaptionMHP.append(hTitle, pUserNicknameMHP, pDateMHP, pReadCountMHP, pBookmarkNumMHP, pNumMHP); //figcaption태그에 작성자, 작성일자, 추천수, 글번호
+                figureMHP.append(checkBoxMHP, imgMHP, figcaptionMHP); // figure태그에 이미지, figcaption append
+                $('.portfolio').append(figureMHP); //내알못 div에 selectAllMHP[i] 게시글 append
+            }
+
+            //페이지 번호 처리
+            if (pageMaker.prev == true) { //왼쪽그림 링크/ 링크 누르면 필요한것 startPage- 1, page,perPageNum,searchType,keyword
+			 	var laquo_link = $('<li><a id = "laquo" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>');
+                $('#page_append').append(laquo_link); //최종 append 
+            }
+
+            for (var i = 0; pageMaker.startPage < pageMaker.endPage + 1; pageMaker.startPage++) {
+
+				if (page == pageMaker.startPage) { //클릭이 됬을때는 a링크 없애고 버튼 활성화  이걸로 다시 바꾸기 pageMaker.cri.page
+					var displayPageNum_active = $('<li class = "active"><a>' + pageMaker.startPage + '</a></li>');
+                	$('#page_append').append(displayPageNum_active); //최종 append 
+                } else { //우리는 active 클래스 정의된게 없어서 클래스만 추가됨 해당 번호에 
+					var displayPageNum_nonActive = $('<li><a>' + pageMaker.startPage + '</a></li>'); //누르면 서치이벤트 페이지 전환되야함
+					$('#page_append').append(displayPageNum_nonActive); //최종 append 
+               }
+				
+               i++;
+            }
+
+            if (pageMaker.next > 0 && pageMaker.endPage > 0) { //오른쪽그림 링크/ 링크 누르면 필요한것 startPage- 1, page,perPageNum,searchType,keyword
+				var raquo_link = $(' <li><a aria-label="Next" id = "raquo" ><span aria-hidden="true">&raquo;</span></a></li>');
+                $('#page_append').append(raquo_link); //최종 append 
+            }
+            
+         }
+             
+		//지도 이벤트
+		function mapViewMHP() {
+	
+			var myHiddenPlaceAll = bookmarkController.requestHiddenPlaceBookmarkSelectAll(userId, page);
+			var currentBoardNum = 0; 
+    		var latitude = []; //위도
+    		var longitude = []; //경도
+    		var mapTitle = "";
+    		var placesSearchCBNum = 0; //콜백 함수여서 안에다 숫자를 넣어놓고 이걸로 타이틀을 저장한다.
+    
+	  		//마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
+       		var infowindow = new daum.maps.InfoWindow({zIndex:1});
+       		var mapContainer = document.getElementById('map'), //지도를 표시할 div 
+            mapOption = {
+				center: new daum.maps.LatLng(37.566826, 126.9786567), //지도의 중심좌표 서울
+                level: 10 // 지도의 확대 레벨
+            };  
+
+            
+        	var map = new daum.maps.Map(mapContainer, mapOption); //지도를 생성합니다    
+       		var ps = new daum.maps.services.Places(); //장소 검색 객체를 생성합니다
+			var zoomControl = new daum.maps.ZoomControl(); //지도에 확대 축소 컨트롤을 생성한다
+
+			//지도의 우측에 확대 축소 컨트롤을 추가한다
+			map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+
+       		//키워드로 장소를 검색합니다
+       		for(var i = 0; i < myHiddenPlaceAll.length; i++) {
+     	  		ps.keywordSearch(myHiddenPlaceAll[i].storeName, placesSearchCB); 
+       		}
+       
+			// 키워드 검색 완료 시 호출되는 콜백함수 입니다
+			function placesSearchCB (status, data, pagination) {
+    	   
+				if (status === daum.maps.services.Status.OK) {
+           	
+					// 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+					// LatLngBounds 객체에 좌표를 추가합니다
+					var bounds = new daum.maps.LatLngBounds();
+
+					currentBoardNum = myHiddenPlaceAll[placesSearchCBNum].num;
+					mapTitle = "글 제목 : " + myHiddenPlaceAll[placesSearchCBNum].title;
+					placesSearchCBNum = placesSearchCBNum + 1;
+                
+					for (var i = 0; i < data.places.length; i++) {
+						displayMarker(data.places[i], i, data.places.length);    
+						bounds.extend(new daum.maps.LatLng(data.places[i].latitude, data.places[i].longitude));
+               	 	}       
+
+               		// 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+					map.setBounds(bounds);
+				}
+           
+			}
+
+			//지도에 마커를 표시하는 함수입니다
+			function displayMarker(place) {
+	      	
+			    //마커 이미지의 이미지 주소입니다
+			    var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+		      	
+		      	//마커 이미지의 이미지 크기 입니다
+		        var imageSize = new daum.maps.Size(24, 35); 
+		          
+		        //마커 이미지를 생성합니다    
+		        var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize); 
+		      	
+		        //마커를 생성하고 지도에 표시합니다
+		        var marker = new daum.maps.Marker({
+					map: map,
+					title: mapTitle,
+					position: new daum.maps.LatLng(place.latitude, place.longitude),
+					image : markerImage // 마커 이미지 
+				});
+		
+				//마커에 클릭이벤트를 등록합니다
+		        daum.maps.event.addListener(marker, 'click', function() {
+		        	// 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+		        	infowindow.setContent('<div id = "currentBoardNum" style="padding:5px;font-size:12px;">'  + mapTitle + '</br>' + place.title + '</div><p hidden>'+ currentBoardNum +'</p>');
+		        	infowindow.open(map, marker);
+		        });
+			}
+		}
+	});
 </script>
 
-<!-- 내알못 / 나만의 루트 버튼 이벤트 핸들링-->
 <script type="text/javascript">
-
-	$(document).ready(function() {
-/* 나만의 루트 버튼 이벤트 */
-		 $('#figureMR').on('click', function() {
-			 $('.portfolio *').remove(); //기존에 append 되었던 것 전부 삭제 
-
-// 		localStorage.setItem('userId', 'qwer522');
-        var userId = localStorage.getItem('userId');
-		var bookmarkController = new BookmarkController();
-		var myRouteAll = bookmarkController.requestMyRouteBookmarkSelectAll(userId);
-	
-		for (var i = 0; i < myRouteAll.length; i++) {
-			
-			var figureMR = $('<figure class="figureMR"></figure>'); //figure태그
-			var checkBoxMR = $('<input class="checking" type="checkbox" name="" />'); //체크박스
-			var imgMR = $('<img src="' + myRouteAll[i].mrTitleImgURL + '"/>'); //이미지
-			var figcaptionMR = $('<figcaption></figcaption>'); //figcaption태그
-			var hTitle = $('<h2 class="hTextLine"></h2>').html(myRouteAll[i].title);
-			var pUserNicknameMR = $('<p></p>').html(myRouteAll[i].userNickName); //작성자(닉네임)
-			var pDateMR = $('<p></p>').html(myRouteAll[i].writeDate); //작성일자
-			var pReadCountMR = $('<p></p>').html(myRouteAll[i].readCount); //조회수
-			var pNumMR = $('<p hidden="hidden"></p>').html(myRouteAll[i].bookmarkNum); //글번호
-			
-	
-
-			figcaptionMR.append(hTitle, pUserNicknameMR, pDateMR, pReadCountMR, pNumMR); //figcaption태그에 작성자, 작성일자, 추천수, 글번호
-			figureMR.append(checkBoxMR,imgMR, figcaptionMR); // figure태그에 이미지, figcaption append
-			$('.portfolio').append(figureMR); //나만의 루트 div에 selectAllMR[i] 게시글 append
+	$(function() {
+		//전체선택 체크박스 클릭
+		$("#checkingAll").click(function() {
+			if ($("#checkingAll").prop("checked")) { //만약 전체 선택 체크박스가 체크된상태일경우
+				$("input[type=checkbox]").prop("checked", true); //해당화면에 전체 checkbox들을 체크해준다
+			} else { // 전체선택 체크박스가 해제된 경우
+				$("input[type=checkbox]").prop("checked", false); //해당화면에 모든 checkbox들의 체크를해제시킨다.
 			}
-		}); 
-		
-		 /* 내알못  버튼 이벤트 */		 
-		 $('#figureMHP').on('click', function() {
-			 
-			 $('.portfolio *').remove(); //기존에 append 되었던 것 전부 삭제 
- 		//localStorage.setItem('userId', 'qwer522');
-        var userId = localStorage.getItem('userId');
-		var bookmarkController = new BookmarkController();
-		var myHiddenPlace = bookmarkController.requestHiddenPlaceBookmarkSelectAll(userId);
-		
-		for (var i = 0; i < myHiddenPlace.length; i++) {
-			var figureMHP = $('<figure class="figureMHP"></figure>'); //figure태그
-			var checkBoxMHP = $('<input class="checking" type="checkbox" name="" />'); //체크박스
-			var imgMHP = $('<img src="' + myHiddenPlace[i].titleImgURL + '"/>'); //이미지
-			var figcaptionMHP = $('<figcaption></figcaption>'); //figcaption태그
-			var hTitle = $('<h2 class="hTextLine"></h2>').html(myHiddenPlace[i].title);
-			var pUserNicknameMHP = $('<p></p>').html(myHiddenPlace[i].userNickName); //작성자(닉네임)
-			var pDateMHP = $('<p></p>').html(myHiddenPlace[i].writeDate); //작성일자
-			var pReadCountMHP = $('<p></p>').html(myHiddenPlace[i].readCount); //조회수
-			var pNumMHP = $('<p hidden="hidden"></p>').html(myHiddenPlace[i].bookmarkNum); //북마크번호
-		   
-			figcaptionMHP.append(hTitle, pUserNicknameMHP, pDateMHP, pReadCountMHP, pNumMHP); //figcaption태그에 작성자, 작성일자, 추천수, 글번호
-			figureMHP.append(checkBoxMHP,imgMHP, figcaptionMHP); // figure태그에 이미지, figcaption append
-			$('.portfolio').append(figureMHP); //내알못 div에 selectAllMHP[i] 게시글 append
-			}
-		 });
-		 
-	});
-	</script>
-
-<script type="text/javascript">
-   $(function(){
-       //전체선택 체크박스 클릭
-      $("#checkingAll").click(function(){
-         //만약 전체 선택 체크박스가 체크된상태일경우
-         if($("#checkingAll").prop("checked")) {
-            //해당화면에 전체 checkbox들을 체크해준다
-            $("input[type=checkbox]").prop("checked",true);
-         // 전체선택 체크박스가 해제된 경우
-         } else {
-            //해당화면에 모든 checkbox들의 체크를해제시킨다.
-            $("input[type=checkbox]").prop("checked",false);
-         }
-      })
-   })
+		})
+	})
 </script>
 
 <!-- 선택 삭제 이벤트 핸들링 -->
 <script type="text/javascript">
 	$(document).ready(function() {
-		
-
-	
-		$('#delete_button').click(function(){
-	
+		$('#delete_button').click(function() {
+			
 			var delete_nums = [];
-			
 			var mhps = $('#selectAll').children();
-		
-			for(var i = 0 ; i < mhps.length ; i++) {
-				
-				var checked = mhps.eq(i).children().eq(0).prop('checked');
-				if(checked) {
-					var mhpBookMark_delete_num = mhps.eq(i).children().eq(2).children().eq(4).text();
-					delete_nums += mhpBookMark_delete_num +',';
-					
-				}
-				
-			}
-		
-			var bookmarkController = new BookmarkController();
 			
-			 var length = delete_nums.length;
-			  
-			 if(delete_nums.length>0){
-		          bookmarkController.requestSelectedDeleteMHP(delete_nums.substring(0, length-1));
-		          window.location.reload(true);
-		          }else{
-		             alert("선택된 목록이없습니다.");
-		          }
-		          
+			for (var i = 0; i < mhps.length; i++) {
+				var checked = mhps.eq(i).children().eq(0).prop('checked');
+				if (checked) {
+					var mhpBookMark_delete_num = mhps.eq(i).children().eq(2).children().eq(4).text();
+					delete_nums += mhpBookMark_delete_num + ',';
+				}
+			}
+			
+			var bookmarkController = new BookmarkController();
+			var length = delete_nums.length;
+			if (delete_nums.length > 0) {
+				bookmarkController.requestSelectedDeleteMHP(delete_nums.substring(0, length - 1));
+				window.location.reload(true);
+			} else {
+				alert("선택된 목록이없습니다.");
+			}
 		});
-
 	});
 </script>
 
-
 <script>
-$(document).ready(function() {
-	$("#headerDiv").load("/resources/js/include/header.html");
-});
+	$(document).ready(function() {
+		$("#headerDiv").load("/resources/js/include/header.html");
+	});
 </script>
 
 <script>
-$(document).ready(function() {
-	$("#footerDiv").load("/resources/js/include/footer.html");
-});
+	$(document).ready(function() {
+		$("#footerDiv").load("/resources/js/include/footer.html");
+	});
 </script>
-
 </head>
 
 <body class="home-page">
 
 	<!-- 상단 메뉴 헤더 -->
 	<div id="headerDiv"></div>
-  
+
+	<br><br><br>
+
 	<!-- 메인 사진 섹션 -->
 	<section>
-		<div class="swiper-container">
-			<div class="parallax-bg"
-				style="background-image: url(/resources/customize/images/home.jpg)"
-				data-swiper-parallax="-15%"></div>
-			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-					<div class="swiper-caption">
-						<div class="title" data-swiper-parallax="-100"
-							data-animation="fadeInDownBig">Zupa - Responsive Template</div>
-						<div class="subtitle" data-swiper-parallax="-200"
-							data-animation="fadeIn">Lorem ipsum dolor sit amet,
-							consectetur adipiscing elit.</div>
-						<div class="text" data-swiper-parallax="-300"
-							data-animation="fadeInUpBig">
-							<a href="card.html" class="btn btn-custom btn-lg">read more</a>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="swiper-caption">
-						<div class="title" data-swiper-parallax="-100"
-							data-animation="fadeInDownBig">New Menu</div>
-						<div class="subtitle" data-swiper-parallax="-200"
-							data-animation="fadeIn">Lorem ipsum dolor sit amet,
-							consectetur adipiscing elit.</div>
-						<div class="text" data-swiper-parallax="-300"
-							data-animation="fadeInUpBig">
-							<a href="card.html" class="btn btn-custom btn-lg">read more</a>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="swiper-caption">
-						<div class="title" data-swiper-parallax="-100"
-							data-animation="fadeInDownBig">Lorem ipsum dolor sit</div>
-						<div class="subtitle" data-swiper-parallax="-200"
-							data-animation="fadeIn">Lorem ipsum dolor sit amet,
-							consectetur adipiscing elit.</div>
-						<div class="text" data-swiper-parallax="-300"
-							data-animation="fadeInUpBig">
-							<a href="card.html" class="btn btn-custom btn-lg">read more</a>
-						</div>
-					</div>
-				</div>
+		<div class="container">
+			<img id="main_img_div" class="col-sm-12 col-md-10 col-md-offser-1" src="/resources/bootstrap/image/bookmark3.jpg">
+			<div id="main_title">
+            	<p>Bookmark</p>
 			</div>
-			<!-- Add Pagination -->
-			<div class="swiper-pagination swiper-pagination-white"></div>
-			<!-- Add Navigation -->
-			<div class="swiper-button-prev swiper-button-white"></div>
-			<div class="swiper-button-next swiper-button-white"></div>
 		</div>
 	</section>
 
-
 	<!-- 본문 -->
-      <div class="container">
-         <div class="row">
-            <div class="col-sm-12 col-md-10 col-md-offset-1">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-10 col-md-offset-1">
+				<!-- 전체선택 및 삭제 버튼 -->
+	            <div id="delete_checking" class="btn-group">
+	               <input id="checkingAll" type="checkbox" class="btn btn-default" name="" value="" /> <font id="checkingAll_word">전체선택</font>
+	               <button id="delete_button" class="btn btn-default">
+	                  <font>삭제</font>
+	               </button>
+	            </div>
+	
+	            <!-- 내알못/나만의 루트 선택 탭 -->
+	            <div class="btn-group">
+	               <button class="btn btn-default" id="figureMHP">
+	                  <font>내 알 못</font>
+	               </button>
+	               <button class="btn btn-default" id="figureMap">
+					   <font>지도 보기</font>
+				   </button>
+	            </div>
+			</div>
 
-               <!-- 전체선택 및 삭제 버튼 -->
-            <div id="delete_checking" class="btn-group">
-               <input id="checkingAll" type="checkbox" class="btn btn-default"
-                  name="" value="" /><font id="checkingAll_word">전체선택</font>
-               <button id="delete_button" class="btn btn-default">
-                  <font>삭제</font>
-               </button>
-            </div>
-         
-     
-
-               <!-- 내알못/나만의 루트 선택 탭 -->
-               <div class="btn-group">
-               <button class="btn btn-default" id="figureMHP">
-                  <font>내 알 못</font>
-               </button>
-               <button class="btn btn-default" id="figureMR">
-                  <font>나만의 루트</font>
-               </button>
-            </div>
-   
-            </div>
-
-            
-         <div class="col-sm-12 col-md-10 col-md-offset-1">
-         <div class="portfolio grid-3" id="selectAll"></div>
+			<div class="col-sm-12 col-md-10 col-md-offset-1">
+				<div class="portfolio grid-2" id="selectAll"></div>
+			</div>
       </div>
-            </div>
-         </div>
+	</div>
 
 	<section>
 		<nav class="text-center">
-			<ul id="page_append" class="pagination">
-				
-			</ul>
+			<ul id="page_append" class="pagination"></ul>
 		</nav>
 	</section>
 
 	<!-- 하단 메뉴 푸터 -->
 	<div id="footerDiv"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
+<script src="/resources/bootstrap/js/swiper.jquery.min.js"></script>
+<script src="/resources/bootstrap/js/animate-on-scroll.js"></script>
+<script src="/resources/bootstrap/js/script.js"></script>
+<script src="/resources/bootstrap/js/isotope.min.js"></script>
+<script>
+	var swiper = new Swiper('.swiper-container', {
+		pagination : '.swiper-pagination',
+		paginationClickable : true,
+		nextButton : '.swiper-button-next',
+		prevButton : '.swiper-button-prev',
+		parallax : true,
+		speed : 600,
+		autoplay : 2500,
+		onSlideChangeStart : (function(swiper) {
+			
+			var active = swiper.slides[swiper.activeIndex];
+			var animated = $(active).find('*[data-animation]');
+			
+			$.each(animated, function(key, value) {
+				$(value).addClass($(value).data('animation'));
+				$(value).addClass('animated');
+			});
+		})
+	});
+</script>
+
+<!-- 검색결과에 따른 내알못/나만의 루트 전환 탭 버튼 이벤트 -->
+<script>
+	$('.portfolio').isotope({
+		itemSelector : 'figure',
+		layoutMode : 'masonry'
+	});
 	
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
-	<script src="/resources/bootstrap/js/swiper.jquery.min.js"></script>
-	<script src="/resources/bootstrap/js/animate-on-scroll.js"></script>
-	<script src="/resources/bootstrap/js/script.js"></script>
-	<script src="/resources/bootstrap/js/isotope.min.js"></script>
-	<script>
-         var swiper = new Swiper('.swiper-container', {
-            pagination: '.swiper-pagination',
-            paginationClickable: true,
-            nextButton: '.swiper-button-next',
-            prevButton: '.swiper-button-prev',
-            parallax: true,
-            speed: 600,
-            autoplay: 2500,
-            onSlideChangeStart: (function (swiper) {
-               var active = swiper.slides[swiper.activeIndex];
-               var animated = $(active).find('*[data-animation]');
-               $.each(animated, function (key, value) {
-                  $(value).addClass($(value).data('animation'));
-                  $(value).addClass('animated');
-               });
-            })
-         });
+	$('.filters').on('click', 'button', function() {
+		
+		var filterValue = $(this).attr('data-filter');
+		
+		$('.filters').find('.is-checked').removeClass('is-checked');
+		$(this).addClass('is-checked');
+		$('.portfolio').isotope({
+			filter : filterValue
+		});
+	});
+</script>
 
-      </script>
-	<!-- 검색결과에 따른 내알못/나만의 루트 전환 탭 버튼 이벤트 -->
-	<script>
-         $('.portfolio').isotope({
-            itemSelector: 'figure',
-            layoutMode: 'masonry'
-         });
-         $('.filters').on('click', 'button', function () {
-            var filterValue = $(this).attr('data-filter');
-            $('.filters').find('.is-checked').removeClass('is-checked');
-            $(this).addClass('is-checked');
-            $('.portfolio').isotope({
-               filter: filterValue
-            });
-         });
-
-      </script>
-
+<!-- </script> -->
 </body>
 
 </html>

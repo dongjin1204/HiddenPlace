@@ -5,10 +5,8 @@ import java.util.List;
 import com.phoenix.hiddenplace.domain.Bookmark;
 import com.phoenix.hiddenplace.domain.BookmarkPageMaker;
 import com.phoenix.hiddenplace.domain.MyHiddenPlace;
-import com.phoenix.hiddenplace.domain.PageMaker;
 
 public interface BookmarkService {
-
 	// 즐겨찾기 등록
 	public void bookmarkInsertMHP(MyHiddenPlace myHiddenPlace) throws Exception;
 
@@ -26,5 +24,4 @@ public interface BookmarkService {
 	
 	//즐겨찾기 페이징
 	public int listCount(BookmarkPageMaker pageMaker);
-
 }

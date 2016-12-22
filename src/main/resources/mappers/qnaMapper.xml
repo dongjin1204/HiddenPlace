@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.phoenix.hiddenplace.mapper.qnaMapper">
+
+	<insert id="insertQNA">
+		insert into TBL_QNA (TITLE, USERID,CONTENT)
+		values(#{title}, #{userId}, #{content})
+	</insert>
+	
+	<select id="listQNA" resultType="Qna">
+		select TBL_QNA.QNANUM, TBL_QNA.CONTENT, TBL_QNA.TITLE, TBL_USER.USERNICKNAME
+		from TBL_QNA, TBL_USER
+		WHERE  TBL_QNA.USERID = #{userId} AND TBL_QNA.USERID = TBL_USER.USERID;
+	</select>
+	
+	<select id="selectOneQNA" resultType="Qna">
+		select TBL_QNA.QNANUM, TBL_QNA.CONTENT, TBL_QNA.TITLE, TBL_QNA.QNAWRITEDATE, TBL_USER.USERNICKNAME
+		from TBL_QNA, TBL_USER
+		where TBL_QNA.QNANUM = #{qnaNum} AND TBL_USER.USERID = TBL_QNA.USERID
+	</select>  
+	
+	<delete id="deleteQNA">
+		delete from TBL_QNA
+		where TBL_QNA.QNANUM = #{num}
+	</delete>
+	
+	<select id="updateQNA">
+		update TBL_QNA
+		set CONTENT = #{content}, TITLE = #{title}
+		where QNANUM = #{qnaNum}
+	</select>
+
+</mapper>

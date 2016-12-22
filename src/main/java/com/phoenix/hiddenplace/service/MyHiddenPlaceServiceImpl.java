@@ -21,8 +21,10 @@ public class MyHiddenPlaceServiceImpl implements MyHiddenPlaceService {
 
 	@Override
 	public void insert(MyHiddenPlace myHiddenPlace) throws Exception {
+
 		dao.insert(myHiddenPlace);		
 	}
+
 	@Override
 	public List<MyHiddenPlace> list(PageMaker pageMaker) throws Exception {
 
@@ -37,56 +39,70 @@ public class MyHiddenPlaceServiceImpl implements MyHiddenPlaceService {
 
 	@Override
 	public List<MyHiddenPlace> bestMHP() throws Exception {
+
 		return dao.bestMHP(); 
 	}
-	
+
 	@Override
 	public String store(MultipartFile file) throws Exception {
-		
+
 		String a = "a";
 		return a;
 	}
+
 	@Override
 	public List<Theme> themeList() throws Exception {
-		return dao.themeList();
 
+		return dao.themeList();
 	}
-	
+
 	@Transactional
 	@Override
 	public MyHiddenPlace selectOne(int num) throws Exception {
-		
+
 		dao.updateReadCount(num);
 		return dao.selectOne(num);
 	}
-	
+
 	@Override
 	public List<MyHiddenPlace> bookmarkAll(String userId) throws Exception {
+
 		return dao.bookmarkAll(userId); 
 	}
-	
+
 	@Override
 	public void delete(int num) throws Exception {
-			dao.delete(num);
+
+		dao.delete(num);
 	}
+
 	@Override
 	public Integer upCountCheck(MyHiddenPlace myHiddenPlace) throws Exception {
 
 		return dao.upCountCheck(myHiddenPlace);
 	}
-	
+
 	@Transactional
 	@Override
 	public void upCount(MyHiddenPlace myHiddenPlace) throws Exception {
-		
+
 		dao.upCountInsert(myHiddenPlace);
 		dao.upCount(myHiddenPlace);
-		
 	}
-	
+
 	@Override
-    public void updateMHP(MyHiddenPlace myHiddenPlace) throws Exception {
-       dao.updateMHP(myHiddenPlace);      
-    }
+	public void updateMHP(MyHiddenPlace myHiddenPlace) throws Exception {
+
+		dao.updateMHP(myHiddenPlace);      
+	}
+
+	@Transactional
+	@Override
+	public void updateBestMHP() throws Exception {
+
+		dao.updateBestCode();
+		String StoreNames = dao.updateBestStoreName();
+		dao.updateBestMHP(StoreNames);
+	}
 
 }

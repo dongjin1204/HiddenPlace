@@ -5,7 +5,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.phoenix.hiddenplace.mapper.bookmarkMapper">
 
-
 	<!-- 내알못 즐겨찾기 등록(홈페이지) -->
 	<insert id="bookmarkInsertMHP">
 		insert into TBL_BOOKMARK(NUM, USERID)
@@ -30,13 +29,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 
 	<select id="bookmarkMHPAll" resultType="Bookmark">
-		  select TBL_BOOKMARK.BOOKMARKNUM, TBL_BOARD.TITLEIMGURL, TBL_BOARD.TITLE, TBL_BOARD.WRITEDATE, TBL_BOARD.READCOUNT, TBL_USER.USERNICKNAME
+		  select TBL_BOOKMARK.BOOKMARKNUM, TBL_BOARD.TITLEIMGURL, TBL_BOARD.TITLE, TBL_BOARD.WRITEDATE, TBL_BOARD.READCOUNT, TBL_USER.USERNICKNAME, TBL_BOARD.NUM, TBL_BOARD.THEMECODE, TBL_BOARD.ADDRESS, TBL_BOARD.STORENAME
 		  from TBL_BOOKMARK, TBL_BOARD, TBL_USER
 		  where TBL_BOOKMARK.userId = #{userId} AND TBL_BOARD.NUM = TBL_BOOKMARK.NUM AND TBL_BOARD.USERID = TBL_USER.USERID
 		  order by TBL_BOOKMARK.BOOKMARKNUM DESC  
 		  limit #{page}, 6
 	</select>
-	
+		  
 	<select id="bookmarkMRAll" resultType="Bookmark">
 		  select TBL_MYROUTE.MRTITLEIMGURL, TBL_MYROUTE.TITLE, TBL_MYROUTE.WRITEDATE, TBL_MYROUTE.READCOUNT,
 		  TBL_BOOKMARK.BOOKMARKNUM, TBL_USER.USERNICKNAME
@@ -46,11 +45,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 즐겨찾기 페이징 -->
 	<select id="listCount" resultType="int">
-	
 		  select count(BOOKMARKNUM) 
 		  from tbl_bookmark 
-		  where NUM > 0 
-		  
+		  where NUM > 0 and TBL_BOOKMARK.userId = #{userId}
 	</select>
 
 </mapper>

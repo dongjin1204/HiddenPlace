@@ -1,127 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <title>footer</title>
 <meta charset="utf-8">
-<meta name="viewport"
-   content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-</head>
-
-<script>
-   $(document).ready(function() {
-
-      $(function() {
-
-         $(document).on('scroll', function() {
-
-            if ($(window).scrollTop() > 100) {
-               $('.scroll-top-wrapper').addClass('show');
-            } else {
-               $('.scroll-top-wrapper').removeClass('show');
-            }
-         });
-
-         $('.scroll-top-wrapper').on('click', scrollToTop);
-      });
-
-      function scrollToTop() {
-         verticalOffset = typeof (verticalOffset) != 'undefined' ? verticalOffset : 0;
-         element = $('body');
-         offset = element.offset();
-         offsetTop = offset.top;
-         $('html, body').animate({
-            scrollTop : offsetTop
-         }, 500, 'linear');
-      }
-
-   });
-</script>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
 <style>
 .scroll-top-wrapper {
-   position: fixed;
-   opacity: 0;
-   visibility: hidden;
-   overflow: hidden;
-   text-align: center;
-   z-index: 99999999;
-   background-color: #777777;
-   color: #eeeeee;
-   width: 48px;
-   height: 48px;
-   line-height: 48px;
-   right: 30px;
-   bottom: 30px;
-   padding-top: 1px;
-   border-top-left-radius: 10px;
-   border-top-right-radius: 10px;
-   border-bottom-right-radius: 10px;
-   border-bottom-left-radius: 10px;
-   -webkit-transition: all 0.5s ease-in-out;
-   -moz-transition: all 0.5s ease-in-out;
-   -ms-transition: all 0.5s ease-in-out;
-   -o-transition: all 0.5s ease-in-out;
-   transition: all 0.5s ease-in-out;
+	position: fixed;
+	opacity: 0;
+	visibility: hidden;
+	overflow: hidden;
+	text-align: center;
+	z-index: 99999999;
+	background-color: #777777;
+	color: #eeeeee;
+	width: 48px;
+	height: 48px;
+	line-height: 48px;
+	right: 30px;
+	bottom: 30px;
+	padding-top: 1px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
 }
 
 .scroll-top-wrapper:hover {
-   background-color: #888888;
+	background-color: #888888;
 }
 
 .scroll-top-wrapper.show {
-   visibility: visible;
-   cursor: pointer;
-   opacity: 1.0;
+	visibility: visible;
+	cursor: pointer;
+	opacity: 1.0;
 }
 
 .scroll-top-wrapper i.fa {
-   line-height: inherit;
-}
-#divider{
-
+	line-height: inherit;
 }
 
 </style>
+</head>
 
+<script>
+	$(document).ready(function() {
+		$(function() {
+			$(document).on('scroll', function() {
+				if ($(window).scrollTop() > 100) {
+					$('.scroll-top-wrapper').addClass('show');
+				} else {
+					$('.scroll-top-wrapper').removeClass('show');
+				}
+			});
+			
+			$('.scroll-top-wrapper').on('click', scrollToTop);
+		});
+		
+		function scrollToTop() {
+			verticalOffset = typeof (verticalOffset) != 'undefined' ? verticalOffset : 0;
+			element = $('body');
+			offset = element.offset();
+			offsetTop = offset.top;
+			$('html, body').animate({
+				scrollTop : offsetTop
+			}, 500, 'linear');
+		}
+	});
+</script>
 
-<!-- 푸터 섹션 -->
-<footer class="page-footer">
-
-   <!--       <div class="row"> -->
-   <!--          <div class="row-xs-12"> -->
-   <div class="divider" id="divider"></div>
-   <div class="text-center">
-      <a href="#"><img
-         src="/resources/customize/images/mhp.png" alt="" class="logo_footer">
-      </a>
-      <!--             </div> -->
-      <!--          </div> -->
-   </div>
-   <div class="container">
-      <div class="row">
-         <div class="col-sm-9">
-            <ul class="footer-links">
-            </ul>
-         </div>
-         <div class="col-sm-3">
-            <p>© 2016 My HiddenPlace All rights reserved</p>
-         </div>
-      </div>
-   </div>
-
-
-
-
-
-
-
-   <div class="scroll-top-wrapper ">
-      <span class="scroll-top-inner">
-      	<i class="fa fa-2x fa-arrow-circle-up"></i>
-      </span>
-   </div>
-</footer>
+	<!-- 푸터 섹션 -->
+	<footer class="page-footer">
+		<div class="divider" id="divider"></div>
+		
+		<div class="text-center">
+			<a href="#"><img src="/resources/customize/images/mhp.png" alt="" class="logo_footer"></a>
+		</div>
+		
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-9">
+					<ul class="footer-links">
+					</ul>
+				</div>
+				
+				<div class="col-sm-3">
+					<p>© 2016 My HiddenPlace All rights reserved</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="scroll-top-wrapper ">
+			<span class="scroll-top-inner">
+				<i class="fa fa-2x fa-arrow-circle-up"></i>
+			</span>
+		</div>
+	</footer>
 
 </html>

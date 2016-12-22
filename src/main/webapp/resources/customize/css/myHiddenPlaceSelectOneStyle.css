@@ -1,0 +1,59 @@
+/*폰트 적용*/
+@font-face {
+	font-family: 'bmyeonsung';
+	src: url(fonts/BMYEONSUNG_ttf.ttf) format('truetype');
+}
+
+/*메인 레터링*/
+#main_letter {
+	position: fixed;
+	top: 400px;
+	left: 20%;
+}
+
+#main_letter > .title {
+	color: white;
+	font-size: 30px;
+}
+
+#main_letter > .storeName {
+	color: white;
+	font-size: 50px;
+	font-family: 'bmyeonsung';
+	text-align: center;
+}
+
+/*본문*/
+#content img{
+	width: 100%;
+	margin-bottom: 3%; 
+}
+
+#content {
+	margin-top: 40px;
+}
+
+#content h3 {
+	font-weight: bold;
+}
+
+#content p {
+	font-size: 16px;
+}
+
+#middler {
+	height: auto;
+	position: relative;
+	top: 700px;
+	background-color: white;
+}
+
+/*메인 이미지, 박스*/
+#main_img {
+	height: 1000px;
+	position: fixed;
+	min-width: 100%;
+	display: block;
+	background-size: cover;
+	background-position: 50% 50%;
+}

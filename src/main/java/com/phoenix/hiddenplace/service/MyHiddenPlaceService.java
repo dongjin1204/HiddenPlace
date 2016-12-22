@@ -7,7 +7,6 @@ import com.phoenix.hiddenplace.domain.PageMaker;
 import com.phoenix.hiddenplace.domain.Theme;
 
 public interface MyHiddenPlaceService {
-
 	public void insert(MyHiddenPlace myHiddenPlace)throws Exception;
 
 	List<MyHiddenPlace> list(PageMaker pageMaker) throws Exception; //내알못 목록
@@ -26,10 +25,11 @@ public interface MyHiddenPlaceService {
 	
 	public void delete(int num) throws Exception; //내알못 삭제
 	
-	public Integer upCountCheck(MyHiddenPlace myHiddenPlace)throws Exception; // 추천코드 뽑기
+	public Integer upCountCheck(MyHiddenPlace myHiddenPlace)throws Exception; //추천코드 뽑기
 	
-	public void upCount(MyHiddenPlace myHiddenPlace) throws Exception; // 추천수 증가 및 저장
+	public void upCount(MyHiddenPlace myHiddenPlace) throws Exception; //추천수 증가 및 저장
 	
 	public void updateMHP(MyHiddenPlace myHiddenPlace)throws Exception; //내알못 수정
 
+	public void updateBestMHP() throws Exception; //내알못 베스트 초기화 및 업데이트
 }

@@ -4,7 +4,6 @@ import com.phoenix.hiddenplace.domain.Login;
 import com.phoenix.hiddenplace.domain.User;
 
 public interface UserService {
-
 	// 회원가입
 	public void create(User user) throws Exception;
 

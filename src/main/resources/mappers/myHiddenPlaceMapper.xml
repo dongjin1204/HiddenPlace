@@ -7,223 +7,81 @@
 
 	<sql id="themeSearch">
 		<if test="themeCode != 0">
-				and THEMECODE = #{themeCode}
+			and THEMECODE = #{themeCode}
 		</if>
 	</sql>
 	
 	<sql id="search">
 		<if test="keyWord != null">
-				and TITLE like CONCAT('%', #{keyWord}, '%')
+			and TITLE like CONCAT('%', #{keyWord}, '%')
 		</if>
 	</sql>
 
  	<select id="list" resultType="MyHiddenPlace">
-
-		  select TBL_BOARD.NUM, TBL_BOARD.TITLE, TBL_BOARD.WRITEDATE, TBL_USER.USERNICKNAME, TBL_BOARD.READCOUNT, 
-		  TBL_BOARD.TITLEIMGURL, TBL_BOARD.THEMECODE
-		  from TBL_BOARD, TBL_USER
-		  where TBL_BOARD.NUM > 0 and TBL_BOARD.USERID = TBL_USER.USERID
-		  <include refid="themeSearch"></include>
-		  <include refid="search"></include>
-		  order by TBL_BOARD.NUM DESC  
-		  limit #{page}, 12
-  
+		select TBL_BOARD.NUM, TBL_BOARD.TITLE, TBL_BOARD.WRITEDATE, TBL_USER.USERNICKNAME, TBL_BOARD.READCOUNT, 
+		TBL_BOARD.TITLEIMGURL, TBL_BOARD.THEMECODE, TBL_BOARD.ADDRESS, TBL_BOARD.STORENAME
+		from TBL_BOARD, TBL_USER
+		where TBL_BOARD.NUM > 0 and TBL_BOARD.USERID = TBL_USER.USERID
+		<include refid="themeSearch"></include>
+		<include refid="search"></include>
+		order by TBL_BOARD.NUM DESC  
+		limit #{page}, 6
 	</select> 
 	
 	<select id="listCount" resultType="int">
-	
-		  select count(NUM) 
-		  from tbl_board 
-		  where NUM > 0 
-		  <include refid="themeSearch"></include>
-		  <include refid="search"></include>
-		
+		select count(NUM) 
+		from tbl_board 
+		where NUM > 0 
+		<include refid="themeSearch"></include>
+		<include refid="search"></include>
 	</select>
 	
 	<select id="themeList" resultType="Theme">
-
-		  select *
-		  from TBL_THEME
-  
+		select *
+		from TBL_THEME
 	</select> 
 	
 	<select id="selectOne" resultType="MyHiddenPlace">
-
-        select TBL_BOARD.TITLE, TBL_BOARD.TITLEIMGURL, TBL_BOARD.CONTENT, TBL_BOARD.UPCOUNT, TBL_BOARD.STORENAME, TBL_BOARD.THEMECODE, TBL_BOARD.ADDRESS, TBL_BOARD.USERID, TBL_USER.USERNICKNAME 
-        from TBL_BOARD, TBL_USER
-        where TBL_BOARD.NUM = #{num} AND TBL_BOARD.USERID = TBL_USER.USERID
-        
+		select TBL_BOARD.TITLE, TBL_BOARD.TITLEIMGURL, TBL_BOARD.CONTENT, TBL_BOARD.UPCOUNT, TBL_BOARD.STORENAME, TBL_BOARD.THEMECODE, TBL_BOARD.ADDRESS, TBL_BOARD.USERID, TBL_USER.USERNICKNAME, TBL_BOARD.WRITEDATE 
+		from TBL_BOARD, TBL_USER
+		where TBL_BOARD.NUM = #{num} AND TBL_BOARD.USERID = TBL_USER.USERID
     </select> 
 	
 	<update id="readCountPlus">
-
-		  update TBL_BOARD set READCOUNT = READCOUNT + 1
-		  where NUM = #{num}
-		  
+		update TBL_BOARD set READCOUNT = READCOUNT + 1
+		where NUM = #{num}
 	</update> 
 	
 	<select id="bestMHP" resultType="MyHiddenPlace">
-		  select TBL_BOARD.NUM, TBL_BOARD.WRITEDATE, TBL_USER.USERNICKNAME,
-		  TBL_BOARD.READCOUNT, TBL_BOARD.TITLE, TBL_BOARD.TITLEIMGURL
-		  from TBL_BOARD, TBL_USER
-		  where TBL_BOARD.MHPBESTCODE = 1 and TBL_BOARD.USERID = TBL_USER.USERID;
+		select TBL_BOARD.NUM, TBL_BOARD.WRITEDATE, TBL_USER.USERNICKNAME,
+		TBL_BOARD.READCOUNT, TBL_BOARD.TITLE, TBL_BOARD.TITLEIMGURL
+		from TBL_BOARD, TBL_USER
+		where TBL_BOARD.MHPBESTCODE = 1 and TBL_BOARD.USERID = TBL_USER.USERID;
 	</select> 
-
-	<!-- <select id="readPage" resultType="org.toolbee.domain.BoardVO">
-		select
-		*
-		from
-		tbl_board
-		where
-		bno =
-		#{bno}
-	</select>
-
-	<update id="update">
-		update
-		tbl_board
-		set
-		title = #{title}, content =
-		#{content}
-		where
-		bno = #{bno}
-	</update>
-
-	<delete id="delete">
-		delete from
-		tbl_board
-		where
-		bno = #{bno}
-	</delete>
-
-	<select id="listAll" resultType="org.toolbee.domain.BoardVO">
-	<![CDATA[
-		select
-			bno, title, content, writer, regdate, viewcnt
-		from 
-			tbl_board
-		where 
-			bno > 0 
-		order by 
-			bno desc, regdate desc
-	]]>
-	</select>
-
-	<select id="listPage" resultType="BoardVO">
-	<![CDATA[
-		select
-			bno, title, content, writer, regdate, viewcnt
-		from 
-			tbl_board
-		where 
-			bno > 0 
-		order by 
-			bno desc, regdate desc
-		limit 
-			#{page}, 10
-	]]>
-	</select>
-
-	<select id="listCriteria" resultType="BoardVO">
-	<![CDATA[
-		select
-			bno, title, content, writer, regdate, viewcnt
-		from 
-			tbl_board
-		where 
-			bno > 0 
-		order by 
-			bno desc, regdate desc
-		limit 
-			#{rowIndex}, #{perPageNum} 
-	]]>
-	</select>
-
-	<select id="countPaging" resultType="int">
-	<![CDATA[
-		select
-	 		count(bno)
-		from 
-			tbl_board
-		where 
-			bno > 0 
-	]]>
-	</select>
-
-	<select id="listSearch" resultType="BoardVO">
-		<![CDATA[
-		select *
-		from 
-			tbl_board
-		where 
-			bno > 0 
-		]]>
-
-		<if test="searchType != null">
-			<if test="searchType == 't'.toString()">
-				and title like CONCAT('%', #{keyword}, '%')
-			</if>
-			<if test="searchType == 'c'.toString()">
-				and content like CONCAT('%', #{keyword}, '%')
-			</if>
-			<if test="searchType == 'w'.toString()">
-				and content like CONCAT('%', #{keyword}, '%')
-			</if>
-			<if test="searchType == 'tc'.toString()">
-				and ( title like CONCAT('%', #{keyword}, '%') OR content
-				like CONCAT('%', #{keyword}, '%'))
-			</if>
-			<if test="searchType == 'cw'.toString()">
-				and ( content like CONCAT('%', #{keyword}, '%') OR writer
-				like CONCAT('%', #{keyword}, '%'))
-			</if>
-			<if test="searchType == 'tcw'.toString()">
-				and ( title like CONCAT('%', #{keyword}, '%')
-				OR content like CONCAT('%', #{keyword}, '%')
-				OR writer like CONCAT('%', #{keyword}, '%'))
-			</if>
-		</if>
-		<![CDATA[
-		order by 
-			bno desc, regdate desc
-		limit 
-			#{rowIndex}, #{perPageNum} 
-		]]>
-	</select>
-
-	<select id="listSearchCount" resultType="int">
-		<![CDATA[
-		select count(bno)
-		from 
-			tbl_board
-		where 
-			bno > 0 
-		]]>
-	</select> -->
-		<insert id="insert">
+	
+	<insert id="insert">
 		insert into TBL_BOARD (USERID, STORENAME, TITLEIMGURL, THEMECODE, TITLE, CONTENT, ADDRESS)
 		values(#{userId}, #{storeName}, #{titleImgURL},#{themeCode},#{title},#{content}, #{address})
-		</insert>
+	</insert>
 	
 	<!-- 로그인한 유저의 즐겨찾기 목록 -->
 	<select id="bookmarkAll" resultType="MyHiddenPlace">
-		  select TBL_BOOKMARK.NUM
-		  from TBL_BOOKMARK
-		  where userId = #{userId}
+		select TBL_BOOKMARK.NUM
+		from TBL_BOOKMARK
+		where userId = #{userId}
 	</select>
 	
 	<!-- 내알못 삭제 -->
 	<delete id="delete">
-	
 		delete from TBL_BOARD
 		where NUM = #{num}
 	</delete>
 	
 	<!-- 추천수구분코드 가져오기 -->
 	<select id="upCountCheck" resultType="Integer">
-		  select UPCOUNTCODE
-		  from TBL_UPCOUNTCONNECT
-		  where userId = #{userId} and NUM = #{num}
+		select UPCOUNTCODE
+		from TBL_UPCOUNTCONNECT
+		where userId = #{userId} and NUM = #{num}
 	</select>
 	
 	<!-- 추천한 아이디 저장 -->
@@ -234,17 +92,37 @@
 	
 	<!-- 추천수 증가 -->
 	<update id="upCount">
-
-		  update TBL_BOARD set UPCOUNT = UPCOUNT + 1
-		  where NUM = #{num}
-		  
+		update TBL_BOARD set UPCOUNT = UPCOUNT + 1
+		where NUM = #{num}
 	</update> 
 	
 	<!--내알못 수정 -->
 	<update id="update">
-      update TBL_BOARD 
-      set STORENAME = #{storeName}, TITLEIMGURL = #{titleImgURL}, THEMECODE = #{themeCode}, TITLE = #{title}, CONTENT = #{content}, address =  #{address}
-      where NUM = #{num}
-   </update>
+		update TBL_BOARD 
+		set STORENAME = #{storeName}, TITLEIMGURL = #{titleImgURL}, THEMECODE = #{themeCode}, TITLE = #{title}, CONTENT = #{content}, address =  #{address}
+		where NUM = #{num}
+	</update>
+   
+	<!--베스트코드 0초기화 -->
+	<update id="updateBestCode">
+		update TBL_BOARD 
+		set MHPBESTCODE = 0
+	</update>
+   
+	<!-- 추천수 500이상 상호명 가져오기 -->
+	<select id="updateBestStoreName" resultType="MyHiddenPlace">
+		select STORENAME, NUM
+		from TBL_BOARD
+		where UPCOUNT >= 500
+	</select>
+   
+	<!-- 베스트 해당 상호명 베스트코드 1로 바꾸기 -->
+	<update id="updateBestMHP" parameterType="String">
+		UPDATE TBL_BOARD
+		SET MHPBESTCODE = 1
+		<where>
+			FIND_IN_SET(NUM, #{nums})
+		</where>
+	</update>
 	
 </mapper>

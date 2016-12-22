@@ -31,13 +31,13 @@ public class BookmarkControllerRest {
 		try {
 			service.bookmarkInsertMHP(myHiddenPlace);
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
 		}
 
 		return entity;
-
 	}
 
 	//즐겨찾기 해제(홈페이지)
@@ -49,13 +49,13 @@ public class BookmarkControllerRest {
 		try {
 			service.bookmarkDeleteMHP(myHiddenPlace);
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
 		}
 
 		return entity;
-
 	}
 
 	//즐겨찾기 내알못 출력
@@ -66,10 +66,12 @@ public class BookmarkControllerRest {
 
 		try {
 			entity = new ResponseEntity<List<Bookmark>>(service.bookmarkMHPAll(pageMaker), HttpStatus.OK);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<List<Bookmark>>(HttpStatus.BAD_REQUEST);
 		}
+		
 		return entity;
 	}
 
@@ -81,10 +83,12 @@ public class BookmarkControllerRest {
 
 		try {
 			entity = new ResponseEntity<List<Bookmark>>(service.bookmarkMRAll(userId), HttpStatus.OK);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<List<Bookmark>>(HttpStatus.BAD_REQUEST);
 		}
+		
 		return entity;
 	}
 
@@ -97,10 +101,12 @@ public class BookmarkControllerRest {
 		try {
 			service.bookmarkDelete(nums);
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
 		}
+		
 		return entity;
 	}
 
@@ -111,18 +117,15 @@ public class BookmarkControllerRest {
 		ResponseEntity<BookmarkPageMaker> entity = null;
 
 		try {
-
 			pageMaker.setTotalCount(service.listCount(pageMaker));
-
 			entity = new ResponseEntity<BookmarkPageMaker>(pageMaker, HttpStatus.OK);
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<BookmarkPageMaker>(HttpStatus.BAD_REQUEST);
 		}
+		
 		return entity;
 	}	
 
-
 }
-

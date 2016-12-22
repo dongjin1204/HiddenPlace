@@ -20,11 +20,10 @@ function UserDao() {
             },
             dataType : 'text', // 서버에서 보내오는 데이터 타입
             success : function(data) { // 서버에서 보내오는 데이터
-
                isSuccess = data;
-
             }
          });
+         
       } catch (e) {
          console.log('userDao 객체 : userInsert 메서드에서 예외 발생');
          console.log(e.message);
@@ -46,15 +45,15 @@ function UserDao() {
             },
             dataType : 'text', // 서버에서 보내오는 데이터 타입
             success : function(data) { // 서버에서 보내오는 데이터 // data = success
-
                isSuccess = data;
-
             }
          });
+         
       } catch (e) {
          console.log('userDao 객체 : nickNameCheck 메서드에서 예외 발생');
          console.log(e.message);
       }
+      
       return isSuccess;
    };
 
@@ -72,20 +71,21 @@ function UserDao() {
             },
             dataType : 'text', // 서버에서 보내오는 데이터 타입
             success : function(data) {
-
                isSuccess = data;
             }
          });
+         
       } catch (e) {
          console.log('userDao 객체 : emailSend 메서드에서 예외 발생');
          console.log(e.message);
       }
+      
       return isSuccess;
-
    };
 
    // 비밀번호 찾기 (변경)
    this.forgetPwUpdate = function(email, newPw) {
+	   
       try {
          $.ajax({
             url : '/user/forgetPwUpdateView',
@@ -97,11 +97,10 @@ function UserDao() {
             },
             dataType : 'text', // 서버에서 보내오는 데이터 타입
             success : function(data) {
-
                isSuccess = data; // success
-
             }
          });
+         
       } catch (e) {
          console.log('userDao 객체 : forgetPw 메서드에서 예외 발생');
          console.log(e.message);
@@ -124,14 +123,15 @@ function UserDao() {
             },
             dataType : 'text', // 서버에서 보내오는 데이터 타입
             success : function(data) {
-
                isSuccess = data;
             }
          });
+         
       } catch (e) {
          console.log('userDao 객체 : forgetEmailSend 메서드에서 예외 발생');
          console.log(e.message);
       }
+      
       return isSuccess;
    }
 
@@ -149,18 +149,16 @@ function UserDao() {
             },
             dataType : 'text',
             success : function(data) {
-
                isSuccess = data; // 로그인 성공시 dest(다시 요청해줄 페이지), idFail, pwFail
-
             }
          });
+         
       } catch (e) {
          console.log('userDao 객체 : login 메서드에서 예외 발생');
          console.log(e.message);
       }
 
       return isSuccess;
-
    };
 
    // 로그아웃
@@ -176,11 +174,10 @@ function UserDao() {
             },
             dataType : 'text',
             success : function(data) {
-
                isSuccess = data; // success
-
             }
          });
+         
       } catch (e) {
          console.log('userDao 객체 : logout 메서드에서 예외 발생');
          console.log(e.message);
@@ -191,6 +188,7 @@ function UserDao() {
 
    // 회원정보 수정 (닉네임만 변경)
    this.userUpdateN = function(email, nowPw, newNickname) {
+	   
       try {
          $.ajax({
             url : '/user/userUpdate',
@@ -203,9 +201,7 @@ function UserDao() {
             },
             dataType : 'text', // 서버에서 보내오는 데이터 타입
             success : function(data) {
-
                isSuccess = data; // success or fail
-
             }
          });
 
@@ -215,7 +211,6 @@ function UserDao() {
       }
 
       return isSuccess;
-
    };
 
    // 회원정보 수정(패스워드)
@@ -234,9 +229,7 @@ function UserDao() {
             },
             dataType : 'text', // 서버에서 보내오는 데이터 타입
             success : function(data) {
-
                isSuccess = data; // success or fail
-
             }
          });
 
@@ -246,7 +239,6 @@ function UserDao() {
       }
 
       return isSuccess;
-
    };
 
    // 마이페이지 접근권한
@@ -262,9 +254,7 @@ function UserDao() {
             },
             dataType : 'text', // 서버에서 보내오는 데이터 타입
             success : function(data) {
-
                isSuccess = data; // success, fail
-
             }
          });
 
@@ -274,7 +264,6 @@ function UserDao() {
       }
 
       return isSuccess;
-
    }
 
    // 회원탈퇴
@@ -285,25 +274,22 @@ function UserDao() {
             url : '/user/userDelete',
             async : false,
             type : 'post',
-
             data : {
                userId : email,
                userPw : pw
             },
             dataType : 'text', // 서버에서 보내오는 데이터 타입
             success : function(data) {
-
                isSuccess = data; // success or fail
-
             }
          });
+         
       } catch (e) {
          console.log("userDao 객체: userDelete 메서드에서 예외 발생");
          console.log(e.message);
       }
 
       return isSuccess;
-
    };
 
    // 회원 닉네임 가져오기
@@ -316,7 +302,6 @@ function UserDao() {
             url : '/user/getNickname',
             async : false,
             type : 'post',
-
             data : {
                userId : userId
             },
@@ -326,25 +311,27 @@ function UserDao() {
                nickname = user.userNickname;
             }
          });
+         
       } catch (e) {
          console.log("userDao 객체: getNickname 메서드에서 예외 발생");
          console.log(e.message);
       }
+      
       return nickname;
    }
 
    // Facebook login dao
    this.FBLoginDao = function() {
+	   
       var user;
       var result;
+      
       // 페이스북 로그인 API
       FB.login(function(response) {
-
          if (response.status === 'connected') { // 로그인되면
             facebookAPI();
          } else if (response.status === 'not_authorized') {
-         } else {
-         }
+         } 
       }, {
          scope : 'public_profile, email'
       });
@@ -372,7 +359,6 @@ function UserDao() {
             dataType : 'text', // 서버에서 보내오는 데이터 타입
             async : false,
             success : function(data) { // dest, fail
-
                result = data;
                if (result === "fail") {
                   alert("페이스북 계정 로그인에 오류가 발생하였습니다.");
@@ -383,9 +369,7 @@ function UserDao() {
                }
             }
          });
-
       });
-
    }
 
    // facebook API

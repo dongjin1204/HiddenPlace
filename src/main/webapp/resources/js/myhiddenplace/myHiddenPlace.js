@@ -1,5 +1,4 @@
 function MyHiddenPlace(userNickname, regionName, themeName, title, content, writeDate, storeName, latitude, longitude, detailAddress, nowLoginId) {
-
 	this.num = 0; //글번호
 	this.userNickname = userNickname; //회원닉네임
 	this.regionName = regionName; //지역명

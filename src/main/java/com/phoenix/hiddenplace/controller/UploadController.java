@@ -8,8 +8,6 @@ import java.util.UUID;
 import javax.annotation.Resource;
 
 import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -29,8 +27,6 @@ import com.phoenix.hiddenplace.util.UploadFileUtils;
 @Controller
 public class UploadController {
 
-	private static final Logger logger = LoggerFactory.getLogger(UploadController.class);
-
 	@Resource(name = "uploadPath")
 	private String uploadPath; //= "C:\\imageUpload\\upload";
 
@@ -41,20 +37,13 @@ public class UploadController {
 	@RequestMapping(value = "/uploadForm", method = RequestMethod.POST)
 	public String uploadForm(MultipartFile file, Model model) throws Exception {
 
-		logger.info("originalName: " + file.getOriginalFilename());
-		logger.info("size: " + file.getSize());
-		logger.info("contentType: " + file.getContentType());
-
 		String savedName = uploadFile(file.getOriginalFilename(), file.getBytes());
-
 		model.addAttribute("savedName", savedName);
-
 		return "uploadResult";
 	}
 
 	@RequestMapping(value = "/uploadAjax", method = RequestMethod.GET)
 	public void uploadAjax() {
-
 	}
 
 	@ResponseBody
@@ -62,14 +51,7 @@ public class UploadController {
 	produces = "text/plain;charset=UTF-8")
 	public ResponseEntity<String> uploadAjax(MultipartFile file)throws Exception{
 
-		logger.info("originalName: " + file.getOriginalFilename());
-
-		return new ResponseEntity<>(
-				UploadFileUtils.uploadFile(uploadPath, 
-						file.getOriginalFilename(), 
-						file.getBytes()), 
-				HttpStatus.CREATED);
-
+		return new ResponseEntity<>(UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes()), HttpStatus.CREATED);
 	}
 
 	private String uploadFile(String originalName, byte[] fileData) throws Exception {
@@ -80,7 +62,6 @@ public class UploadController {
 		FileCopyUtils.copy(fileData, target);
 
 		return savedName;
-
 	}
 
 	@ResponseBody
@@ -90,10 +71,7 @@ public class UploadController {
 		InputStream in = null; 
 		ResponseEntity<byte[]> entity = null;
 
-		logger.info("FILE NAME: " + fileName);
-
-		try{
-
+		try {
 			String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
 			MediaType mType = MediaUtils.getMediaType(formatName);
 			HttpHeaders headers = new HttpHeaders();
@@ -102,37 +80,32 @@ public class UploadController {
 
 			if(mType != null){
 				headers.setContentType(mType);
-			}else{
+			} else {
 				fileName = fileName.substring(fileName.indexOf("_") + 1);       
 				headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 				headers.add("Content-Disposition", "attachment; filename=\"" + 
-						new String(fileName.getBytes("UTF-8"), "ISO-8859-1") + "\"");
+				new String(fileName.getBytes("UTF-8"), "ISO-8859-1") + "\"");
 			}
 
-			entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in), 
-					headers, 
-					HttpStatus.CREATED);
-		}catch(Exception e){
+			entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in), headers, HttpStatus.CREATED);
+			
+		} catch(Exception e) {
 			e.printStackTrace();
 			entity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
-		}finally{
+		} finally {
 			if(in != null) {
 				in.close();
 			}
 		}
 
 		return entity;    
-
 	}
 
 	@ResponseBody
 	@RequestMapping(value="/deleteFile", method=RequestMethod.POST)
 	public ResponseEntity<String> deleteFile(String fileName){
 
-		logger.info("delete file: "+ fileName);
-
 		String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
-
 		MediaType mType = MediaUtils.getMediaType(formatName);
 
 		if(mType != null) {  //이미지 파일이라면.. 원본 이미지 파일 삭제
@@ -145,14 +118,11 @@ public class UploadController {
 		new File(uploadPath + fileName.replace('/', File.separatorChar)).delete();
 
 		return new ResponseEntity<String>("deleted", HttpStatus.OK);
-
 	}
 
 	@ResponseBody
 	@RequestMapping(value="/deleteAllFiles", method=RequestMethod.POST)
 	public ResponseEntity<String> deleteFile(@RequestParam("files[]") String[] files){
-
-		logger.info("delete all files: "+ files);
 
 		if(files == null || files.length == 0) {
 			return new ResponseEntity<String>("deleted", HttpStatus.OK);
@@ -160,22 +130,18 @@ public class UploadController {
 
 		for (String fileName : files) {
 			String formatName = fileName.substring(fileName.lastIndexOf(".")+1);
-
 			MediaType mType = MediaUtils.getMediaType(formatName);
-
+			
 			if(mType != null){      
-
 				String front = fileName.substring(0,12);
 				String end = fileName.substring(14);
 				new File(uploadPath + (front+end).replace('/', File.separatorChar)).delete();
 			}
 
 			new File(uploadPath + fileName.replace('/', File.separatorChar)).delete();
-
 		}
-		
+
 		return new ResponseEntity<String>("deleted", HttpStatus.OK);
-		
 	}
 
 }

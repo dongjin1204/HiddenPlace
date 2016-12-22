@@ -7,8 +7,6 @@ import com.phoenix.hiddenplace.domain.BookmarkPageMaker;
 import com.phoenix.hiddenplace.domain.MyHiddenPlace;
 
 public interface BookmarkDao {
-
-	 
 	 // 즐겨찾기 등록
 	 public void bookmarkInsertMHP(MyHiddenPlace myHiddenPlace) throws Exception;
 	 

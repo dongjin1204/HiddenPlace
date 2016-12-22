@@ -2,8 +2,8 @@
 
 /*폰트 적용*/
 @font-face {
-   font-family: 'baemin';
-   src: url(/resources/bootstrap/fonts/배달의민족주아체.ttf) format('truetype');
+	font-family: 'baemin';
+	src: url(/resources/bootstrap/fonts/배달의민족주아체.ttf) format('truetype');
 }
 
 #headmenu-header {
@@ -22,10 +22,10 @@ header {
 	padding: 0;
 	position: fixed;
 	width: 100%;
-	opacity: 1;
+	opacity: 0.8;
 	z-index: 50;
 	margin: 0;
-	background-color: #ff792a;
+	background-color: #eee;
 }
 
 .logo {
@@ -52,7 +52,13 @@ header {
 	top: 10px;
 	border: 0;
 	height: 50px;
-	/*background: none;*/
+	color: black;
+	background-color: white;
+}
+
+#search_button:hover {
+	color: white;
+	background-color: black;
 }
 
 #search_bar:focus {
@@ -129,8 +135,7 @@ header {
 	margin-bottom: 2px;
 }
 
-#div-login-msg.success, #div-lost-msg.success, #div-register-msg.success
-	{
+#div-login-msg.success, #div-lost-msg.success, #div-register-msg.success {
 	border: 1px solid #68c3a3;
 	background-color: #c8f7c5;
 }
@@ -150,8 +155,7 @@ header {
 	transition: all ease-in-out 500ms;
 }
 
-#icon-login-msg.success, #icon-lost-msg.success, #icon-register-msg.success
-	{
+#icon-login-msg.success, #icon-lost-msg.success, #icon-register-msg.success {
 	background-color: #68c3a3 !important;
 }
 
@@ -200,7 +204,7 @@ header {
 }
 
 .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus,
-	.btn.active.focus {
+.btn.active.focus {
 	outline: none;
 }
 

@@ -16,7 +16,7 @@ public class Bookmark {
 	private int code;
 	private double latitude; 
 	private double longitude; 
-	private String detailAddress;
+	private String address;
 	private String userNickName; //닉네임 유저
 	private String titleImgURL;
 	private String  mrTitleImgURL;
@@ -24,18 +24,23 @@ public class Bookmark {
 	public String getMrTitleImgURL() {
 		return mrTitleImgURL;
 	}
+	
 	public void setMrTitleImgURL(String mrTitleImgURL) {
 		this.mrTitleImgURL = mrTitleImgURL;
 	}
+	
 	public String getUserNickName() {
 		return userNickName;
 	}
+	
 	public void setUserNickName(String userNickName) {
 		this.userNickName = userNickName;
 	}
+	
 	public int getNum() {
 		return num;
 	}
+	
 	public void setNum(int num) {
 		this.num = num;
 	}
@@ -44,13 +49,14 @@ public class Bookmark {
 		return userId;
 	}
 	
-	
 	public int getBookmarkNum() {
 		return bookmarkNum;
 	}
+	
 	public void setBookmarkNum(int bookmarkNum) {
 		this.bookmarkNum = bookmarkNum;
 	}
+	
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
@@ -86,9 +92,11 @@ public class Bookmark {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
 	public String getWriteDate() {
 		return writeDate;
 	}
+	
 	public void setWriteDate(String writeDate) {
 		this.writeDate = writeDate;
 	}
@@ -141,26 +149,20 @@ public class Bookmark {
 		this.longitude = longitude;
 	}
 	
-	public String getDetailAddress() {
-		return detailAddress;
+	public String getAddress() {
+		return address;
 	}
 	
-	public void setDetailAddress(String detailAddress) {
-		this.detailAddress = detailAddress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	
 	public String getTitleImgURL() {
 		return titleImgURL;
 	}
+	
 	public void setTitleImgURL(String titleImgURL) {
 		this.titleImgURL = titleImgURL;
 	}
-	@Override
-	public String toString() {
-		return "Domain [bookmarkNum="+ bookmarkNum+", num=" + num + ", userId=" + userId + ", regionTownCode=" + regionTownCode + ", themeCode="
-				+ themeCode + ", title=" + title + ", content=" + content + ", writeDate=" + writeDate + ", upCount="
-				+ upCount + ", readCount=" + readCount + ", storeName=" + storeName + ", code=" + code + ", latitude="
-				+ latitude + ", longitude=" + longitude + ",userNickName=" + userNickName + ",titleImgURL=" + titleImgURL + ",mrTitleImgURL=" + mrTitleImgURL + " detailAddress=" + detailAddress + "]";
-	}
-	
+
 }

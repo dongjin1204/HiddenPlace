@@ -1,727 +1,756 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<title>조회</title>
+<title>내가 알지 못한 곳 - 글조회페이지</title>
 <meta charset="utf-8">
-<meta name="viewport"
-   content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <link rel="shortcut icon" href="images/favicon.ico" />
-<link
-   href='https://fonts.googleapis.com/css?family=Lato:400,300,700&amp;subset=latin,latin-ext'
-   rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <!-- <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/> -->
-<link rel="stylesheet" type="text/css"
-   href="/resources/bootstrap/css/animate.css" />
-<link rel="stylesheet" type="text/css"
-   href="/resources/bootstrap/css/font-awesome.min.css" />
-<link rel="stylesheet" type="text/css"
-   href="/resources/bootstrap/css/style.css" />
-<script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script
-   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/animate.css" />
+<link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/style.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="/resources/js/myhiddenplace/myHiddenPlaceController.js"></script>
-<!-- <script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=   f617f92098af4b2430be59f43550867c"></script> -->
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script src="/resources/js/user/userController.js"></script>
 <script src="/resources/js/homepage/homepageController.js"></script>
-<script type="text/javascript"
-   src="http://apis.daum.net/maps/maps3.js?apikey=   f617f92098af4b2430be59f43550867c"></script>
-
+<script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=4de03d90a8572ca82c4b287cab9155e1"></script>
 <link rel="shortcut icon" href="images/favicon.ico" />
-<link rel="stylesheet" type="text/css"
-   href="/resources/bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css"
-   href="/resources/bootstrap/css/swiper.min.css" />
-<link rel="stylesheet" type="text/css"
-   href="/resources/bootstrap/css/style.css" />
-<!-- <link rel="stylesheet" type="text/css" -->
-<!--    href="/resources/customize/css/homepageView.css" /> -->
-<link rel="stylesheet" type="text/css"
-   href="/resources/customize/css/header.css" />
-<link rel="stylesheet" type="text/css"
-   href="/resources/customize/css/myHiddenPlaceSelectOneStyle.css" />
-<link href="https://fonts.googleapis.com/css?family=Indie+Flower"
-   rel="stylesheet">
-
+<link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/swiper.min.css" />
+<link rel="stylesheet" type="text/css" href="/resources/bootstrap/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/resources/customize/css/header.css" />
+<link rel="stylesheet" type="text/css" href="/resources/customize/css/myHiddenPlaceSelectOneStyle.css" />
+<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 <script src="/resources/bootstrap/js/pace.min.js"></script>
 <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 <script src="/resources/bootstrap/js/swiper.jquery.min.js"></script>
 <script src="/resources/bootstrap/js/animate-on-scroll.js"></script>
 <script src="/resources/bootstrap/js/script.js"></script>
-
+<script src="/resources/js/page/pageController.js"></script>
 
 <style>
-.menu-explain {
-   font-size: 16px;
-   line-height: 1.5;
-   margin-bottom: 80px;
-   margin-top: 50px;
-   font-family: "Lato", sans-serif;
-   padding: 0 15px;
+@font-face {
+	font-family: 'baemin';
+	src: url(/resources/bootstrap/fonts/배달의민족주아체.ttf) format('truetype');
 }
+   
 /* 지도 */
 #map {
-   border: solid 1px #e9e9e9;
-   width: 45%;
-   height: 250px;
-   margin-top: 5%;
-   margin-left: 30%;
+	border: solid 1px #e9e9e9;
+	width: 100%;
+	height: 250px;
+	margin-top: 4%;
+	margin-bottom: 5%;
 }
+
 /* 메인사진과 거리 */
 .portfolio-item {
-   width: 100%;
-   margin-left: auto;
-   margin-right: auto;
-   margin-top: 50px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
 }
 
 /* 하트 */
 #up {
-   margin-top: 10%;
-   width: 50px;
-   height: 50px;
-   text-align: center;
+	height: 50px;
+	margin: 3% 47.5% 0 47.8%;
+	cursor: pointer;
 }
+
 /* 입력 */
 #commentParentSubmit {
-   float: right;
-   border-radius: 20px;
-   border: 1px solid #cccccc;
-   margin-right: 10px;
+	float: right;
+	border-radius: 20px;
+	border: 1px solid #cccccc;
+	margin-right: 10px;
 }
 
 #commentParentSubmit:hover {
-   opacity: 0.5;
-   color: #00c3bd;
-   background-color: white;
-   border-color: #00c3bd;
+	opacity: 0.5;
+	color: #00c3bd;
+	background-color: white;
+	border-color: #00c3bd;
 }
 
 #commentUpdateText {
-   width: 100%;
-   resize: none;
-   background-color: white;
-   border: 1px solid #cccccc;
-   margin-bottom: 5px;
-   margin-top: 5px;
+	width: 100%;
+	resize: none;
+	background-color: white;
+	border: 1px solid #cccccc;
+	margin-bottom: 5px;
+	margin-top: 5px;
 }
 
 #recommended {
-   text-align: center;
+	text-align: center;
 }
-/* 버튼 */
-.btn-default {
-   color: black;
-   background-color: #F4F4F4;
-   margin-top: 35px;
-   margin-left: 80px;
+
+#headmenu-myInfo {
+	margin-left: 10px;
 }
 
 .btn-default:focus, .btn-default.focus {
-   color: black;
-   background-color: #9d9da6;
+	color: black;
+	background-color: #9d9da6;
+}
+
+/* 버튼 */
+.btn-default {
+	color: black;
+	background-color: white;
+    font-family: 'baemin';
 }
 
 .btn-default:hover {
-   opacity: 0.5;
-   color: white;
-   background-color: black;
+	opacity: 0.5;
+	color: white;
+	background-color: #1E90FF; 
+	font-family: 'baemin';
+}
+
+.btn-default.is-checked {
+	color: white;
+	background-color: black;
+	font-family: 'baemin';
 }
 
 .btn-group {
-   float: right;
+	float: right;
+	font-family: 'baemin';
 }
 
 .btn-border {
-   background-color: white;
-   margin-right: 5;
+	background-color: white;
+	margin-right: 5;
 }
 
 #main_hiddenPlace {
-   margin-top: 0px;
-   background-color: #fbfbfb;
+	margin-top: 0px;
+	background-color: #fbfbfb;
+    font-family: 'baemin';
 }
 
 .title {
-   text-align: center;
-   color: white;
+	text-align: center;
+	color: white;
 }
+
 /* 목록수정삭제버튼 */
 #button_group {
-   margin-top: 1%;
+	margin-top: 1%;
 }
 
 #btn-selectAll {
-   margin: 0;
-   float: right;
-   margin-right: 1%;
+	position: fixed;
+	background-color: #160095;
+	color: white;
+	right: 3%;
+	top:86%;
+	border-radius: 50%;
+	height: 60px;
+	width: 60px;
+	text-align:center;
+	padding-left: 18px;
+	vertical-align: middle;
 }
 
 #btn-update {
-   margin: 0;
-   margin-right: 1%;
-   float: right;
+	position: fixed;
+	background-color: #160095;
+	color: white;
+	right: 3%;
+	top:70%;
+	border-radius: 50%;
+	height: 60px;
+	width: 60px;
+	text-align:center;
+	padding-left: 18px;
+	vertical-align: middle;
 }
 
 #btn-delete {
-   margin: 0;
-   margin-right: 1%;
-   float: right;
+	position: fixed;
+	background-color: #160095;
+	color: white;
+	right: 3%;
+	top:78%;
+	border-radius: 50%;
+	height: 60px;
+	width: 60px;
+	text-align:center;
+	padding-left: 18px;
+	vertical-align: middle;
 }
 
-#up_count {
-   text-align: center;
+#up_count >p {
+	text-align: center;
 }
 
-#up_count_img {
-   text-align: center;
-}
-
-.title {
-   max-width: 600px;
-   left: 30%;
-   top: 285px;
-}
-
-#title_div {
-   width: 100%;
-   font-size: 35px;
-}
-
-.store_name {
-   max-width: 600px;
-   position: absolute;
-   left: 40%;
-   top: 200px;
-   color: white;
-}
-
-#userNickname {
-   max-width: 600px;
-   position: absolute;
-   left: 90%;
-   top: 700px;
-   color: white;
-}
-
-#storeName {
-   width: 100%;
-   font-size: 35px;
-}
 /* 테이블  */
 .table-condensed {
-   /*    margin-left: 30%; */
-   margin-top: 5%;
-   /*    margin-right: 25%; */
-   border: 0 #cccccc;
+	margin-top: 5%;
+	border: 0 #cccccc;
 }
 
 .table-border {
-   border: 1 #cccccc;
-   background: white
+	border: 1 #cccccc;
+	background: white
 }
 
 #r1:hover {
-   opacity: 0.8;
-   color: #d9534f;
+	opacity: 0.8;
+	color: #d9534f;
 }
 
 .hiddenPlace_img {
-   opacity: 0.7;
+	opacity: 0.7;
 }
+
 /* 수정확인버튼 */
 .form-group {
-   float: right;
+	float: right;
+	font-family: 'baemin';
 }
 
 #commentUpdateSubmit {
-   margin: 0;
-   background-color: white;
-   border: 1px solid #cccccc;
-   border-radius: 20px;
+	margin: 0;
+	background-color: white;
+	border: 1px solid #cccccc;
+	border-radius: 20px;
 }
 
 #commentUpdateSubmit:hover {
-   background-color: white;
-   opacity: 0.5;
-   color: #00c3bd;
-   border-color: #00c3bd;
+	background-color: white;
+	opacity: 0.5;
+	color: #00c3bd;
+	border-color: #00c3bd;
 }
 
 #commentCancel {
-   margin: 0;
-   margin-left: 3px;
-   background-color: white;
-   border: 1px solid #cccccc;
-   border-radius: 20px;
+	margin: 0;
+	margin-left: 3px;
+	background-color: white;
+	border: 1px solid #cccccc;
+	border-radius: 20px;
 }
 
 #commentCancel:hover {
-   background-color: white;
-   opacity: 0.5;
-   color: #00c3bd;
-   border-color: #00c3bd;
+	background-color: white;
+	opacity: 0.5;
+	color: #00c3bd;
+	border-color: #00c3bd;
 }
 
 #commentParentText {
-   margin-left: 1%;
-   margin-right: 0%;
-   margin-top: 1.5%;
-   width: 100%;
-   resize: none;
-   border: 0 #cccccc;
+	margin-left: 1%;
+	margin-right: 0%;
+	margin-top: 1.5%;
+	width: 100%;
+	resize: none;
+	border: 0 #cccccc;
 }
 
 #reply_line {
-   margin-top: 0%;
-   margin-bottom: 0%;
-   border: 0;
-   border-top: 1px solid #d9534f;
-   width: 45px;
-   float: left;
+	margin-top: 0%;
+	margin-bottom: 0%;
+	border: 0;
+	border-top: 1px solid #d9534f;
+	width: 45px;
+	float: left;
+}
+
+#contentEnd_Line {
+	margin-top: 0%;
+	margin-bottom: 0%;
+	border: 0;
+	border-top: 1px solid black;
 }
 
 #commentTable {
-   margin-top: -20%;
+	margin-top: -20%;
 }
 
 #reply_underLine {
-   margin-top: 1%;
-   border-top: 1px solid #cccccc;
-   width: 100%;
+	margin-top: 1%;
+	border-top: 1px solid #cccccc;
+	width: 100%;
 }
 
 h4 {
-   margin-top: 3%;
-   margin-bottom: 0%;
-   text-align: left;
+	margin-top: 3%;
+	margin-bottom: 0%;
+	text-align: left;
 }
 
 h4:hover {
-   opacity: 0.5;
-   color: black;
+	opacity: 0.5;
+	color: black;
 }
 
 #line {
-   border: 0;
-   border-top: 1px solid #cccccc;
+	border: 0;
+	border-top: 1px solid #cccccc;
 }
 
 #commentEditor {
-   border: 3px soild black;
+	border: 3px soild black;
+}
+
+#main_letter{
+	position: absolute;
+	max-width: 600px;
+	left: 32%;
+	top: 37%;
+}
+
+#titleImgBox .title {
+	opacity: 0.6;
+	text-align: center;
+	color: black;
+	font-size: 70px;
+	background-color: white;
+	border-radius: 20px;
+}
+
+#titleImgBox .storeName {
+	opacity: 0.6;
+	width: 100%;
+	font-size: 25px;
+	color: black;
+	background-color: white;
+	border-radius: 20px;
+	left: 90%;
+	top: 700px;
+}
+
+#userNickname {
+	max-width: 600px;
+	position: absolute;
+	left: 85%;
+	top: 700px;
+	color: white;
+}
+
+#writeDate {
+	max-width: 600px;
+	position: absolute;
+	left: 83.8%;
+	top: 725px;
+	color: white;
 }
 </style>
 
 <!-- 내알못 조회 이벤트 핸들링 -->
 <script type="text/javascript">
-   $(document)
-         .ready(
-               function() {
-
-                  var url = unescape(location.href); // url = http://localhost:8080/user/forgetPwUpdateView/pty0902@naver.com
-                  var numUrl = url.split('='); // pm[0] = http: , pm[1] = , 
-                  var num = numUrl[1];
-                  var userController = new UserController();
-                  var mhpController = new MyHiddenPlaceController();
-                  var homepageController = new HomepageController();
-                  var userId = localStorage.getItem('userId');
-                  var upImage;
-                  var nickname = userController
-                        .requestGetNickname(userId);
-                  var upCountCode = mhpController.requestUpCountCode(
-                        userId, num);
-                  if (userId != null) {
-                     if (upCountCode == 1) {
-                        upImage = $('<img id="up" class="hiddenPlace_logo" src="/resources/customize/images/like.png" ></div>'); // 채워진 하트 이미지
-                     } else {
-                        upImage = $('<img id="up" class="hiddenPlace_logo" src="/resources/customize/images/unLike.png"></div>'); //안채워진 하트 이미지
-                     }
-
-                     replyButton = $('<button type="button" id="commentParentSubmit" name="commentParentSubmit" class="btn btn-default">입력</button>');
-                     $('#replyButton').append(replyButton);
-                  } else {
-
-                     upImage = $('<img id="up" class="hiddenPlace_logo" src="/resources/customize/images/unLike.png" data-toggle="modal" data-target="#login-modal"></div>');
-                     $('#up_count_img').append(upImage);
-                     $('#up').click(function() {
-                        alert("로그인 후 이용가능합니다.");
-                     });
-                     replyButton = $('<button type="button" id="commentParentSubmit" name="commentParentSubmit" class="btn btn-default" data-toggle="modal" data-target="#login-modal">입력</button>');
-                     $('#replyButton').append(replyButton);
-                     $('#commentParentSubmit').click(function() {
-                        $("#commentParentText").val("");
-                        alert("로그인 후 이용가능합니다.");
-                     });
-                  }
-                  var myHiddenPlace = mhpController
-                        .requestSelectOneMHP(num); // 임의에 글번호 14번을 넣어놈(목록에서 받아오면됨)
-                  //상단 메인 사진과 제목 만드는 코드
-                  var titleimage = $('<img style="width: 100%; height: 100%"  id="main_img" src=" '
-                        + myHiddenPlace.titleImgURL + ' ">'); //타이틀 이미지
-                  //                   var titleimage = $('<div id="main_img" style="background-image: url(' + myHiddenPlace.titleImgURL + ');"></div>');
-
-                  var storeNameAndTitle = $('<div id="main_letter"></div>');
-                  var storeName = $('<p class="storeName">'
-                        + myHiddenPlace.storeName + '</p>');
-                  var title = $('<p class = "title">'
-                        + myHiddenPlace.title + '</p>');
-                  var userNickname = $('<div id="userNickname">작성자 : '
-                        + myHiddenPlace.userNickname + '</div>'); //상호명 내용 들어가는 부분
-                  var main_letter = storeNameAndTitle.append(storeName,
-                        title);
-                  $('#titleImgBox').append(titleimage, main_letter,
-                        userNickname);
-
-                  //사진&내용 만드는 코드
-                  var content_left = $('<div class="col-sm-2"></div>');
-                  var content_mid = $('<div class="col-sm-8">'
-                        + myHiddenPlace.content + '</div>'); // 받아오는게 아직 없어서 오류남
-                  var content_right = $('<div class="col-sm-2"></div>');
-                  $('#hiddenPlaceContent').append(content_left,
-                        content_mid, content_right);
-
-                  if (userId == myHiddenPlace.userId) { //현재 로그인된 아이디와 글을쓴아이디가 같다면 수정과 삭제버튼 추가
-                     var upanddeletebutton = $(' <button class="btn btn-default" id = "btn-delete">삭제</button><button class="btn btn-default" id ="btn-update">수정</button> <button class="btn btn-default" id ="btn-selectAll">목록</button> ');
-                  } else {
-                     var upanddeletebutton = $('<button class="btn btn-default" id ="btn-selectAll">목록</button>');
-                  }
-
-                  //수정 삭제 버튼
-                  $('#button_group').append(upanddeletebutton);
-                  //추천수 만드는 코드
-                  var upcount = $('<div>' + myHiddenPlace.upCount
-                        + '</div>');
-                  $('#up_count').append(upcount);
-                  $('#up_count_img').append(upImage);
-
-                  //지도 찍어주기
-                  var keyWord = encodeURIComponent(myHiddenPlace.address);
-
-                  //                   var url = "https://apis.daum.net/local/v1/search/keyword.json?apikey=6cd9ac4c704c2327f60e490376346f9c&query=" +keyWord; 
-
-                  //                   $.getJSON(url + "&callback=?" , function(json){
-
-                  //                        // json.channel.item; 은 json데이터 내에서 내가 원하는 값에 접근하기 위해
-                  //                        var items = json.channel.item;
-
-                  //                        // 반복문을 통해 원하는 json값을 뽑아내는 단계. 지금은 위도와 경도를 받기 위해...
-                  //                        $.each(items, function(i, it){
-
-                  //                         // 위도와 경도의 변수를 저장
-                  //                           var latitude = it.latitude;
-                  //                           var longitude = it.longitude;
-
-                  //                             var markerPosition  = new daum.maps.LatLng(latitude, longitude); 
-
-                  //                             if(i == 0) {
-                  //                            var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-                  //                            var options = { //지도를 생성할 때 필요한 기본 옵션
-                  //                               center: new daum.maps.LatLng(latitude, longitude), //지도의 중심좌표.
-                  //                                     level: 3 //지도의 레벨(확대, 축소 정도)
-                  //                            };
-
-                  //                         var marker = new daum.maps.Marker({
-                  //                            position: markerPosition
-                  //                         });
-
-                  //                         var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
-                  //                         marker.setMap(map); //지도위에 마커 뿌리기
-
-                  //                         }
-
-                  //                      }); 
-
-                  //                   });    
-
-                  //추천수 버튼 이벤트 발생
-
-                  $('#up')
-                        .click(
-                              function() {
-                                 if (userId != null) {
-                                    if (upCountCode == 1) {
-                                       alert("이미 추천했습니다.");
-                                    } else {
-                                       var likeImg = document
-                                             .getElementById("up");
-                                       likeImg.src = "/resources/customize/images/like.png"
-
-                                       var isSuccess = mhpController
-                                             .requestUpCount(1,
-                                                   userId, num); //추천수 1증가시키고, db에 저장 
-
-                                       if (isSuccess == "success") {
-                                          window.location
-                                                .reload();
-                                       }
-
-                                    }
-                                 }
-                              });
-
-                  //목록 버튼 이벤트 발생
-                  $("#btn-selectAll").click(function() {
-                     homepageController.requestSelectAllUrl();
-                  });
-
-                  //수정 버튼 이벤트 발생
-                  $("#btn-update").click(function() {
-                     mhpController.requestUpdateMhpPage(num);
-                  });
-
-                  //삭제 버튼 이벤트 발생
-                  $("#btn-delete").click(function() {
-                     mhpController.requestMyHiddenPlaceDelete(num);
-                  });
-
-                  var replies = mhpController.requestReplySelectAll(num); // 임의에 글번호 1번을 넣어놈(목록에서 받아오면됨)
-                  for (var i = 0; i < replies.length; i++) {
-                     if (replies[i].userId == userId) {
-
-                        var commentParentText = '<tr id="r1" name="commentParentCode">'
-                              + '<td colspan=2>'
-                              + '<strong>'
-                              + replies[i].userNickname
-                              + '</strong><a style="cursor:pointer;" name="Update"> 수정</a> | <a style="cursor:pointer;" name="Del">삭제</a><div hidden>'
-                              + replies[i].replyNum
-                              + '</div><p>'
-                              + replies[i].replyComment
-                              + '</p>'
-                              + '</td>' + '</tr>';
-
-                        if ($('#commentTable').contents().size() == 0) {
-                           $('#commentTable')
-                                 .append(commentParentText);
-                        } else {
-                           $('#commentTable tr:last').after(
-                                 commentParentText);
-                        }
-
-                     } else {
-                        var commentParentText = '<tr id="r1" name="commentParentCode">'
-                              + '<td colspan=2>'
-                              + '<strong>'
-                              + replies[i].userNickname // replies[i].userNickname 를 입력
-                              + '</strong><div hidden>'
-                              + replies[i].replyNum
-                              + '</div><p>'
-                              + replies[i].replyComment // replies[i].comment 를 입력
-                              + '</p>' + '</td>' + '</tr>';
-                        if ($('#commentTable').contents().size() == 0) {
-                           $('#commentTable')
-                                 .append(commentParentText);
-                        } else {
-                           $('#commentTable tr:last').after(
-                                 commentParentText);
-                        }
-                     }
-
-                  }
-                  //댓글을 다는 이벤트
-                  $("#commentParentSubmit")
-                        .click(
-                              function() {
-                                 //ajax로 저장하고 성공하면 저장한 데이터를 가져와 넣어야 하는데 여기서는 테스트라 그냥 입력값을 가져옴                       
-                                 var comment = $(
-                                       "#commentParentText").val();
-                                 if ($.trim(comment) == "") {
-                                    0
-                                    if (userId != null) {
-                                       alert("내용을 입력하세요.");
-                                       $("#commentParentText")
-                                             .focus();
-                                    }
-                                    return;
-                                 }
-                                 var isSuccess = mhpController
-                                       .requestReplyInsert(userId,
-                                             comment, num); // 서버 댓글번호 증가시켜줘야함.
-                                 if (isSuccess == "success") {
-                                    $("#commentParentText").val("");
-                                    window.location.reload();
-                                 }
-
-                              });
-
-                  /* 댓글 수정 버튼 클릭시 */
-                  $(document).on("click","#commentUpdateSubmit",function() {
-
-                           var updateComment = $("#commentUpdateText").val();
-
-                           if ($.trim(updateComment) == "") {
-                              alert("내용을 입력하세요.");
-                              $("#commentUpdateText").focus();
-                              return;
-                           }
-                           var replyNum = $(this).parent().children().eq(2).text();
-                           alert("sdfsdf : " + replyNum);
-                           var isSuccess = mhpController.requestReplyUpdate(num, replyNum,updateComment);
-
-                           if (isSuccess = "success") {
-                              $("#commentEditor").remove();
-                              window.location.reload();
-
-                           }
-
-                        });
-
-                  /* 댓글 삭제 버튼 클릭시 */
-                  $(document).on("click", "#commentCancel", function() {
-
-                     $("#commentEditor").remove();
-
-                  });
-
-                  // 삭제링크를 눌렀을때 해당 댓글을 삭제하는 이벤트
-                  $(document)
-                        .on(
-                              "click",
-                              "tbody#commentTable a",
-                              function() {//동적으로 버튼이 생긴 경우 처리 방식
-                                 if ($(this).attr("name") == "Del") {
-                                    if (confirm("정말 삭제하시겠습니까?") == true) { //확인
-                                       var replyNum = $(this)
-                                             .parent()
-                                             .children().eq(3)
-                                             .text();
-                                       var isSuccess = mhpController
-                                             .requestReplyDelete(
-                                                   num,
-                                                   replyNum);
-                                       if (isSuccess == "success") {
-                                          window.location
-                                                .reload();
-                                       }
-
-                                    } else { //취소
-                                       return;
-                                    }
-                                 } else if ($(this).attr("name") == "Update") {
-                                    //자기 부모의 tr을 알아낸다.
-                                    var parentElement = $(this)
-                                          .parent().parent();
-                                    //댓글달기 창을 없앤다.
-                                    $("#commentEditor").remove();
-                                    var commentEditor = '<tr id="commentEditor">'
-                                          + '<td style="width:1%"> </div>'
-                                          + '<td>'
-                                          + '<span class="form-inline" role="form">'
-                                          + '<textarea id="commentUpdateText" class="form-control" rows="4"></textarea>'
-                                          + '<div class="form-group">'
-                                          + '<button type="button" id="commentUpdateSubmit" name="commentUpdateSubmit" class="btn btn-default">입력</button>'
-                                          + '<button type="button" id="commentCancel" name="commentCancel" class="btn btn-default">취소</button>'
-                                          + '<div hidden>'
-                                          + $(this).parent()
-                                                .children().eq(
-                                                      3)
-                                                .text()
-                                          + '</div>'
-                                          + '</div>'
-                                          + '</span>'
-                                          + '</td>'
-                                          + '</tr>';
-
-                                    parentElement
-                                          .after(commentEditor);
-
-                                 }
-                              });
-               });
+	$(document).ready(function() {
+		var url = unescape(location.href); // url = http://localhost:8080/user/forgetPwUpdateView/pty0902@naver.com
+		var numUrl = url.split('='); // pm[0] = http: , pm[1] = , 
+		var num = numUrl[1];
+		var userController = new UserController();
+		var mhpController = new MyHiddenPlaceController();
+		var homepageController = new HomepageController();
+		var pageController  = new PageController();
+		var userId = localStorage.getItem('userId');
+		var upImage;
+		var page = 1;
+		var nickname = userController.requestGetNickname(userId);
+		var upCountCode = mhpController.requestUpCountCode(userId, num);
+		
+		reply();
+		
+		if (userId != null) {
+			if (upCountCode == 1) {
+				upImage = $('<img id="up" class="hiddenPlace_logo" src="/resources/customize/images/like.png" ></div>'); // 채워진 하트 이미지
+			} else {
+				upImage = $('<img id="up" class="hiddenPlace_logo" src="/resources/customize/images/unLike.png"></div>'); //안채워진 하트 이미지
+			}
+			
+			replyButton = $('<button type="button" id="commentParentSubmit" name="commentParentSubmit" class="btn btn-default">입력</button>');
+			$('#replyButton').append(replyButton);
+		} else {
+			upImage = $('<img id="up" class="hiddenPlace_logo" src="/resources/customize/images/unLike.png" data-toggle="modal" data-target="#login-modal"></div>');
+			$('#up_count_img').append(upImage);
+			$('#up').click(function() {
+				alert("로그인 후 이용가능합니다.");
+			});
+			
+			replyButton = $('<button type="button" id="commentParentSubmit" name="commentParentSubmit" class="btn btn-default" data-toggle="modal" data-target="#login-modal">입력</button>');
+			$('#replyButton').append(replyButton);
+			$('#commentParentSubmit').click(function() {
+				$("#commentParentText").val("");
+				alert("로그인 후 이용가능합니다.");
+			});
+		}
+		
+		var myHiddenPlace = mhpController.requestSelectOneMHP(num); // 임의에 글번호 14번을 넣어놈(목록에서 받아오면됨)
+		//상단 메인 사진과 제목 만드는 코드
+		var titleimage = $('<img style="width: 100%; height: 100%"  id="main_img" src=" ' + myHiddenPlace.titleImgURL + ' ">'); //타이틀 이미지
+		var storeNameAndTitle = $('<div id="main_letter"></div>');
+		var storeName = $('<p class="storeName">상호명 : ' + myHiddenPlace.storeName + '</p>');
+		var title = $('<p class = "title">' + myHiddenPlace.title + '</p>');
+		var userNickname = $('<div id="userNickname">작성자 : ' + myHiddenPlace.userNickname + '</div><div id="writeDate">작성 날짜 : ' + myHiddenPlace.writeDate.substring(0,10) + '</div>'); //작성일자
+		var main_letter = storeNameAndTitle.append(title, storeName);
+		$('#titleImgBox').append(titleimage, main_letter, userNickname);
+		//사진&내용 만드는 코드
+		var content_mid = $('<div>' + myHiddenPlace.content + '</div>'); // 받아오는게 아직 없어서 오류남
+		$('#hiddenPlaceContent').append(content_mid);
+		
+		if (userId == myHiddenPlace.userId) { //현재 로그인된 아이디와 글을쓴아이디가 같다면 수정과 삭제버튼 추가
+			var upanddeletebutton = $(' <button class="btn btn-default" id = "btn-delete">삭제</button><button class="btn btn-default" id ="btn-update">수정</button> <button class="btn btn-default" id ="btn-selectAll">목록</button> ');
+		} else {
+			var upanddeletebutton = $('<button class="btn btn-default" id ="btn-selectAll">목록</button>');
+		}
+		
+		//수정 삭제 버튼
+		$('#button_group').append(upanddeletebutton);
+		//추천수 만드는 코드
+		var upcount = $('<p>' + myHiddenPlace.upCount + '</p>');
+		
+		$('#up_count').append(upcount);
+		$('#up_count_img').append(upImage);
+		
+		//지도 찍어주기
+		var keyWord = encodeURIComponent(myHiddenPlace.address);
+		var url = "https://apis.daum.net/local/v1/search/keyword.json?apikey=4de03d90a8572ca82c4b287cab9155e1&query=" +keyWord; 
+		
+		$.getJSON(url + "&callback=?" , function(json) {
+			// json.channel.item; 은 json데이터 내에서 내가 원하는 값에 접근하기 위해
+			var items = json.channel.item;
+			// 반복문을 통해 원하는 json값을 뽑아내는 단계. 지금은 위도와 경도를 받기 위해...
+			$.each(items, function(i, it){
+				// 위도와 경도의 변수를 저장
+				var latitude = it.latitude;
+				var longitude = it.longitude;
+				var markerPosition  = new daum.maps.LatLng(latitude, longitude); 
+				
+				if(i == 0) {
+					var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+					var options = { //지도를 생성할 때 필요한 기본 옵션
+						center: new daum.maps.LatLng(latitude, longitude), //지도의 중심좌표.
+						level: 3 //지도의 레벨(확대, 축소 정도)
+					};
+					
+					var marker = new daum.maps.Marker({
+						position: markerPosition
+					});
+					
+					var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
+					marker.setMap(map); //지도위에 마커 뿌리기
+				}
+				
+				$("#forecast_embed").attr({src: "http://forecast.io/embed/#lat="+latitude+"&lon="+longitude+"&name=Hidden Place("+myHiddenPlace.address+" 날씨)&color=#00aaff&font=Georgia&units=uk"
+				});
+			}); 
+		});    
+		
+		//추천수 버튼 이벤트 발생
+		$('#up').click(function() {
+			if (userId != null) {
+				if (upCountCode == 1) {
+					alert("이미 추천했습니다.");
+				} else {
+					var likeImg = document.getElementById("up");
+					likeImg.src = "/resources/customize/images/like.png"
+					var isSuccess = mhpController.requestUpCount(1, userId, num); //추천수 1증가시키고, db에 저장 
+					
+					if (isSuccess == "success") {
+						window.location.reload();
+					}
+				}
+			}
+		});
+		
+		//목록 버튼 이벤트 발생
+		$("#btn-selectAll").click(function() {
+			homepageController.requestSelectAllUrl();
+		});
+		
+		//수정 버튼 이벤트 발생
+		$("#btn-update").click(function() {
+			mhpController.requestUpdateMhpPage(num);
+		});
+		
+		//삭제 버튼 이벤트 발생
+		$("#btn-delete").click(function() {
+			mhpController.requestMyHiddenPlaceDelete(num);
+		});
+		
+		// 페이지 버튼 클릭시
+		$(document).on("click","#page_append a", function(){
+			page = $(this).text(); //내가 클릭한 페이지의 번호를 가져온다.
+			
+			if(page == $("#laquo").text()){ //왼쪽 그림 클릭 했을시
+				page = startPage - 1;
+			} 
+			
+			if(page == $("#raquo").text()){ //오른쪽 그림 클릭 했을시
+				page = endPage + 1;
+			} 
+			
+			reply();
+		});          
+		
+		//댓글
+		function reply() {
+			var replies = mhpController.requestReplySelectAll(num, page);
+			var pageMaker = pageController.requestReplyPage(num, page);
+			
+			$('#page_append *').remove(); //기존에 어펜드되있던 목록들을 싹다 지운다.
+			$('#commentTable *').remove(); //기존에 어펜드되있던 목록들을 싹다 지운다.
+			$('#commentTable tr:last').remove(); //기존에 어펜드되있던 목록들을 싹다 지운다.
+			
+			for (var i = 0; i < replies.length; i++) {
+				var RWD = replies[i].writeDate;
+				var replyWriteDate = RWD.slice(0, 16);
+				
+				if (replies[i].userId == userId) {
+					var commentParentText = '<tr id="r1" name="commentParentCode">'
+					+ '<td colspan=2>'
+					+ '<strong>'
+					+ replies[i].userNickname
+					+ '</strong><a style="cursor:pointer;" name="Update"> 수정</a> | <a style="cursor:pointer;" name="Del">삭제</a><div hidden>'
+					+ replies[i].replyNum
+					+ '</div><div>'
+					+ replyWriteDate
+					+ '</div><p>'
+					+ replies[i].replyComment
+					+ '</p>'
+					+ '</td>' + '</tr>';
+					
+					if ($('#commentTable').contents().size() == 0) {
+						$('#commentTable').append(commentParentText);
+					} else {
+						$('#commentTable tr:last').after(commentParentText);
+					}
+				} else {
+					var commentParentText = '<tr id="r1" name="commentParentCode">'
+					+ '<td colspan=2>'
+					+ '<strong>'
+					+ replies[i].userNickname // replies[i].userNickname 를 입력
+					+ '</strong><div hidden>'
+					+ replies[i].replyNum
+					+ '</div><div>'
+					+ replyWriteDate
+					+ '</div><p>'
+					+ replies[i].replyComment // replies[i].comment 를 입력
+					+ '</p>' + '</td>' + '</tr>';
+					
+					if ($('#commentTable').contents().size() == 0) {
+						$('#commentTable').append(commentParentText);
+					} else {
+						$('#commentTable tr:last').after(commentParentText);
+					}
+				}
+			}
+			
+			//페이지 번호 처리
+			if(pageMaker.prev == true) { //왼쪽그림 링크/ 링크 누르면 필요한것 startPage- 1, page,perPageNum,searchType,keyword
+				var laquo_link =  $('<li><a id = "laquo" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>');
+				$('#page_append').append(laquo_link); //최종 append 
+			}
+			
+			for(var i = 0 ; pageMaker.startPage < pageMaker.endPage + 1  ; pageMaker.startPage++ ){
+				if(page == pageMaker.startPage){ //클릭이 됬을때는 a링크 없애고 버튼 활성화  이걸로 다시 바꾸기 pageMaker.cri.page
+					var displayPageNum_active =  $('<li class = "active"><a>'+pageMaker.startPage+'</a></li>');
+					$('#page_append').append(displayPageNum_active); //최종 append 
+				} else{  //우리는 active 클래스 정의된게 없어서 클래스만 추가됨 해당 번호에 
+					var displayPageNum_nonActive =  $('<li><a>'+pageMaker.startPage+'</a></li>'); //누르면 서치이벤트 페이지 전환되야함
+					$('#page_append').append(displayPageNum_nonActive); //최종 append 
+				}
+				
+				i++; 
+			}
+			
+			if(pageMaker.next > 0 && pageMaker.endPage > 0) {//오른쪽그림 링크/ 링크 누르면 필요한것 startPage- 1, page,perPageNum,searchType,keyword
+				var raquo_link =  $(' <li><a aria-label="Next" id = "raquo" ><span aria-hidden="true">&raquo;</span></a></li>');
+				$('#page_append').append(raquo_link); //최종 append 
+			} 
+		}
+		
+		//댓글을 다는 이벤트
+		$("#commentParentSubmit").click(function() {
+			//ajax로 저장하고 성공하면 저장한 데이터를 가져와 넣어야 하는데 여기서는 테스트라 그냥 입력값을 가져옴                       
+			var comment = $("#commentParentText").val();
+			if ($.trim(comment) == "") {
+				0
+			
+				if (userId != null) {
+					alert("내용을 입력하세요.");
+					$("#commentParentText").focus();
+				}
+			
+				return;
+			}
+			
+			var isSuccess = mhpController.requestReplyInsert(userId, comment, num); // 서버 댓글번호 증가시켜줘야함.
+			
+			if (isSuccess == "success") {
+				$("#commentParentText").val("");
+				reply();
+			}
+		});
+		
+		/* 댓글 수정 버튼 클릭시 */
+		$(document).on("click","#commentUpdateSubmit",function() {
+			var updateComment = $("#commentUpdateText").val();
+			
+			if ($.trim(updateComment) == "") {
+				alert("내용을 입력하세요.");
+				$("#commentUpdateText").focus();
+				return;
+			}
+			
+			var replyNum = $(this).parent().children().eq(2).text();
+			var isSuccess = mhpController.requestReplyUpdate(num, replyNum,updateComment);
+			
+			if (isSuccess = "success") {
+				$("#commentEditor").remove();
+				reply();
+			}
+		});
+		
+		/* 댓글 삭제 버튼 클릭시 */
+		$(document).on("click", "#commentCancel", function() {
+			$("#commentEditor").remove();
+		});
+		
+		// 삭제링크를 눌렀을때 해당 댓글을 삭제하는 이벤트
+		$(document).on("click", "tbody#commentTable a", function() { //동적으로 버튼이 생긴 경우 처리 방식
+			if ($(this).attr("name") == "Del") {
+				if (confirm("정말 삭제하시겠습니까?") == true) { //확인
+					var replyNum = $(this).parent().children().eq(3).text();
+					var isSuccess = mhpController.requestReplyDelete(num, replyNum);
+					
+					if (isSuccess == "success") {
+						reply();
+					}
+				} else { //취소
+					return;
+				}
+			} else if ($(this).attr("name") == "Update") {
+				//자기 부모의 tr을 알아낸다.
+				var parentElement = $(this).parent().parent();
+				
+				//댓글달기 창을 없앤다.
+				$("#commentEditor").remove();
+				
+				var commentEditor = '<tr id="commentEditor">'
+				+ '<td style="width:1%"> </div>'
+				+ '<td>'
+				+ '<span class="form-inline" role="form">'
+				+ '<textarea id="commentUpdateText" class="form-control" rows="4"></textarea>'
+				+ '<div class="form-group">'
+				+ '<button type="button" id="commentUpdateSubmit" name="commentUpdateSubmit" class="btn btn-default">입력</button>'
+				+ '<button type="button" id="commentCancel" name="commentCancel" class="btn btn-default">취소</button>'
+				+ '<div hidden>'
+				+ $(this).parent().children().eq(3).text()
+				+ '</div>'
+				+ '</div>'
+				+ '</span>'
+				+ '</td>'
+				+ '</tr>';
+				parentElement.after(commentEditor);
+			}
+		});
+	});
 </script>
 
 <script>
-   $(document).ready(function() {
-      $("#headerDiv").load("/resources/js/include/header.html");
-   });
+	$(document).ready(function() {
+		$("#headerDiv").load("/resources/js/include/header.html");
+	});
 </script>
 
 </head>
 
-
-
 <body>
 
-   <!-- 상단 메뉴 헤더 -->
-   <div id="headerDiv"></div>
+	<!-- 상단 메뉴 헤더 -->
+	<div id="headerDiv"></div>
 
+	<!-- 타이틀 이미지 박스 -->
+	<section id="titleImgBox"></section>
+	<section>
+		<div id="middler" class="container-fluid">
+		
+			<!-- 내용 들어가는 부분 -->
+			<div class="container">
+			
+				<br><br><br><br>
+				<div class=content id="hiddenPlaceContent"></div>
+				
+				<!-- 지도 들어가는 부분  -->
+				<div class="row"></div>
+				
+				<hr id="contentEnd_Line">
+				
+				<div class="container" id="map"></div>
+				
+				<div class="row"></div>
+				        
+				<!-- 날씨 정보 -->
+				<iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%" src="http://forecast.io/embed/#lat=37.566535&lon=126.977969&name=Hidden Place&color=#00aaff&font=Georgia&units=uk">
+				</iframe>
+				
+				<!-- 수정.삭제 버튼 들어가는 부분  -->
+				<div id="button_group"></div>
+				
+				<div>
+				<!-- 내알못 추천 -->
+				<div class ="container">
+					<div id="up_count_img" class="col-md-12"></div>
+				
+					<!-- 추천수 -->
+					<div id="up_count" class="col-md-12"></div>
+				</div>
+				</div>
 
-   <!-- 타이틀 이미지 박스 -->
-   <section id="titleImgBox"></section>
-   <section>
-      <div id="middler" class="container-fluid">
+			</div>
+        
+			<!-- 내알못 댓글 -->
+			<div id="main_hiddenPlace" class="row">
 
-         <!-- 내용 들어가는 부분 -->
-         <div class="row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8">
-               <div class=content id="hiddenPlaceContent"></div>
+				<div class="col-sm-3"></div>
+				<div class="col-sm-6">
+					<h4>댓글</h4>
+					
+					<!--댓글 아래 선  -->
+					<hr id="reply_line">
+					
+					<!--댓글 들어가는 부분  -->
+					<table class="table table-condensed">
+						<tbody id="commentTable"></tbody>
+					</table>
+					
+					<hr id="line">
+					 
+					<!-- 페이징 -->
+					<nav class="text-center">
+						<ul id="page_append" class="pagination"></ul>
+					</nav>
+					   
+					<table class="table table-condensed table-border" border=1>
+						<tr>
+							<td>
+								<span class="form-inline" role="form">
+									<textarea id="commentParentText" class="form-control col-lg-12" rows="4" placeholder=" 댓글을 입력해보세요."></textarea>
+									<div id='replyButton'></div>
+								</span>
+							</td>
+						</tr>
+					
+					</table>
+					
+				</div>
+				<div class="col-sm-3"></div>
 
-               <!-- 지도 들어가는 부분  -->
-               <div class="container" id="map"></div>
-
-               <!-- 수정.삭제 버튼 들어가는 부분  -->
-               <div id="button_group"></div>
-
-               <div>
-                  <!-- 내알못 추천 -->
-                  <div id="up_count_img" class="col-md-12"></div>
-                  
-                  <!-- 추천수 -->
-                  <div id="up_count" class="col-md-12"></div>
-               </div>
-            </div>
-         </div>
-         <!-- 내알못 댓글 -->
-         <div id="main_hiddenPlace" class="row">
-
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8">
-               <h4>댓글</h4>
-
-               <!--댓글 아래 선  -->
-               <!--          <div class="divider" id="reply_line"></div> -->
-               <hr id="reply_line">
-
-
-
-               <!--댓글 들어가는 부분  -->
-               <table class="table table-condensed">
-                  <tbody id="commentTable"></tbody>
-               </table>
-
-               <hr id="line">
-               <table class="table table-condensed table-border" border=1>
-                  <!--             <tr> -->
-                  <!--                <td> -->
-                  <!-- 페이지 메기기 -->
-                  <!--    <div class="box-footer">
-   <div class="text-center">
-      <ul class="pagination" id="page_append">
-
-
-      </ul>
-   </div>
-</div> -->
-
-                  <!--                </td> -->
-                  <!--             </tr> -->
-                  <tr>
-                     <td><span class="form-inline" role="form"> <textarea
-                              id="commentParentText" class="form-control col-lg-12" rows="4"
-                              placeholder=" 댓글을 입력해보세요."></textarea>
-                           <div id="replyButton"></div>
-                     </span></td>
-                  </tr>
-
-               </table>
-
-            </div>
-            <div class="col-sm-2"></div>
-         </div>
-      </div>
-   </section>
+			</div>
+	</div>
+	</section>
 
 </body>
 

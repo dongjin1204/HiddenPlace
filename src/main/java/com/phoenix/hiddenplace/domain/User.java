@@ -68,10 +68,4 @@ public class User {
 		this.userLeaveIdCode = userLeaveIdCode;
 	}
 
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", userPw=" + userPw + ", userNickname=" + userNickname + ", userPhoneNum=" + userPhoneNum
-				+ ", userStartDate=" + userStartDate + ", userEndDate=" + userEndDate + ", userLeaveIdCode=" + userLeaveIdCode + "]";
-	}
-
 }

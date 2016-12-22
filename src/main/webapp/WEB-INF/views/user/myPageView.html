@@ -2,11 +2,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 정보 관리</title>
-
+<title>내가 알지 못한 곳 - 회원정보관리</title>
 <link rel="shortcut icon" href="/resources/bootstrap/HTML/images/favicon.ico" />
-<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700&amp;subset=latin,latin-ext'
-	rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="/resources/bootstrap/HTML/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/resources/bootstrap/HTML/css/animate.css" />
 <link rel="stylesheet" type="text/css" href="/resources/bootstrap/HTML/css/font-awesome.min.css" />
@@ -18,25 +16,24 @@
 <script src="/resources/bootstrap/HTML/javascript/modernizr-custom.js"></script>
 <script src="/resources/bootstrap/HTML/javascript/script.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
 <script src="/resources/js/user/user.js"></script>
 <script src="/resources/js/user/userController.js"></script>
+<script src="/resources/js/homepage/homepageController.js"></script>
 </head>
 
 <script>
-$(document).ready(function() {
-	$("#headerDiv").load("/resources/js/include/header.html");
-});
+	$(document).ready(function() {
+		$("#headerDiv").load("/resources/js/include/header.html");
+	});
 </script>
 
 <script>
-$(document).ready(function() {
-	$("#footerDiv").load("/resources/js/include/footer.html");
-});
+	$(document).ready(function() {
+		$("#footerDiv").load("/resources/js/include/footer.html");
+	});
 </script>
 
 <script>
-
 	function selectReason() {
 		if (document.getElementById("sel1").value == "write") {
 			document.getElementById("sel2").style.display = "";
@@ -45,159 +42,155 @@ $(document).ready(function() {
 		}
 	}
 	
+	$(document).ready(function() {
+		var userController = new UserController();
+		var nicknameCheckSuccess = false;
+		var userId = localStorage.getItem('userId'); // 로컬세션에 들어있는 아이디를 가져옴
+		var nickname = userController.requestGetNickname(userId);
+		
+		$('#now_id').attr('value', userId); 
+		$('#now_nickname').attr('value', nickname); 
+		
+		<!--회원 탈퇴 버튼 이벤트 -->
+		$('#delete').click(function() {
+			var pw = $('#delete_now_pw').val();
+			userController.requestUserDelete(userId, pw);
+		});
+		
+		<!-- 회원 정보 수정 버튼 이벤트 -->
+		$('#update').click(function() {
+			var status = checkValue();
+			if (status) {
+				var nowPw = $('#now_pw').val(); // 현재 비밀번호
+				var newPw = $('#new_pw').val(); // 변경할 비밀번호
+				var newNickname = $('#now_nickname').val(); // 변경할 닉네임
+				
+				if(!newPw) { // 비밀번호를 변경하지 않을 경우, 닉네임만 변경
+					if (!$("#now_nickname").val()) {
+						alert("닉네임을 입력해주세요.");
+						$("#now_nickname").focus();
+						return;
+					}
+				
+					if (!nicknameCheckSuccess) {
+						alert("닉네임 중복확인을 해주세요");
+						$("#now_nickname").focus();
+						return;
+					}
+					
+					userController.requestUserUpdateN(userId, nowPw, newNickname);
+				} else if (newNickname === nickname){ // 비밀번호만 변경
+					userController.requestUserUpdateP(userId, nowPw, newPw, newNickname);   
+				} else { // 비밀번호만 변경, 비밀번호, 닉네임 둘 다 변경
+					if (!$("#now_nickname").val()) {
+						alert("닉네임을 입력해주세요.");
+						$("#now_nickname").focus();
+						return;
+					}
+				
+					if (!nicknameCheckSuccess) {
+						alert("닉네임 중복확인을 해주세요");
+						$("#now_nickname").focus();
+						return;
+					}
+					
+					userController.requestUserUpdateP(userId, nowPw, newPw, newNickname);   
+				}
+			}
+		});
+		
+		// 유효성 검사
+		function checkValue() {
+			var chk1 = /[0-9]{1}/; //숫자만 입력
+			var chk2 = /[a-zA-Z]{1}/; //문자만 입력
+			var chk3 = /[~!@#$%^&*()_+|<>?{}]{1}/; //특수문자
+			var chk4 = /[\s]/;// 공백
+			var pw = $("#new_pw").val();
+			
+			if (!$("#now_pw").val()) {
+				alert("기존 비밀번호를 입력해주세요.");
+				$("#now_pw").focus();
+				return false;
+			}
+			
+			// 비밀 번호 변경시 비밀번호를 기존 비밀번호와 같게 입력했을 경우
+			if ($("#now_pw").val() == $("#new_pw").val()) {
+				$("#new_pw").focus();
+				alert("변경할 비밀번호를 기존 비밀번호와 다르게 입력해주세요.");
+				return false;
+			}
+			
+			// 비밀번호와 비밀번호 확인에 입력된 값이 동일한지 확인
+			if ($("#new_pw").val() != $("#new_pw_check").val()) {
+				$("#new_pw_check").focus();
+				alert("변경할 비밀번호를 동일하게 입력해주세요.");
+				return false;
+			}
+			
+			if($("#new_pw").val()){
+				if ($("#new_pw").val().length < 6 || (nickname.length > 12)) {
+					alert("비밀번호를 6~12자리로 입력해주세요.");
+					$("#new_pw").focus();
+					return false;
+				}
+			}
+			
+			if(chk4.test(pw)){
+				alert("비밀번호에 공백은 들어갈 수 없습니다.");
+				$("#new_pw").focus();
+				return false;
+			}
+			
+			if($("#new_pw").val()){
+				if ((chk1.test(pw) && chk2.test(pw)) || chk3.test(pw)) {
+					return true;
+				} else {
+					alert("비밀번호를 문자, 숫자의 조합으로 입력해주세요.");
+					$("#new_pw").focus();
+					return false;
+				}
+			}
+			
+			return true;
+		}
+		
+		// 닉네임 중복확인
+		$('#nickname_check').click(function() {
+			var nickname = $('#now_nickname').val();
+			var chkNick = /[~!@#$%^&*()_+|<>?{}]{1}/; //특수문자
+			var chkNull = /[\s]/; // 공백
+			
+			if ((nickname.length < 2) || (nickname.length > 10)) {
+				alert("닉네임은 2~10글자 사이로 입력해 주세요");
+				$('#now_nickname').focus();
+			} else if (chkNick.test(nickname) || chkNull.test(nickname)) {
+				alert("닉네임에 특수문자나 공백은 들어갈 수 없습니다.");
+				$('#now_nickname').focus();
+			} else {
+				nicknameCheckSuccess = userController.requestNicknameCheck(nickname);
+				
+				if (!nicknameCheckSuccess) {
+					$('#now_nickname').focus();
+				}
+			}
+		});
+	});
 	
 	$(document).ready(function() {
-			
-		   var userController = new UserController();
-		   var nicknameCheckSuccess = false;
-		   
-		   var userId = localStorage.getItem('userId'); // 로컬세션에 들어있는 아이디를 가져옴
-
-		   var nickname = userController.requestGetNickname(userId);
-		   $('#now_id').attr('value', userId); 
-		 	$('#now_nickname').attr('value', nickname); 
-		 	
-		   <!-- 취소 버튼 이벤트 -->
-		   $('#cancel').click(function() {
-				//홈 url 메서드
-		   });
-		   
-			<!--회원 탈퇴 버튼 이벤트 -->
-		    $('#delete').click(function() {
-		    	
-		    	var pw = $('#delete_now_pw').val();
-		    	     
-		    	userController.requestUserDelete(email, pw);
-		    });
-	    	
-		    
-		     <!-- 회원 정보 수정 버튼 이벤트 -->
-		     $('#update').click(function() {
-		    	 
-		    	 var status = checkValue();
-		    	 
-		    	 if (status) {
-			    	 var nowPw = $('#now_pw').val(); // 현재 비밀번호
-			    	 var newPw = $('#new_pw').val(); // 변경할 비밀번호
-			    	 var newNickname = $('#now_nickname').val(); // 변경할 닉네임
-					
-			    	 if(!newPw) { // 비밀번호를 변경하지 않을 경우
-			    		 userController.requestUserUpdateN(email, nowPw, newNickname);
-			    	 	
-			    	 } else { // 비밀번호를 변경할 경우
-			    		 userController.requestUserUpdateP(email, nowPw, newPw, newNickname);	
-						
-			    	 }
-	    	  	 }
-
-		     });
-		     
-		     // 유효성 검사
-		     function checkValue() {
-		    
-	    		var chk1 = /[0-9]{1}/; //숫자만 입력
-				var chk2 = /[a-zA-Z]{1}/; //문자만 입력
-				var chk3 = /[~!@#$%^&*()_+|<>?{}]{1}/; //특수문자
-				var chk4 = /[\s]/;// 공백
+		$('.animated-form-control').each(function() {
+			var group = this;
+			$(this).find('#now_id').each(function(){
 				
-				var pw = $("#new_pw").val();
-				
-		    	 if (!$("#now_nickname").val()) {
-					alert("닉네임을 입력해주세요.");
-					$("#now_nickname").focus();
-					return false;
-				}
-
-		    	 if (!nicknameCheckSuccess) {
-					alert("닉네임 중복확인을 해주세요");
-					$("#now_nickname").focus();
-					return false;
-				}
-				
-		    	 if (!$("#now_pw").val()) {
-					alert("기존 비밀번호를 입력해주세요.");
-					$("#now_pw").focus();
-					return false;
-				}
-
-	    		// 비밀 번호 변경시 비밀번호를 기존 비밀번호와 같게 입력했을 경우
-				if ($("#now_pw").val() == $("#new_pw").val()) {
-					$("#new_pw").focus();
-					alert("변경할 비밀번호를 기존 비밀번호와 다르게 입력해주세요.");
-					return false;
-				}
-	    		
-				// 비밀번호와 비밀번호 확인에 입력된 값이 동일한지 확인
-				if ($("#new_pw").val() != $("#new_pw_check").val()) {
-					$("#new_pw_check").focus();
-					alert("변경할 비밀번호를 동일하게 입력해주세요.");
-					return false;
-				}
-				
-				if($("#new_pw").val()){
-					if ($("#new_pw").val().length < 6 || (nickname.length > 12)) {
-						alert("비밀번호를 6~12자리로 입력해주세요.");
-						$("#new_pw").focus();
-						return false;
-					}
-				}
-				
-				if(chk4.test(pw)){
-					alert("비밀번호에 공백은 들어갈 수 없습니다.");
-					$("#new_pw").focus();
-					return false;
-				}
-				
-				if($("#new_pw").val()){
-					if ((chk1.test(pw) && chk2.test(pw)) || chk3.test(pw)) {
-						return true;
-					} else {
-						alert("비밀번호를 문자, 숫자의 조합으로 입력해주세요.");
-						$("#new_pw").focus();
-						return false;
-					}
-				}
-
-		    	return true;
-		     }
-		     
-		     
-	  		// 닉네임 중복확인
-				$('#nickname_check').click(function() {
-					var nickname = $('#now_nickname').val();
-					var chkNick = /[~!@#$%^&*()_+|<>?{}]{1}/; //특수문자
-					var chkNull = /[\s]/; // 공백
-					
-					if ((nickname.length < 2) || (nickname.length > 10)) {
-						alert("닉네임은 2~10글자 사이로 입력해 주세요");
-						$('#now_nickname').focus();
-					} else if (chkNick.test(nickname) || chkNull.test(nickname)) {
-						alert("닉네임에 특수문자나 공백은 들어갈 수 없습니다.");
-						$('#now_nickname').focus();
-					} else {
-						nicknameCheckSuccess = userController.requestNicknameCheck(nickname);
-						if (!nicknameCheckSuccess) {
-							$('#now_nickname').focus();
-						}
-					}
+				$(this).focus(function(){
+					$(group).removeClass('focus');
 				});
-
-		  });
-		
-		$(document).ready(function() {
-			$('.animated-form-control').each(function() {
-	          var group = this;
-	          $(this).find('#now_id').each(function(){
-	            $(this).focus(function(){
-	              $(group).removeClass('focus');
-	            });
-	            $(this).focusout(function(){
-	            	$(group).removeClass('focus');
-	            });
-	          });
-	        });
+				
+				$(this).focusout(function(){
+					$(group).removeClass('focus');
+				});
+			});
 		});
-	
+	});
 </script>
 
 <style>
@@ -210,143 +203,143 @@ button, h2, a, input, label {
 	font-family: 'baemin';
 }
 
-#update, #delete, #cancel {
+#update, #delete {
 	width: 100%;
+	background-color: #474747;
+	color: white;
 }
 
 #nickname_check {
 	height: 37px;
+	background-color: #474747;
+}
+
+#update:focus, #delete:focus, #nickname_check:focus {
+	color: #ffffff;
+	background-color: black;
+}
+
+#update, #delete #nickname_check {
+	font-size: 16px;
+}
+
+#update:hover, #delete:hover, #nickname_check:hover {
+	opacity: 0.5;
+	color: white;
+	background-color: black;
 }
 </style>
 
 <body>
 	<!-- 상단 메뉴 헤더 -->
 	<div id="headerDiv"></div>
-
+	
+	<br><br><br>
+	
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2 col-md-12">
 				<article class="content">
 					<section>
-
-						<!-- 						정보수정 & 회원탈퇴 탭 -->
+						<!-- 정보수정 & 회원탈퇴 탭 -->
 						<ul class="nav nav-tabs">
-							<li class="active"><a data-toggle="tab" href="#userUpdate">회원정보수정</a>
+							<li class="active">
+								<a data-toggle="tab" href="#userUpdate">회원정보수정</a>
 							</li>
-							<li><a data-toggle="tab" href="#userDelete">회원탈퇴</a></li>
+							<li>
+								<a data-toggle="tab" href="#userDelete">회원탈퇴</a>
+							</li>
 						</ul>
-
-
-						<br> <br>
-
+						
+						<br><br>
+						
 						<div class="tab-content">
 							<!-- 정보수정 + 회원탈퇴 -->
-
 							<!-- 정보수정 start-->
 							<div id="userUpdate" class="tab-pane fade in active">
-								<!-- id 바꾸지말것 bootstrap고정 -->
-
+							
 								<h2>회원정보 수정</h2>
 								<!-- 아이디 -->
 								<div id="contact_form" class="form-horizontal">
 									<div class="form-group">
 										<label class="col-sm-3 control-label">아이디(E-mail)</label>
 										<div class="col-sm-6 animated-form-control" id="a">
-											<input type="text" name="name" class="text form-control"
-												id="now_id" required="required" aria-required="true"
-												readonly="readonly" />
+											<input type="text" name="name" class="text form-control" id="now_id" required="required" aria-required="true" readonly="readonly" />
 										</div>
-
 									</div>
-
+									
 									<!-- 닉네임 -->
 									<div class="form-group">
 										<label class="col-sm-3 control-label">닉네임</label>
 										<div class="col-sm-6 animated-form-control">
-											<input type="text" name="name" class="text form-control"
-												id="now_nickname" required="required" aria-required="true" />
+											<input type="text" name="name" class="text form-control" id="now_nickname" required="required" aria-required="true" />
 										</div>
+										
 										<div class="col-sm-3 animated-form-control">
 											<button id="nickname_check" class="btn btn-primary">중복확인</button>
 										</div>
 									</div>
-
+									
 									<!-- 현재비밀번호 -->
 									<div class="form-group">
 										<label class="col-sm-3 control-label">현재비밀번호</label>
 										<div class="col-sm-6 animated-form-control">
-											<input placeholder="Password" type="password" name="name"
-												class="text form-control" id="now_pw" required="required"
-												aria-required="true" />
+											<input placeholder="Password" type="password" name="name" class="text form-control" id="now_pw" required="required" aria-required="true" />
 										</div>
-
 									</div>
+									
 									<!-- 변경비밀번호 -->
 									<div class="form-group">
 										<label class="col-sm-3 control-label">변경비밀번호</label>
 										<div class="col-sm-6 animated-form-control">
-											<input placeholder="New Password" type="password" name="name"
-												class="text form-control" id="new_pw" required="required"
-												aria-required="true" />
+											<input placeholder="New Password" type="password" name="name" class="text form-control" id="new_pw" required="required" aria-required="true" />
 										</div>
 									</div>
-
+									
 									<!-- 변경비밀번호 확인 -->
 									<div class="form-group">
 										<label class="col-sm-3 control-label">변경비밀번호 확인</label>
 										<div class="col-sm-6 animated-form-control">
-											<input placeholder="New Password Check" type="password"
-												name="name" class="text form-control" id="new_pw_check"
-												required="required" aria-required="true" />
+											<input placeholder="New Password Check" type="password" name="name" class="text form-control" id="new_pw_check" required="required" aria-required="true" />
 										</div>
 									</div>
-
+									
 									<div class="form-group" style="line-height: 0;">
 										<div class="col-sm-3"></div>
 										<div class="col-sm-9">
-											<span style="font-size: 12px;">비밀번호는 공백없이 문자, 숫자를 조합하여
-												입력 가능 (6~12자리, 특수문자 가능)</span>
+											<span style="font-size: 12px;">비밀번호는 공백없이 문자, 숫자를 조합하여 입력 가능 (6~12자리, 특수문자 가능)</span>
 										</div>
 									</div>
+									
 									<br>
+									
 									<!-- 변경확인 버튼 -->
 									<div class="form-group">
 										<label class="col-sm-3 control-label"></label>
-										<div class="col-sm-3 animated-form-control">
+										<div class="col-sm-6 animated-form-control">
 											<button id="update" class="btn btn-primary">수정하기</button>
-										</div>
-										<div class="col-sm-3">
-											<button id="cancel" class="btn btn-primary">취소</button>
-
 										</div>
 									</div>
 								</div>
 							</div>
-
+							
 							<!--정보수정 tab end-->
-
 							<!-- 회원탈퇴 -->
 							<div id="userDelete" class="tab-pane fade">
-
 								<h2>회원탈퇴</h2>
-
 								<div id="contact_form" class="form-horizontal">
-
 									<div class="form-group">
 										<label class="col-sm-3 control-label">현재비밀번호</label>
 										<div class="col-sm-6 animated-form-control">
-											<input placeholder="Now Password" type="password" name="name"
-												class="text form-control" id="delete_now_pw"
-												required="required" aria-required="true" />
+											<input placeholder="Now Password" type="password" name="name" class="text form-control" id="delete_now_pw" required="required" aria-required="true" />
 										</div>
 									</div>
-
+									
 									<!-- 탈퇴 사유 -->
 									<div class="form-group">
 										<label class="col-sm-3 control-label">탈퇴사유</label>
 										<div class="col-sm-6 animated-form-control">
-											<select id="sel1" class="text form-control" name="sel1"
-												onchange="selectReason();">
+											<select id="sel1" class="text form-control" name="sel1" onchange="selectReason();">
 												<option value=''>Select</option>
 												<option>정보가 유용하지 않아서</option>
 												<option>서비스가 마음에 들지 않아서</option>
@@ -355,42 +348,37 @@ button, h2, a, input, label {
 											</select>
 										</div>
 									</div>
-
+									
 									<div class="form-group">
 										<label class="col-sm-3 control-label"></label>
 										<div class="col-sm-6 animated-form-control">
-											<input type="text" class="text form-control"
-												style="display: none;" id="sel2" name="sel2">
+											<input type="text" class="text form-control" style="display: none;" id="sel2" name="sel2">
 										</div>
 									</div>
-
+									
 									<!-- 탈퇴하기 버튼 -->
 									<div class="form-group">
 										<label class="col-sm-3 control-label"></label>
-										<div class="col-sm-3 animated-form-control">
+										<div class="col-sm-6 animated-form-control">
 											<button id="delete" class="btn btn-primary">탈퇴하기</button>
 										</div>
-										<div class="col-sm-3">
-											<button id="cancel" class="btn btn-primary">취소</button>
-
-										</div>
 									</div>
-
 								</div>
-
 							</div>
+							
 							<!-- 회원탈퇴 tab end-->
 						</div>
+						
 						<!-- tab div -->
 					</section>
 				</article>
 			</div>
 		</div>
 	</div>
-
+	
 	<!-- 하단 메뉴 푸터 -->
 	<div id="footerDiv"></div>
-
+	
 </body>
 
 </html>

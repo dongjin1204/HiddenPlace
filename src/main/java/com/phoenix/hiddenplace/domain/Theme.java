@@ -5,21 +5,20 @@ public class Theme {
 	private String themeName;
 	private int themeCode;
 	
-	
 	public String getThemeName() {
 		return themeName;
 	}
+	
 	public void setThemeName(String themeName) {
 		this.themeName = themeName;
 	}
+	
 	public int getThemeCode() {
 		return themeCode;
 	}
+	
 	public void setThemeCode(int themeCode) {
 		this.themeCode = themeCode;
 	}
-	@Override
-	public String toString() {
-		return "Theme [themeName=" + themeName + ", themeCode=" + themeCode + "]";
-	}
+	
 }

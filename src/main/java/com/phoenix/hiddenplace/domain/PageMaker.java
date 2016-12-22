@@ -3,7 +3,6 @@ package com.phoenix.hiddenplace.domain;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-
 public class PageMaker {
 
 	private int totalCount;
@@ -12,28 +11,23 @@ public class PageMaker {
 	private boolean prev;
 	private boolean next;
 	private int page = 1;	
-	private int perPageNum = 12;
+	private int perPageNum = 6;
 	private int themeCode = 0;
 	private int displayPageNum = 10;
 	private String keyWord;
 	private String userId;
 	
 	public PageMaker() {
-		
 	}
 
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
-		
 		this.calcData();
 	}
 
 	private void calcData() { //페이징계산
-		
 		this.endPage = (int)(Math.ceil(getPage() / (double)displayPageNum ) * displayPageNum);
-
 		this.startPage = (endPage - displayPageNum) + 1;
-		
 		int tempEndPage = (int)(Math.ceil(totalCount / (double)getPerPageNum()));
 		
 		if(endPage > tempEndPage){
@@ -41,9 +35,7 @@ public class PageMaker {
 		}
 
 		this.prev = startPage == 1 ? false : true;
-		
 		this.next = endPage * getPerPageNum() >= totalCount ? false : true;
-		
 	}
 
 	public int getTotalCount() {
@@ -71,7 +63,6 @@ public class PageMaker {
 	}
 
 	public String makeQuery(int page){
-		
 		UriComponents uriComponents =
 	            UriComponentsBuilder.newInstance()
 	            .queryParam("page", page)
@@ -102,17 +93,14 @@ public class PageMaker {
 	}	
 	
 	public void setPage(int page){
-
 		this.page = page;
 	}
 
-	public void setPerPageNum(int perPageNum){
-
-		if(perPageNum <= 0 || perPageNum > 100){
+	public void setPerPageNum(int perPageNum) {
+		if(perPageNum <= 0 || perPageNum > 100) {
 			this.perPageNum = 12;
 			return;
 		}
-
 		this.perPageNum = perPageNum;
 	}
 
@@ -122,14 +110,11 @@ public class PageMaker {
 
 	//method for MyBatis SQL Mapper - 
 	public int getPageStart() {
-
 		return (this.page -1)* perPageNum;
-		
 	}
 
 	//method for MyBatis SQL Mapper 
 	public int getPerPageNum(){
-
 		return this.perPageNum;
 	}
 	
@@ -156,6 +141,5 @@ public class PageMaker {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	
 	
 }

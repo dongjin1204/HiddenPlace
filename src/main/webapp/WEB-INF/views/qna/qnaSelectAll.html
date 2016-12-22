@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+<link rel="stylesheet" type="text/css"   href="/resources/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"   href="/resources/bootstrap/css/animate.css" />
+<link rel="stylesheet" type="text/css"   href="/resources/bootstrap/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css"   href="/resources/bootstrap/css/swiper.min.css" />
+<link rel="stylesheet" type="text/css"   href="/resources/bootstrap/css/style.css" />
+
+<script src="/resources/bootstrap/js/pace.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/resources/bootstrap/js/swiper.jquery.min.js"></script>
+<script src="/resources/bootstrap/js/animate-on-scroll.js"></script>
+<script src="/resources/bootstrap/js/script.js"></script>
+<script src="/resources/bootstrap/js/isotope.min.js"></script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+<script src="/resources/js/qna/qnaController.js"></script>
+
+<title>Insert title here</title>
+<style>
+#icon {
+	
+}
+th {
+	text-align : center;
+}
+
+#qna_button{
+	float: right;
+	margin-bottom:8px;
+	border: none;
+}
+ #qna_button:hover { 
+    opacity: 0.5; 
+    color: white;     
+    background-color: #1E90FF;  
+}
+
+#title_place {
+	cursor: pointer;
+	vertical-align: middle;
+/* 	width:10px; */
+/* 	overflow:hidden; */
+/* 	text-overflow:ellipsis; */
+/* 	white-space:nowrap; */
+}
+
+#num_place, #nickname_place {
+	text-align: center;
+	vertical-align: middle;
+}
+#title_place:hover{
+	text-decoration: underline;
+}
+em {
+	margin : auto;
+}
+#title {
+	width : 200px;
+}
+
+#updateQna_button, #nickname, #number {
+	width : 15%;
+}
+
+
+</style>
+
+<script>
+$(document).ready(function() {
+   $("#headerDiv").load("/resources/js/include/header.html");
+});
+</script>
+
+<script>
+$(document).ready(function() {
+   $("#footerDiv").load("/resources/js/include/footer.html");
+});
+</script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	var qnaController = new QnaController(); 
+	var userId = localStorage.getItem('userId');
+	var qnaBoard = qnaController.requestQnaSelectAllUrl(userId); 
+	
+	for (var i = 0; i < qnaBoard.length; i++) {
+		var tr = $('<tr></tr>');
+		var firstTd = $('<td align="center"><button class="btn btn-default" id="update_button"><em class="fa fa-pencil"></em></button> <button class="btn btn-danger" id="delete_button"><em class="fa fa-trash"></em></button></td>');
+		var QNAnum = $(  '<td class="hidden-xs" id="num_place">'+ qnaBoard[i].qnaNum + '</td>');
+		var title = $( '<td id="title_place">'+qnaBoard[i].title+'</td>');
+		var userNickname = $( '<td id="nickname_place">'+qnaBoard[i].userNickname+'</td>');
+		
+		tr.append(firstTd, QNAnum, title, userNickname);
+		$("#QNAlist").append(tr); 
+
+	}
+	
+	$(document).on("click","#title_place", function(){
+         var num = $(this).parent().children().eq(1).text();
+         alert(num);
+         qnaController.requestQnaSelectOnePage(num);
+ 	});
+	 
+	$(document).on("click","#QNAlist #delete_button", function(){
+		 var num = $(this).parent().parent().children().eq(1).text();
+		 qnaController.requestQnaDelete(num);
+		 window.location.reload();
+	});
+	 
+	$(document).on("click","#QNAlist #update_button", function(){
+		var num = $(this).parent().parent().children().eq(1).text();
+		qnaController.requestQnaUpdatePage(num);
+	});
+	
+	$(document).on("click","#qna_button", function(){
+		qnaController.requestQnaInsertPage();
+	});
+	
+});
+	
+</script>
+
+</head>
+<body>
+
+<!-- 상단 메뉴 헤더 -->
+   <div id="headerDiv"></div>
+   
+   <br><br><br><br><br>
+   
+<div class="container">
+		<div class="row">
+
+
+			<div class="col-md-10 col-md-offset-1">
+
+				<div class="panel-body">
+					<table class="table table-striped table-bordered table-list">
+					<button class="btn btn-default" id="qna_button">글쓰기</button>
+						<thead>
+							<tr>
+								<th id="updateQna_button"><em class="fa fa-cog"></em></th>
+								<th id="number">글번호</th>
+								<th id="title">제목</th>
+								<th id="nickname">작성자</th>
+							</tr>
+						</thead>
+
+						<tbody id=QNAlist>
+					
+						</tbody>
+						
+					</table>
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+<!-- 하단 메뉴 푸터 -->
+   <div id="footerDiv"></div>
+
+</body>
+
+</html>
